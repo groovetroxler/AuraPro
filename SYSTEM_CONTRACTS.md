@@ -270,10 +270,12 @@ O framework **não** deve inferir livremente:
 | Variável | Ambiente | Efeito |
 |---|---|---|
 | `NEXT_PUBLIC_BASE_URL` | todos | URL base global; obrigatória em produção |
-| `NEXT_PUBLIC_GA4_FINANCAS_BR` | todos | GA4 ID de financas-br; habilita analytics se formato G-XX |
-| `NEXT_PUBLIC_GA4_ENERGIA_SOLAR_BR` | todos | GA4 ID de energia-solar-br |
-| `NEXT_PUBLIC_GA4_AGROFLORESTA_BR` | todos | GA4 ID de agrofloresta-br |
 | `NEXT_PUBLIC_ADSENSE_PUBLISHER_ID` | produção | Publisher ID AdSense; habilita ads reais se formato pub-XX |
 | `NEXT_PUBLIC_ADS_TEST_MODE` | todos | `true` = ads desabilitados (modo teste visual) |
+
+### Dados hardcoded no config do site
+
+GA4 Measurement IDs são declarados diretamente no `SiteConfig.analytics.ga4MeasurementId` de cada site.
+Não são dados secretos (aparecem no HTML público) e ficam no código para simplificar a automação futura.
 
 Consulte `.env.example` para o template completo.

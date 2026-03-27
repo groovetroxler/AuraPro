@@ -29,9 +29,8 @@ export const financasBrSite: SiteEntry = {
       baseUrl: BASE_URL,
     },
     analytics: {
-      // PLACEHOLDER — substitua por NEXT_PUBLIC_GA4_FINANCAS_BR no Vercel
-      ga4MeasurementId: process.env.NEXT_PUBLIC_GA4_FINANCAS_BR ?? 'PLACEHOLDER_GA4',
-      enabled: process.env.NEXT_PUBLIC_GA4_FINANCAS_BR?.startsWith('G-') ?? false,
+      ga4MeasurementId: 'G-JJ19JCER9K',
+      enabled: true,
     },
     monetization: {
       ads: {

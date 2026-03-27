@@ -28,8 +28,8 @@ export const agroflorestaBrSite: SiteEntry = {
       baseUrl: BASE_URL,
     },
     analytics: {
-      ga4MeasurementId: process.env.NEXT_PUBLIC_GA4_AGROFLORESTA_BR ?? 'PLACEHOLDER_GA4',
-      enabled: process.env.NEXT_PUBLIC_GA4_AGROFLORESTA_BR?.startsWith('G-') ?? false,
+      ga4MeasurementId: 'G-HM2KTW995J',
+      enabled: true,
     },
     monetization: {
       ads: {

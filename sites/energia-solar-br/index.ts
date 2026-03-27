@@ -28,8 +28,8 @@ export const energiaSolarBrSite: SiteEntry = {
       baseUrl: BASE_URL,
     },
     analytics: {
-      ga4MeasurementId: process.env.NEXT_PUBLIC_GA4_ENERGIA_SOLAR_BR ?? 'PLACEHOLDER_GA4',
-      enabled: process.env.NEXT_PUBLIC_GA4_ENERGIA_SOLAR_BR?.startsWith('G-') ?? false,
+      ga4MeasurementId: 'G-52W2KZ7HH1',
+      enabled: true,
     },
     monetization: {
       ads: {
