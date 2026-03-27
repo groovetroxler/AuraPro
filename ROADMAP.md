@@ -65,7 +65,7 @@ Subir os três sites iniciais:
 - publicar a base no Vercel; ✅
 - validar URLs públicas dos 3 sites; ✅ (12 URLs validadas)
 - validar acessibilidade básica das páginas; ✅
-- validar que o sitemap e robots estão acessíveis em produção; ⏳ verificação manual pendente
+- validar que o sitemap e robots estão acessíveis em produção; ✅ (sitemap com 9 URLs, robots com baseUrl correta)
 - validar metadata/canonical renderizadas em produção. ✅
 
 ### Etapa 10 — Validação de fechamento da Fase 1A ⏳ (parcial)

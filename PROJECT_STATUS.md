@@ -61,8 +61,8 @@ Atualizado pelo assistente a cada sessão de trabalho.
 ### SEO
 - ✅ Títulos corretos (sem duplicação de template)
 - ✅ defaultTitleTemplate funcionando por site
-- ⏳ sitemap.xml — verificar se usa aura-pro-eosin.vercel.app
-- ⏳ robots.txt — verificar se referencia sitemap
+- ✅ sitemap.xml acessível com 9 URLs e baseUrl correta
+- ✅ robots.txt acessível com referência ao sitemap
 - ✅ canonicals usando baseUrl correta
 - ✅ JSON-LD para artigos e homes
 
@@ -88,10 +88,9 @@ Atualizado pelo assistente a cada sessão de trabalho.
 - Credenciais completas: Git + Vercel (token, org ID, project ID, domínio)
 
 ### Próxima sessão — o que fazer
-1. Confirmar sitemap.xml e robots.txt com URLs corretas
-2. Configurar GA4 IDs quando disponíveis
-3. Configurar AdSense publisherId quando disponível
-4. Gerar OG images por site (quando decidido)
+1. Configurar GA4 IDs quando disponíveis
+2. Configurar AdSense publisherId quando disponível
+3. Gerar OG images por site (quando decidido)
 
 ## Instruções para o assistente em novas sessões
 

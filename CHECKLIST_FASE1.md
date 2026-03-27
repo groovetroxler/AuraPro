@@ -18,8 +18,8 @@ Marcar a Fase 1A como concluída apenas quando todos os itens abaixo estiverem v
 ### SEO
 - [x] `baseUrl` resolve corretamente por ambiente.
 - [x] canonical está correta em produção.
-- [ ] sitemap está acessível em produção. ← verificar manualmente
-- [ ] robots está acessível em produção. ← verificar manualmente
+- [x] sitemap está acessível em produção. ✅ verificado — 9 URLs dos 3 sites
+- [x] robots está acessível em produção. ✅ verificado — usa baseUrl correta
 - [x] metadata mínima está presente em todas as páginas exigidas.
 
 ### Analytics
@@ -67,7 +67,6 @@ Se qualquer item acima estiver falso, a Fase 1A não deve ser considerada conclu
 - Ads em modo teste verificável em produção
 
 ### Pendente
-- Confirmar sitemap.xml e robots.txt em produção
 - GA4: IDs reais para os 3 sites
 - AdSense: publisherId quando conta aprovada
 - OG images por site
