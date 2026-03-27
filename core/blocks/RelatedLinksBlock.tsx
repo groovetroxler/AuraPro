@@ -12,9 +12,10 @@ export function RelatedLinksBlock({ block }: Props) {
           <li key={i}>
             <a
               href={link.href}
-              className="text-blue-700 hover:underline text-sm flex items-center gap-2"
+              className="hover:underline text-sm flex items-center gap-2"
+              style={{ color: 'var(--color-primary)' }}
             >
-              <span className="text-blue-400">→</span>
+              <span className="opacity-60">→</span>
               {link.label}
             </a>
           </li>

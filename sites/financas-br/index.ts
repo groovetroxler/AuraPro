@@ -26,7 +26,6 @@ export const financasBrSite: SiteEntry = {
       defaultTitleTemplate: '%s | Finanças BR',
       defaultDescription: 'Educação financeira prática para brasileiros: investimentos, crédito, financiamentos e planejamento.',
       baseUrl: BASE_URL,
-      defaultOgImage: `${BASE_URL}/og-default.png`,
     },
     analytics: {
       // PLACEHOLDER — substitua por NEXT_PUBLIC_GA4_FINANCAS_BR no Vercel

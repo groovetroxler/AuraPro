@@ -44,3 +44,13 @@
 - o framework deve sobreviver sem qualquer um dos sites iniciais;
 - fonte única de verdade tem prioridade sobre conveniência local;
 - documentação, implementação e ambiente publicado devem permanecer coerentes entre si.
+
+## Decisões operacionais — Sessão 2 (2026-03-27)
+
+21. O site layout (`app/[site]/layout.tsx`) não deve renderizar `<html>`, `<body>` ou `<head>` — essas tags pertencem exclusivamente ao root layout. Layout de site usa `<div>` como wrapper.
+22. `metadataBase` deve ser configurada no root layout para garantir resolução correta de og:image e twitter:image em produção.
+23. `@tailwindcss/typography` é dependência obrigatória para formatação de conteúdo editorial (classes `prose`/`prose-lg`).
+24. Todos os blocos devem usar `var(--color-primary)` em vez de cores hardcoded, garantindo que o theming por site funcione corretamente.
+25. Dark mode não faz parte do escopo da Fase 1. CSS de dark mode não deve existir no globals.css.
+26. `defaultOgImage` só deve ser declarado no config de um site quando o arquivo existir. Referências a arquivos inexistentes devem ser removidas.
+27. O Git é a memória persistente do projeto entre sessões. Documentos de controle (CHECKLIST, DECISIONS, ROADMAP) devem ser atualizados e commitados junto com alterações de código.

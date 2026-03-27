@@ -156,28 +156,6 @@ function warnPage(page: PageSchema, warnings: ValidationResult[]): void {
 }
 
 // ─────────────────────────────────────────────
-// VALIDAÇÃO DE LINKS — hrefs devem usar prefixo correto
-// ─────────────────────────────────────────────
-
-function validateLinks(page: PageSchema): void {
-  const ctx = `${page.siteKey}/${page.slug}`
-  const siteKey = page.siteKey
-
-  // Busca o routePath pelo siteKey no registry — injetado externamente
-  // A validação de prefixo é feita no validateRegistry onde temos acesso ao routePath
-  // Aqui validamos apenas que hrefs internos não são vazios
-  for (const block of page.blocks) {
-    if (block.type === 'relatedLinks') {
-      for (const link of block.links) {
-        if (link.href.startsWith('/') && !link.href.includes(siteKey.replace('-br', '').replace('-', '-'))) {
-          // Apenas warning — não bloqueante, pois o routePath é resolvido externamente
-        }
-      }
-    }
-  }
-}
-
-// ─────────────────────────────────────────────
 // VALIDAÇÃO COMPLETA DE PÁGINA
 // ─────────────────────────────────────────────
 
@@ -206,7 +184,6 @@ export function validatePage(page: PageSchema, warnings: ValidationResult[]): vo
   }
 
   validateComposition(page)
-  validateLinks(page)
   warnPage(page, warnings)
 }
 

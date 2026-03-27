@@ -10,8 +10,14 @@ export function ToolResultBlock({ block }: Props) {
       className="max-w-2xl mx-auto px-6 py-4"
       aria-live="polite"
     >
-      <div className="bg-blue-50 border border-blue-200 rounded-lg px-5 py-4 text-blue-900 text-sm">
-        {/* Resultado populado dinamicamente pela ferramenta */}
+      <div
+        className="rounded-lg px-5 py-4 text-sm border"
+        style={{
+          backgroundColor: 'color-mix(in srgb, var(--color-primary) 8%, white)',
+          borderColor: 'color-mix(in srgb, var(--color-primary) 25%, white)',
+          color: 'color-mix(in srgb, var(--color-primary) 85%, black)',
+        }}
+      >
         <span className="text-gray-400 italic">O resultado aparecerá aqui.</span>
       </div>
     </div>

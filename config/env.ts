@@ -1,7 +1,7 @@
 /**
  * config/env.ts
  * Resolve ambiente de runtime e baseUrl.
- * Impede build quebrado por ausência de configuração essencial.
+ * Impede build quebrado por ausência de configuração essencial em produção.
  */
 
 import type { RuntimeEnv, RuntimeEnvMode } from '../core/types/contracts'
@@ -14,29 +14,25 @@ function resolveMode(): RuntimeEnvMode {
 }
 
 function resolveBaseUrl(mode: RuntimeEnvMode): string {
-  // 1. Variável explícita sempre tem prioridade
-  if (process.env.NEXT_PUBLIC_BASE_URL) {
-    return process.env.NEXT_PUBLIC_BASE_URL.replace(/\/$/, '')
-  }
+  const explicit = process.env.NEXT_PUBLIC_BASE_URL?.replace(/\/$/, '')
 
-  // 2. Em produção, exige configuração explícita
+  // Variável explícita sempre tem prioridade
+  if (explicit) return explicit
+
+  // Em produção sem variável explícita → erro (impede deploy quebrado)
   if (mode === 'production') {
-    const url = process.env.NEXT_PUBLIC_BASE_URL
-    if (!url) {
-      throw new Error(
-        '[EnvError] NEXT_PUBLIC_BASE_URL é obrigatória em produção. ' +
-        'Configure no Vercel: Settings > Environment Variables.'
-      )
-    }
-    return url.replace(/\/$/, '')
+    throw new Error(
+      '[EnvError] NEXT_PUBLIC_BASE_URL é obrigatória em produção. ' +
+      'Configure no Vercel: Settings > Environment Variables.'
+    )
   }
 
-  // 3. Preview: usa URL do Vercel automaticamente
+  // Preview: usa URL automática do Vercel
   if (mode === 'preview' && process.env.VERCEL_URL) {
     return `https://${process.env.VERCEL_URL}`
   }
 
-  // 4. Development: localhost
+  // Development: localhost
   return 'http://localhost:3000'
 }
 
@@ -48,7 +44,6 @@ export function getRuntimeEnv(): RuntimeEnv {
 
 /**
  * Retorna baseUrl de forma segura para uso em componentes Server.
- * Em client components, use NEXT_PUBLIC_BASE_URL diretamente.
  */
 export function getBaseUrl(): string {
   return getRuntimeEnv().baseUrl

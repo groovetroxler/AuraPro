@@ -18,7 +18,9 @@ export function FaqBlock({ block }: Props) {
               aria-expanded={open === i}
             >
               {item.question}
-              <span className="ml-4 text-blue-600 text-xl">{open === i ? '−' : '+'}</span>
+              <span className="ml-4 text-xl" style={{ color: 'var(--color-primary)' }}>
+                {open === i ? '−' : '+'}
+              </span>
             </button>
             {open === i && (
               <div className="px-5 pb-4 text-gray-600 text-sm leading-relaxed">

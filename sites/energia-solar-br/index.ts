@@ -25,7 +25,6 @@ export const energiaSolarBrSite: SiteEntry = {
       defaultTitleTemplate: '%s | Energia Solar BR',
       defaultDescription: 'Guia completo sobre energia solar no Brasil: custos, instalação, financiamento e economia na conta de luz.',
       baseUrl: BASE_URL,
-      defaultOgImage: `${BASE_URL}/og-default.png`,
     },
     analytics: {
       ga4MeasurementId: process.env.NEXT_PUBLIC_GA4_ENERGIA_SOLAR_BR ?? 'PLACEHOLDER_GA4',

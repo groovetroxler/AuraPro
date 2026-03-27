@@ -8,7 +8,10 @@ export function ComparisonTableBlock({ block }: Props) {
     <section className="max-w-4xl mx-auto px-6 py-10 overflow-x-auto">
       <table className="w-full border-collapse text-sm">
         <thead>
-          <tr className="bg-blue-700 text-white">
+          <tr
+            className="text-white"
+            style={{ backgroundColor: 'var(--color-primary)' }}
+          >
             {block.headers.map((h, i) => (
               <th key={i} className="px-4 py-3 text-left font-semibold">{h}</th>
             ))}

@@ -8,7 +8,7 @@ const SITE_KEY = 'agrofloresta-br'
 const ROUTE_PATH = 'agrofloresta'
 const BASE_URL = (process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000') + `/${ROUTE_PATH}`
 
-export const agroflorestaaBrSite: SiteEntry = {
+export const agroflorestaBrSite: SiteEntry = {
   config: {
     siteKey: SITE_KEY,
     publicName: 'Agrofloresta BR',
@@ -25,7 +25,6 @@ export const agroflorestaaBrSite: SiteEntry = {
       defaultTitleTemplate: '%s | Agrofloresta BR',
       defaultDescription: 'Guia completo sobre sistemas agroflorestais no Brasil: como implantar, benefícios, espécies e produção sustentável.',
       baseUrl: BASE_URL,
-      defaultOgImage: `${BASE_URL}/og-default.png`,
     },
     analytics: {
       ga4MeasurementId: process.env.NEXT_PUBLIC_GA4_AGROFLORESTA_BR ?? 'PLACEHOLDER_GA4',

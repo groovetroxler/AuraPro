@@ -18,12 +18,13 @@ export function ToolInputBlock({ block }: Props) {
           value={value}
           onChange={(e) => setValue(e.target.value)}
           placeholder={block.placeholder ?? 'Digite um valor'}
-          className="flex-1 border border-gray-300 rounded-lg px-4 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1 border border-gray-300 rounded-lg px-4 py-2 text-gray-800 focus:outline-none focus:ring-2"
+          style={{ '--tw-ring-color': 'var(--color-primary)' } as React.CSSProperties}
         />
         <button
-          className="bg-blue-700 text-white px-5 py-2 rounded-lg hover:bg-blue-800 transition-colors font-medium"
+          className="text-white px-5 py-2 rounded-lg hover:opacity-90 transition-opacity font-medium"
+          style={{ backgroundColor: 'var(--color-primary)' }}
           onClick={() => {
-            // Placeholder: lógica real implementada por ferramenta específica
             console.log(`[ToolInput:${block.toolId}] valor:`, value)
           }}
         >
