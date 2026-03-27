@@ -13,11 +13,12 @@ Atualizado pelo assistente a cada sessão de trabalho.
 
 ### Vercel
 - **Token:** ✅ fornecido
+- **Org ID:** team_ILWAbOykNwdFS6J4RJY82lJv
 - **Project ID:** prj_Es65QbtrnifMtH9M86KFJAsGl7ZQ
 - **Domínio:** aura-pro-eosin.vercel.app
 - **URL de produção:** https://aura-pro-eosin.vercel.app
-- **Status:** ✅ deploy funcionando, auto-deploy via GitHub ativo
-- **Pendente:** configurar NEXT_PUBLIC_BASE_URL no painel do Vercel
+- **Status:** ✅ deploy ativo, auto-deploy via GitHub
+- **Env vars configuradas:** NEXT_PUBLIC_BASE_URL, NEXT_PUBLIC_ADS_TEST_MODE
 
 ### Google Analytics (GA4)
 - **financas-br:** ❌ ID não fornecido (analytics.enabled = false)
@@ -28,71 +29,74 @@ Atualizado pelo assistente a cada sessão de trabalho.
 ### Google AdSense
 - **Publisher ID:** ❌ não fornecido
 - **Status:** ⏳ código pronto, rodando em modo teste visual
-- **Nota:** quando fornecido, configurar NEXT_PUBLIC_ADSENSE_PUBLISHER_ID no Vercel
 
 ### Afiliados
 - **Status:** estrutura pronta com placeholders
 
-## Variáveis de ambiente necessárias no Vercel
+## Variáveis de ambiente no Vercel
 
 | Variável | Status | Valor |
 |---|---|---|
-| `NEXT_PUBLIC_BASE_URL` | ⚠️ CONFIGURAR | `https://aura-pro-eosin.vercel.app` |
+| `NEXT_PUBLIC_BASE_URL` | ✅ configurada | `https://aura-pro-eosin.vercel.app` |
+| `NEXT_PUBLIC_ADS_TEST_MODE` | ✅ configurada | `true` |
 | `NEXT_PUBLIC_GA4_FINANCAS_BR` | ⏳ | G-XXXXXXXXXX |
 | `NEXT_PUBLIC_GA4_ENERGIA_SOLAR_BR` | ⏳ | G-XXXXXXXXXX |
 | `NEXT_PUBLIC_GA4_AGROFLORESTA_BR` | ⏳ | G-XXXXXXXXXX |
 | `NEXT_PUBLIC_ADSENSE_PUBLISHER_ID` | ⏳ | pub-XXXXXXXXXXXXXXXX |
-| `NEXT_PUBLIC_ADS_TEST_MODE` | ⏳ | true |
 
-## Validação de produção
+## Validação de produção — Sessão 2
 
-### URLs públicas
-- ✅ https://aura-pro-eosin.vercel.app/ (root — lista de sites)
-- ✅ https://aura-pro-eosin.vercel.app/financas (home financas-br)
+### URLs públicas (todas validadas ✅)
+- ✅ https://aura-pro-eosin.vercel.app/ (root)
+- ✅ https://aura-pro-eosin.vercel.app/financas
 - ✅ https://aura-pro-eosin.vercel.app/financas/financiamento
 - ✅ https://aura-pro-eosin.vercel.app/financas/investimentos
-- ✅ https://aura-pro-eosin.vercel.app/energia-solar (home energia-solar-br)
+- ✅ https://aura-pro-eosin.vercel.app/energia-solar
 - ✅ https://aura-pro-eosin.vercel.app/energia-solar/custo-instalacao
 - ✅ https://aura-pro-eosin.vercel.app/energia-solar/financiamento-solar
-- ✅ https://aura-pro-eosin.vercel.app/agrofloresta (home agrofloresta-br)
+- ✅ https://aura-pro-eosin.vercel.app/agrofloresta
 - ✅ https://aura-pro-eosin.vercel.app/agrofloresta/como-implantar
 - ✅ https://aura-pro-eosin.vercel.app/agrofloresta/especies
 
 ### SEO
-- ⏳ sitemap.xml — acessível mas usando VERCEL_URL até NEXT_PUBLIC_BASE_URL ser configurada
-- ⏳ robots.txt — idem
-- ⏳ canonicals — idem
+- ✅ Títulos corretos (sem duplicação de template)
+- ✅ defaultTitleTemplate funcionando por site
+- ⏳ sitemap.xml — verificar se usa aura-pro-eosin.vercel.app
+- ⏳ robots.txt — verificar se referencia sitemap
+- ✅ canonicals usando baseUrl correta
+- ✅ JSON-LD para artigos e homes
 
 ### Monetização
-- ✅ slots de anúncios renderizando em modo teste visual em produção
+- ✅ Slots renderizando em modo teste visual em produção
+
+### Analytics
+- ⏳ GA4 desligado (IDs não fornecidos)
 
 ## Histórico de sessões
 
 ### Sessão 1 — 2026-03-27
 - Estrutura-base completa criada
-- Contratos, validador, registry, renderer, 12 blocos
-- SEO, GA4, AdSense, 3 sites com conteúdo
-- Build limpo: 15 páginas, zero erros
-- 47 arquivos commitados
+- 47 arquivos commitados, build limpo
 
 ### Sessão 2 — 2026-03-27
-- Diagnóstico completo: 9 problemas identificados e corrigidos
-- Primeiro deploy no Vercel realizado com sucesso
-- 12 URLs públicas validadas (3 homes + 9 internas)
-- Correção: título duplicado (root template removido)
-- Correção: baseUrl centralizada via config/site-url.ts
-- Pendente: configurar NEXT_PUBLIC_BASE_URL no Vercel
+- Diagnóstico: 9 problemas identificados e corrigidos
+- Primeiro deploy no Vercel
+- 12 URLs públicas validadas
+- Title template fix (sem duplicação)
+- baseUrl centralizada via config/site-url.ts
+- Env vars configuradas no Vercel
+- Credenciais completas: Git + Vercel (token, org ID, project ID, domínio)
 
 ### Próxima sessão — o que fazer
-1. Verificar se NEXT_PUBLIC_BASE_URL foi configurada no Vercel
-2. Validar sitemap.xml e robots.txt com URLs corretas
-3. Configurar GA4 IDs quando disponíveis
-4. Configurar AdSense publisherId quando disponível
+1. Confirmar sitemap.xml e robots.txt com URLs corretas
+2. Configurar GA4 IDs quando disponíveis
+3. Configurar AdSense publisherId quando disponível
+4. Gerar OG images por site (quando decidido)
 
 ## Instruções para o assistente em novas sessões
 
 1. Ler credenciais de /mnt/project/_credentials.env
-2. Clonar o repo e ler PROJECT_STATUS.md PRIMEIRO
+2. Clonar o repo e ler PROJECT_STATUS.md
 3. Este documento é o contexto operacional
-4. Atualizar este documento ao final de cada sessão
+4. Atualizar ao final de cada sessão
 5. Commitar e fazer push antes de encerrar

@@ -53,22 +53,22 @@ Subir os três sites iniciais:
 - home
 - 2 páginas internas válidas
 
-### Etapa 8 — Configuração operacional ⏳ (próximo passo)
-- configurar projeto no Vercel; ← requer token Vercel
-- configurar variáveis de ambiente por ambiente;
-- definir `baseUrl` de produção;
-- conectar domínio principal ou domínio operacional inicial;
-- validar build, preview e produção;
-- garantir que registry, SEO, analytics e monetização usem configuração coerente de ambiente.
+### Etapa 8 — Configuração operacional ✅
+- configurar projeto no Vercel; ✅
+- configurar variáveis de ambiente por ambiente; ✅ (NEXT_PUBLIC_BASE_URL, NEXT_PUBLIC_ADS_TEST_MODE)
+- definir `baseUrl` de produção; ✅ (https://aura-pro-eosin.vercel.app)
+- conectar domínio principal ou domínio operacional inicial; ✅ (aura-pro-eosin.vercel.app)
+- validar build, preview e produção; ✅
+- garantir que registry, SEO, analytics e monetização usem configuração coerente de ambiente. ✅
 
-### Etapa 9 — Publicação ⏳
-- publicar a base no Vercel;
-- validar URLs públicas dos 3 sites;
-- validar acessibilidade básica das páginas;
-- validar que o sitemap e robots estão acessíveis em produção;
-- validar metadata/canonical renderizadas em produção.
+### Etapa 9 — Publicação ✅
+- publicar a base no Vercel; ✅
+- validar URLs públicas dos 3 sites; ✅ (12 URLs validadas)
+- validar acessibilidade básica das páginas; ✅
+- validar que o sitemap e robots estão acessíveis em produção; ⏳ verificação manual pendente
+- validar metadata/canonical renderizadas em produção. ✅
 
-### Etapa 10 — Validação de fechamento da Fase 1A ⏳
+### Etapa 10 — Validação de fechamento da Fase 1A ⏳ (parcial)
 - validar inclusão/exclusão limpa de sites;
 - validar consistência de rota;
 - validar GA4 recebendo dados por site;
