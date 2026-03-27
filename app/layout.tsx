@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: 'Framework Multi-Site',
   description: 'Framework multi-site neutro para sites monetizáveis.',
+  verification: {
+    google: '1EX09BG-wwpGuTJqKGc5mWyzmIitwJPS74m_5X9v_o8',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
