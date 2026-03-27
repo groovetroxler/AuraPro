@@ -54,3 +54,6 @@
 25. Dark mode não faz parte do escopo da Fase 1. CSS de dark mode não deve existir no globals.css.
 26. `defaultOgImage` só deve ser declarado no config de um site quando o arquivo existir. Referências a arquivos inexistentes devem ser removidas.
 27. O Git é a memória persistente do projeto entre sessões. Documentos de controle (CHECKLIST, DECISIONS, ROADMAP) devem ser atualizados e commitados junto com alterações de código.
+28. O root layout não deve ter title template — cada site define seu próprio template via `seo.defaultTitleTemplate`. Evita duplicação de sufixo nos títulos.
+29. A resolução de `baseUrl` para sites é centralizada em `config/site-url.ts`, com fallback para `VERCEL_URL` quando `NEXT_PUBLIC_BASE_URL` não está definida. Elimina duplicação nos pacotes de site.
+30. O primeiro deploy no Vercel não deve bloquear por falta de variáveis de ambiente. O código usa fallbacks seguros e emite warnings em vez de erros fatais.

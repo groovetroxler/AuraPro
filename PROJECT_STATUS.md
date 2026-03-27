@@ -10,13 +10,14 @@ Atualizado pelo assistente a cada sessão de trabalho.
 - **URL:** https://github.com/groovetroxler/AuraPro
 - **Acesso:** token PAT com leitura e escrita
 - **Status:** ✅ operacional
-- **Nota:** token deve ser re-fornecido a cada sessão (não pode ser commitado — GitHub revoga automaticamente)
 
 ### Vercel
-- **Token:** ❌ não fornecido
-- **Projeto:** não criado ainda
-- **Domínio:** não definido
-- **Status:** ⏳ aguardando token
+- **Token:** ✅ fornecido
+- **Project ID:** prj_Es65QbtrnifMtH9M86KFJAsGl7ZQ
+- **Domínio:** aura-pro-eosin.vercel.app
+- **URL de produção:** https://aura-pro-eosin.vercel.app
+- **Status:** ✅ deploy funcionando, auto-deploy via GitHub ativo
+- **Pendente:** configurar NEXT_PUBLIC_BASE_URL no painel do Vercel
 
 ### Google Analytics (GA4)
 - **financas-br:** ❌ ID não fornecido (analytics.enabled = false)
@@ -31,18 +32,39 @@ Atualizado pelo assistente a cada sessão de trabalho.
 
 ### Afiliados
 - **Status:** estrutura pronta com placeholders
-- **Nota:** quando programas reais forem definidos, atualizar em cada sites/*/index.ts
 
 ## Variáveis de ambiente necessárias no Vercel
 
 | Variável | Status | Valor |
 |---|---|---|
-| `NEXT_PUBLIC_BASE_URL` | ⏳ | URL de produção (ex: https://aurapro.vercel.app) |
+| `NEXT_PUBLIC_BASE_URL` | ⚠️ CONFIGURAR | `https://aura-pro-eosin.vercel.app` |
 | `NEXT_PUBLIC_GA4_FINANCAS_BR` | ⏳ | G-XXXXXXXXXX |
 | `NEXT_PUBLIC_GA4_ENERGIA_SOLAR_BR` | ⏳ | G-XXXXXXXXXX |
 | `NEXT_PUBLIC_GA4_AGROFLORESTA_BR` | ⏳ | G-XXXXXXXXXX |
 | `NEXT_PUBLIC_ADSENSE_PUBLISHER_ID` | ⏳ | pub-XXXXXXXXXXXXXXXX |
-| `NEXT_PUBLIC_ADS_TEST_MODE` | ⏳ | true (até ter conta AdSense aprovada) |
+| `NEXT_PUBLIC_ADS_TEST_MODE` | ⏳ | true |
+
+## Validação de produção
+
+### URLs públicas
+- ✅ https://aura-pro-eosin.vercel.app/ (root — lista de sites)
+- ✅ https://aura-pro-eosin.vercel.app/financas (home financas-br)
+- ✅ https://aura-pro-eosin.vercel.app/financas/financiamento
+- ✅ https://aura-pro-eosin.vercel.app/financas/investimentos
+- ✅ https://aura-pro-eosin.vercel.app/energia-solar (home energia-solar-br)
+- ✅ https://aura-pro-eosin.vercel.app/energia-solar/custo-instalacao
+- ✅ https://aura-pro-eosin.vercel.app/energia-solar/financiamento-solar
+- ✅ https://aura-pro-eosin.vercel.app/agrofloresta (home agrofloresta-br)
+- ✅ https://aura-pro-eosin.vercel.app/agrofloresta/como-implantar
+- ✅ https://aura-pro-eosin.vercel.app/agrofloresta/especies
+
+### SEO
+- ⏳ sitemap.xml — acessível mas usando VERCEL_URL até NEXT_PUBLIC_BASE_URL ser configurada
+- ⏳ robots.txt — idem
+- ⏳ canonicals — idem
+
+### Monetização
+- ✅ slots de anúncios renderizando em modo teste visual em produção
 
 ## Histórico de sessões
 
@@ -54,31 +76,23 @@ Atualizado pelo assistente a cada sessão de trabalho.
 - 47 arquivos commitados
 
 ### Sessão 2 — 2026-03-27
-- Diagnóstico completo da base
-- 9 correções executadas:
-  1. HTML inválido (site layout sem html/body/head duplicados)
-  2. metadataBase configurada
-  3. @tailwindcss/typography instalado
-  4. Cores hardcoded → var(--color-primary) em 5 blocos
-  5. Dark mode removido
-  6. defaultOgImage para arquivos inexistentes removido
-  7. Typo agroflorestaaBrSite corrigido
-  8. Dead code validateLinks removido
-  9. resolveBaseUrl simplificado
-- Documentação atualizada (CHECKLIST, DECISIONS, ROADMAP)
-- 19 arquivos alterados, build limpo
+- Diagnóstico completo: 9 problemas identificados e corrigidos
+- Primeiro deploy no Vercel realizado com sucesso
+- 12 URLs públicas validadas (3 homes + 9 internas)
+- Correção: título duplicado (root template removido)
+- Correção: baseUrl centralizada via config/site-url.ts
+- Pendente: configurar NEXT_PUBLIC_BASE_URL no Vercel
 
 ### Próxima sessão — o que fazer
-1. Receber token do Git (re-fornecido pelo usuário)
-2. Clonar repo e ler PROJECT_STATUS.md para recuperar contexto
-3. Avançar para Etapa 8 (deploy Vercel) se token Vercel disponível
-4. Configurar variáveis de ambiente
-5. Validar em produção
+1. Verificar se NEXT_PUBLIC_BASE_URL foi configurada no Vercel
+2. Validar sitemap.xml e robots.txt com URLs corretas
+3. Configurar GA4 IDs quando disponíveis
+4. Configurar AdSense publisherId quando disponível
 
 ## Instruções para o assistente em novas sessões
 
-1. O usuário fornece o token Git no início da sessão
+1. Ler credenciais de /mnt/project/_credentials.env
 2. Clonar o repo e ler PROJECT_STATUS.md PRIMEIRO
-3. Este documento é o contexto operacional — substitui a necessidade de reler todo o histórico
-4. Atualizar este documento ao final de cada sessão com o que foi feito
+3. Este documento é o contexto operacional
+4. Atualizar este documento ao final de cada sessão
 5. Commitar e fazer push antes de encerrar

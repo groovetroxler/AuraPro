@@ -6,7 +6,8 @@ import type { SiteEntry } from '../../core/types/contracts'
 
 const SITE_KEY = 'agrofloresta-br'
 const ROUTE_PATH = 'agrofloresta'
-const BASE_URL = (process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000') + `/${ROUTE_PATH}`
+import { resolveSiteBaseUrl } from '../../config/site-url'
+const BASE_URL = resolveSiteBaseUrl(ROUTE_PATH)
 
 export const agroflorestaBrSite: SiteEntry = {
   config: {

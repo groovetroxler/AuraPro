@@ -5,10 +5,7 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: {
-    template: '%s | Framework Multi-Site',
-    default: 'Framework Multi-Site',
-  },
+  title: 'Framework Multi-Site',
   description: 'Framework multi-site neutro para sites monetizáveis.',
 }
 
