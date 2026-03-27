@@ -21,10 +21,10 @@ Atualizado pelo assistente a cada sessão de trabalho.
 - **Env vars configuradas:** NEXT_PUBLIC_BASE_URL, NEXT_PUBLIC_ADS_TEST_MODE
 
 ### Google Analytics (GA4)
-- **financas-br:** ❌ ID não fornecido (analytics.enabled = false)
-- **energia-solar-br:** ❌ ID não fornecido (analytics.enabled = false)
-- **agrofloresta-br:** ❌ ID não fornecido (analytics.enabled = false)
-- **Status:** ⏳ código pronto, aguardando IDs reais
+- **financas-br:** ✅ G-JJ19JCER9K
+- **energia-solar-br:** ✅ G-52W2KZ7HH1
+- **agrofloresta-br:** ✅ G-HM2KTW995J
+- **Status:** ✅ IDs configurados — aguardando redeploy no Vercel para ativar
 
 ### Google AdSense
 - **Publisher ID:** ❌ não fornecido
@@ -33,15 +33,21 @@ Atualizado pelo assistente a cada sessão de trabalho.
 ### Afiliados
 - **Status:** estrutura pronta com placeholders
 
+### Google Search Console
+- **Propriedade:** https://aura-pro-eosin.vercel.app
+- **Verificação:** ✅ tag HTML implementada
+- **Sitemap:** ✅ submetido (/sitemap.xml)
+- **Status:** ✅ verificado e operacional
+
 ## Variáveis de ambiente no Vercel
 
 | Variável | Status | Valor |
 |---|---|---|
 | `NEXT_PUBLIC_BASE_URL` | ✅ configurada | `https://aura-pro-eosin.vercel.app` |
 | `NEXT_PUBLIC_ADS_TEST_MODE` | ✅ configurada | `true` |
-| `NEXT_PUBLIC_GA4_FINANCAS_BR` | ⏳ | G-XXXXXXXXXX |
-| `NEXT_PUBLIC_GA4_ENERGIA_SOLAR_BR` | ⏳ | G-XXXXXXXXXX |
-| `NEXT_PUBLIC_GA4_AGROFLORESTA_BR` | ⏳ | G-XXXXXXXXXX |
+| `NEXT_PUBLIC_GA4_FINANCAS_BR` | ✅ | `G-JJ19JCER9K` |
+| `NEXT_PUBLIC_GA4_ENERGIA_SOLAR_BR` | ✅ | `G-52W2KZ7HH1` |
+| `NEXT_PUBLIC_GA4_AGROFLORESTA_BR` | ✅ | `G-HM2KTW995J` |
 | `NEXT_PUBLIC_ADSENSE_PUBLISHER_ID` | ⏳ | pub-XXXXXXXXXXXXXXXX |
 
 ## Validação de produção — Sessão 2
@@ -70,7 +76,8 @@ Atualizado pelo assistente a cada sessão de trabalho.
 - ✅ Slots renderizando em modo teste visual em produção
 
 ### Analytics
-- ⏳ GA4 desligado (IDs não fornecidos)
+- ✅ GA4 configurado com IDs reais para os 3 sites
+- ⏳ Validar pageviews após redeploy
 
 ## Histórico de sessões
 
@@ -88,7 +95,7 @@ Atualizado pelo assistente a cada sessão de trabalho.
 - Credenciais completas: Git + Vercel (token, org ID, project ID, domínio)
 
 ### Próxima sessão — o que fazer
-1. Configurar GA4 IDs quando disponíveis
+1. Validar pageviews no GA4 (após redeploy com env vars)
 2. Configurar AdSense publisherId quando disponível
 3. Gerar OG images por site (quando decidido)
 
