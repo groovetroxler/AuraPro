@@ -1,49 +1,73 @@
 /**
  * sites/energia-solar-br/index.ts
- * Pacote do site energia-solar-br.
  */
 
 import type { SiteEntry } from '../../core/types/contracts'
 
+const SITE_KEY = 'energia-solar-br'
+const ROUTE_PATH = 'energia-solar'
+const BASE_URL = (process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000') + `/${ROUTE_PATH}`
+
 export const energiaSolarBrSite: SiteEntry = {
   config: {
-    siteId: 'energia-solar-br',
-    name: 'Energia Solar BR',
-    routePath: 'energia-solar',
-    defaultLocale: 'pt-BR',
+    siteKey: SITE_KEY,
+    publicName: 'Energia Solar BR',
+    routePath: ROUTE_PATH,
+    locale: 'pt-BR',
+    market: 'BR',
+    status: 'active',
+    theme: {
+      brandName: 'Energia Solar BR',
+      primaryColor: '#d97706',
+    },
+    seo: {
+      siteTitle: 'Energia Solar BR',
+      defaultTitleTemplate: '%s | Energia Solar BR',
+      defaultDescription: 'Guia completo sobre energia solar no Brasil: custos, instalação, financiamento e economia na conta de luz.',
+      baseUrl: BASE_URL,
+      defaultOgImage: `${BASE_URL}/og-default.png`,
+    },
     analytics: {
-      ga4Id: process.env.NEXT_PUBLIC_GA4_ENERGIA_SOLAR_BR ?? 'PLACEHOLDER_GA4_ENERGIA_SOLAR_BR',
+      ga4MeasurementId: process.env.NEXT_PUBLIC_GA4_ENERGIA_SOLAR_BR ?? 'PLACEHOLDER_GA4',
+      enabled: process.env.NEXT_PUBLIC_GA4_ENERGIA_SOLAR_BR?.startsWith('G-') ?? false,
     },
-    ads: {
-      publisherId: process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID ?? 'PLACEHOLDER_PUBLISHER_ID',
-      testMode: process.env.NEXT_PUBLIC_ADS_TEST_MODE !== 'false',
-    },
-    affiliates: {
-      programs: [
-        {
-          programId: 'PLACEHOLDER_AFFILIATE_SOLAR',
-          name: 'Programa de Afiliados Solar (placeholder)',
-          trackingUrl: 'https://example.com/afiliados/solar',
-        },
-      ],
+    monetization: {
+      ads: {
+        enabled: process.env.NEXT_PUBLIC_ADS_TEST_MODE !== 'true',
+        provider: 'adsense',
+        publisherId: process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID,
+      },
+      affiliates: {
+        enabled: false,
+        programs: [
+          {
+            id: 'PLACEHOLDER_AFFILIATE_SOLAR',
+            name: 'Programa de Afiliados Solar (placeholder)',
+            baseUrl: 'https://example.com/afiliados/solar',
+          },
+        ],
+      },
     },
   },
   pages: [
     {
+      id: 'solar-home',
+      siteKey: SITE_KEY,
+      type: 'home',
       slug: 'home',
+      title: 'Início',
+      status: 'published',
       meta: {
         title: 'Energia Solar BR — Guia Completo de Energia Solar no Brasil',
-        description:
-          'Tudo sobre energia solar no Brasil: como funciona, quanto custa, financiamento, instalação e economia na conta de luz.',
+        description: 'Tudo sobre energia solar no Brasil: como funciona, quanto custa, financiamento, instalação e economia na conta de luz.',
       },
       blocks: [
         {
           type: 'hero',
           heading: 'Energia Solar no Brasil',
-          subheading:
-            'Descubra como a energia solar pode reduzir sua conta de luz e o que você precisa saber antes de instalar.',
+          subheading: 'Descubra como a energia solar pode reduzir sua conta de luz e o que você precisa saber antes de instalar.',
           ctaLabel: 'Quanto custa instalar?',
-          ctaHref: '/energia-solar/custo-instalacao',
+          ctaHref: `/${ROUTE_PATH}/custo-instalacao`,
         },
         {
           type: 'richText',
@@ -57,18 +81,28 @@ export const energiaSolarBrSite: SiteEntry = {
         {
           type: 'relatedLinks',
           links: [
-            { label: 'Quanto custa instalar energia solar?', href: '/energia-solar/custo-instalacao' },
-            { label: 'Como funciona o financiamento solar?', href: '/energia-solar/financiamento-solar' },
+            { label: 'Quanto custa instalar energia solar?', href: `/${ROUTE_PATH}/custo-instalacao` },
+            { label: 'Como funciona o financiamento solar?', href: `/${ROUTE_PATH}/financiamento-solar` },
           ],
+        },
+        {
+          type: 'cta',
+          label: 'Simular economia solar',
+          href: `/${ROUTE_PATH}/custo-instalacao`,
+          variant: 'primary',
         },
       ],
     },
     {
+      id: 'solar-custo-instalacao',
+      siteKey: SITE_KEY,
+      type: 'article',
       slug: 'custo-instalacao',
+      title: 'Quanto Custa Instalar Energia Solar?',
+      status: 'published',
       meta: {
-        title: 'Quanto Custa Instalar Energia Solar? | Energia Solar BR',
-        description:
-          'Saiba quanto custa instalar um sistema de energia solar em 2025: painéis, inversores, mão de obra e retorno do investimento.',
+        title: 'Quanto Custa Instalar Energia Solar?',
+        description: 'Saiba quanto custa instalar um sistema de energia solar em 2025: painéis, inversores, mão de obra e retorno do investimento.',
       },
       blocks: [
         {
@@ -106,14 +140,8 @@ export const energiaSolarBrSite: SiteEntry = {
         {
           type: 'faq',
           items: [
-            {
-              question: 'O sistema solar funciona em dias nublados?',
-              answer: 'Sim, mas com eficiência reduzida. Painéis modernos geram até 25% da capacidade em dias nublados.',
-            },
-            {
-              question: 'Preciso de bateria para armazenar energia?',
-              answer: 'Não necessariamente. Com o sistema de compensação (net metering), você injeta o excedente na rede e usa créditos à noite.',
-            },
+            { question: 'O sistema solar funciona em dias nublados?', answer: 'Sim, mas com eficiência reduzida. Painéis modernos geram até 25% da capacidade em dias nublados.' },
+            { question: 'Preciso de bateria para armazenar energia?', answer: 'Não necessariamente. Com o sistema de compensação (net metering), você injeta o excedente na rede e usa créditos à noite.' },
           ],
         },
         {
@@ -122,14 +150,24 @@ export const energiaSolarBrSite: SiteEntry = {
           href: '#orcamento',
           variant: 'primary',
         },
+        {
+          type: 'relatedLinks',
+          links: [
+            { label: 'Financiamento de energia solar', href: `/${ROUTE_PATH}/financiamento-solar` },
+          ],
+        },
       ],
     },
     {
+      id: 'solar-financiamento',
+      siteKey: SITE_KEY,
+      type: 'article',
       slug: 'financiamento-solar',
+      title: 'Financiamento de Energia Solar',
+      status: 'published',
       meta: {
-        title: 'Financiamento de Energia Solar — Como Funciona | Energia Solar BR',
-        description:
-          'Conheça as opções de financiamento para energia solar no Brasil: bancos, linhas de crédito e programas especiais.',
+        title: 'Financiamento de Energia Solar — Como Funciona',
+        description: 'Conheça as opções de financiamento para energia solar no Brasil: bancos, linhas de crédito e programas especiais.',
       },
       blocks: [
         {
@@ -156,9 +194,15 @@ export const energiaSolarBrSite: SiteEntry = {
           format: 'responsive',
         },
         {
+          type: 'cta',
+          label: 'Simular financiamento solar',
+          href: '#simulador',
+          variant: 'primary',
+        },
+        {
           type: 'relatedLinks',
           links: [
-            { label: 'Quanto custa instalar energia solar?', href: '/energia-solar/custo-instalacao' },
+            { label: 'Quanto custa instalar energia solar?', href: `/${ROUTE_PATH}/custo-instalacao` },
           ],
         },
       ],

@@ -1,9 +1,12 @@
+/**
+ * app/[site]/page.tsx — Home de cada site
+ */
+
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getSiteByRoutePath, getAllRoutePaths } from '../../sites/registry'
 import { BlockRenderer } from '../../core/renderer/BlockRenderer'
-import { buildMetadata } from '../../core/seo/metadata'
-import { getBaseUrl } from '../../config/env'
+import { buildMetadata, buildWebSiteJsonLd } from '../../core/seo/metadata'
 
 interface Props {
   params: Promise<{ site: string }>
@@ -13,16 +16,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { site } = await params
   const entry = getSiteByRoutePath(site)
   if (!entry) return {}
-
-  const home = entry.pages.find((p) => p.slug === 'home')
+  const home = entry.pages.find((p) => p.slug === 'home' && p.status === 'published')
   if (!home) return {}
-
-  return buildMetadata({
-    page: home,
-    site: entry.config,
-    baseUrl: getBaseUrl(),
-    routePath: site,
-  })
+  return buildMetadata({ page: home, site: entry.config })
 }
 
 export default async function SiteHomePage({ params }: Props) {
@@ -30,15 +26,22 @@ export default async function SiteHomePage({ params }: Props) {
   const entry = getSiteByRoutePath(site)
   if (!entry) notFound()
 
-  const home = entry.pages.find((p) => p.slug === 'home')
+  const home = entry.pages.find((p) => p.slug === 'home' && p.status === 'published')
   if (!home) notFound()
 
+  const webSiteJsonLd = buildWebSiteJsonLd(entry.config)
+
   return (
-    <BlockRenderer
-      blocks={home.blocks}
-      publisherId={entry.config.ads.publisherId}
-      testMode={entry.config.ads.testMode}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: webSiteJsonLd }}
+      />
+      <BlockRenderer
+        blocks={home.blocks}
+        ads={entry.config.monetization.ads}
+      />
+    </>
   )
 }
 

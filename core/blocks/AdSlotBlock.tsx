@@ -1,62 +1,85 @@
 'use client'
+/**
+ * core/blocks/AdSlotBlock.tsx
+ * Slot de anúncio declarativo.
+ * - Pré-reserva espaço para evitar CLS (Core Web Vitals — crítico para AdSense)
+ * - testMode (ads.enabled=false ou publisherId inválido): exibe placeholder visual
+ * - modo real: carrega AdSense via ins.adsbygoogle
+ */
+
 import React, { useEffect } from 'react'
-import type { AdSlotBlock as AdSlotBlockType } from '../types/contracts'
+import type { AdSlotBlock as AdSlotBlockType, AdsConfig } from '../types/contracts'
 
 interface Props {
   block: AdSlotBlockType
-  publisherId?: string
-  testMode?: boolean
+  ads: AdsConfig
 }
 
-/**
- * AdSlotBlock
- * - testMode=true: exibe placeholder visual marcado como "ANÚNCIO (modo teste)"
- * - testMode=false + publisherId real: carrega AdSense real
- * - sem publisherId: exibe aviso de configuração pendente
- */
-export function AdSlotBlock({ block, publisherId, testMode = false }: Props) {
-  const formatClass: Record<string, string> = {
-    banner: 'h-24',
-    rectangle: 'h-64',
-    leaderboard: 'h-24',
-    responsive: 'min-h-24',
-  }
-  const heightClass = formatClass[block.format ?? 'responsive'] ?? 'min-h-24'
+// Alturas mínimas pré-reservadas por formato — evita CLS
+const MIN_HEIGHT: Record<string, number> = {
+  banner: 90,
+  rectangle: 250,
+  leaderboard: 90,
+  responsive: 100,
+}
 
-  // Modo de teste explícito — sem AdSense real
-  if (testMode || !publisherId || publisherId.startsWith('PLACEHOLDER')) {
-    return (
-      <div
-        className={`max-w-4xl mx-auto my-4 mx-6 ${heightClass} bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center rounded`}
-        data-slot-id={block.slotId}
-        data-test-mode="true"
-      >
-        <span className="text-gray-400 text-xs font-mono">
-          ANÚNCIO — slot: {block.slotId} | formato: {block.format ?? 'responsive'} | MODO TESTE
-        </span>
-      </div>
-    )
-  }
+function isValidPublisherId(id?: string): boolean {
+  return !!id && /^pub-\d+$/.test(id)
+}
 
-  // Modo real — AdSense
+export function AdSlotBlock({ block, ads }: Props) {
+  const format = block.format ?? 'responsive'
+  const minHeight = MIN_HEIGHT[format] ?? 100
+  const isReal = ads.enabled && isValidPublisherId(ads.publisherId)
+
   useEffect(() => {
+    if (!isReal) return
     try {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ;(window as any).adsbygoogle = (window as any).adsbygoogle || []
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ;(window as any).adsbygoogle.push({})
-    } catch {}
-  }, [])
+    } catch {
+      // silencia erros de inicialização do adsbygoogle
+    }
+  }, [isReal])
 
+  // Modo teste — placeholder visual com altura pré-reservada
+  if (!isReal) {
+    return (
+      <div
+        className="max-w-4xl mx-auto my-4 px-6"
+        style={{ minHeight }}
+        aria-hidden="true"
+        data-slot-id={block.slotId}
+        data-test-mode="true"
+      >
+        <div
+          className="w-full h-full bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center rounded"
+          style={{ minHeight }}
+        >
+          <span className="text-gray-400 text-xs font-mono">
+            ANÚNCIO — {block.slotId} | {format} | MODO TESTE
+          </span>
+        </div>
+      </div>
+    )
+  }
+
+  // Modo real — AdSense com contêiner de altura pré-reservada
   return (
-    <div className="max-w-4xl mx-auto my-4 px-6">
+    <div
+      className="max-w-4xl mx-auto my-4 px-6"
+      style={{ minHeight }}
+      data-slot-id={block.slotId}
+    >
       <ins
         className="adsbygoogle"
-        style={{ display: 'block' }}
-        data-ad-client={publisherId}
+        style={{ display: 'block', minHeight }}
+        data-ad-client={ads.publisherId}
         data-ad-slot={block.slotId}
-        data-ad-format={block.format ?? 'auto'}
-        data-full-width-responsive="true"
+        data-ad-format={format === 'responsive' ? 'auto' : format}
+        data-full-width-responsive={format === 'responsive' ? 'true' : 'false'}
       />
     </div>
   )

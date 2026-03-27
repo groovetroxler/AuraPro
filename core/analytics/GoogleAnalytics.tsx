@@ -1,36 +1,38 @@
 /**
  * core/analytics/GoogleAnalytics.tsx
- * Componente de injeção do GA4.
- * ga4Id vem sempre do registry — sem hardcodes paralelos.
+ * Injeta GA4 por site.
+ * Só carrega se analytics.enabled=true e ga4MeasurementId tiver formato G-XXXXXX válido.
+ * Derivado sempre do registry — sem hardcodes paralelos.
  */
 
 import Script from 'next/script'
 
 interface Props {
-  ga4Id: string
+  ga4MeasurementId: string
+  enabled: boolean
 }
 
-/**
- * GoogleAnalytics
- * Deve ser incluído no layout do site, passando o ga4Id do config do site.
- * Se ga4Id for placeholder, o componente ainda renderiza (sem dados reais).
- */
-export function GoogleAnalytics({ ga4Id }: Props) {
-  if (!ga4Id || ga4Id.trim() === '') return null
+function isValidId(id: string): boolean {
+  return /^G-[A-Z0-9]+$/.test(id)
+}
+
+export function GoogleAnalytics({ ga4MeasurementId, enabled }: Props) {
+  if (!enabled || !isValidId(ga4MeasurementId)) return null
 
   return (
     <>
       <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${ga4MeasurementId}`}
         strategy="afterInteractive"
       />
-      <Script id={`ga4-init-${ga4Id}`} strategy="afterInteractive">
+      <Script id={`ga4-init-${ga4MeasurementId}`} strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${ga4Id}', {
+          gtag('config', '${ga4MeasurementId}', {
             page_path: window.location.pathname,
+            send_page_view: true
           });
         `}
       </Script>

@@ -2,10 +2,11 @@
  * core/renderer/BlockRenderer.tsx
  * Renderer central — mapeia tipos de bloco para componentes React.
  * Não aceita blocos não declarados no catálogo.
+ * AdsConfig passada diretamente do config do site.
  */
 
 import React from 'react'
-import type { Block } from '../types/contracts'
+import type { Block, AdsConfig } from '../types/contracts'
 import { VALID_BLOCK_TYPES } from '../types/contracts'
 
 import { HeroBlock } from '../blocks/HeroBlock'
@@ -23,18 +24,15 @@ import { ArticleContentBlock } from '../blocks/ArticleContentBlock'
 
 interface BlockRendererProps {
   blocks: Block[]
-  publisherId?: string
-  testMode?: boolean
+  ads: AdsConfig
 }
 
-export function BlockRenderer({ blocks, publisherId, testMode = false }: BlockRendererProps) {
+export function BlockRenderer({ blocks, ads }: BlockRendererProps) {
   return (
     <div className="block-renderer">
       {blocks.map((block, index) => {
         if (!VALID_BLOCK_TYPES.includes(block.type as never)) {
-          throw new Error(
-            `[RendererError] Tipo de bloco não suportado: "${block.type}"`
-          )
+          throw new Error(`[RendererError] Tipo de bloco não suportado: "${block.type}"`)
         }
 
         const key = `${block.type}-${index}`
@@ -55,14 +53,7 @@ export function BlockRenderer({ blocks, publisherId, testMode = false }: BlockRe
           case 'cta':
             return <CtaBlock key={key} block={block} />
           case 'adSlot':
-            return (
-              <AdSlotBlock
-                key={key}
-                block={block}
-                publisherId={publisherId}
-                testMode={testMode}
-              />
-            )
+            return <AdSlotBlock key={key} block={block} ads={ads} />
           case 'relatedLinks':
             return <RelatedLinksBlock key={key} block={block} />
           case 'videoEmbed':
@@ -72,7 +63,6 @@ export function BlockRenderer({ blocks, publisherId, testMode = false }: BlockRe
           case 'articleContent':
             return <ArticleContentBlock key={key} block={block} />
           default:
-            // TypeScript garante exhaustiveness aqui
             const _exhaustive: never = block
             throw new Error(`[RendererError] Bloco não mapeado: ${JSON.stringify(_exhaustive)}`)
         }

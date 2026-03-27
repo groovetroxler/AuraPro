@@ -1,7 +1,8 @@
 /**
- * SYSTEM_CONTRACTS — Contratos centrais do framework multi-site
+ * core/types/contracts.ts
+ * Contratos centrais do framework multi-site.
  * Fonte de verdade para tipos, validações e regras de runtime.
- * Qualquer alteração aqui deve ser refletida em SYSTEM_CONTRACTS.md
+ * Alinhado com SYSTEM_CONTRACTS.md — em caso de conflito, este arquivo prevalece.
  */
 
 // ─────────────────────────────────────────────
@@ -23,7 +24,7 @@ export const VALID_BLOCK_TYPES = [
   'articleContent',
 ] as const
 
-export type BlockType = typeof VALID_BLOCK_TYPES[number]
+export type BlockType = (typeof VALID_BLOCK_TYPES)[number]
 
 export interface HeroBlock {
   type: 'hero'
@@ -75,7 +76,7 @@ export interface CtaBlock {
   type: 'cta'
   label: string
   href: string
-  programId?: string   // ID do programa de afiliados (opcional, para rastreamento)
+  programId?: string
   variant?: 'primary' | 'secondary'
 }
 
@@ -129,6 +130,23 @@ export type Block =
   | ArticleContentBlock
 
 // ─────────────────────────────────────────────
+// PAGE TYPE — tipos aceitos pelo sistema
+// ─────────────────────────────────────────────
+
+export const VALID_PAGE_TYPES = [
+  'home',
+  'article',
+  'tool',
+  'faq',
+  'comparison',
+  'tutorial',
+  'video',
+  'hub',
+] as const
+
+export type PageType = (typeof VALID_PAGE_TYPES)[number]
+
+// ─────────────────────────────────────────────
 // PAGE SCHEMA — página declarativa
 // ─────────────────────────────────────────────
 
@@ -136,58 +154,77 @@ export interface PageMeta {
   title: string
   description: string
   canonical?: string   // gerado automaticamente se omitido
+  ogImage?: string     // URL absoluta da imagem OG; usa default do site se omitida
   noIndex?: boolean
 }
 
 export interface PageSchema {
-  slug: string          // ex: 'home', 'financiamento'
+  id: string                    // identificador único da página (ex: 'financas-home')
+  siteKey: string               // vínculo explícito com o site
+  type: PageType                // tipo da página — governa regras de composição
+  slug: string                  // ex: 'home', 'financiamento'
+  title: string                 // título editorial (usado em breadcrumbs, listas)
+  status: 'draft' | 'published' // draft = não servido pelo runtime
   meta: PageMeta
   blocks: Block[]
 }
 
 // ─────────────────────────────────────────────
-// ANALYTICS CONFIG
+// SITE CONFIG — configuração por site
+// Alinhado com SYSTEM_CONTRACTS.md
 // ─────────────────────────────────────────────
 
-export interface AnalyticsConfig {
-  ga4Id: string         // ex: 'G-XXXXXXXXXX' ou 'PLACEHOLDER_GA4_ID'
+export interface SiteTheme {
+  brandName: string
+  primaryColor: string   // hex, ex: '#1d4ed8'
 }
 
-// ─────────────────────────────────────────────
-// ADS CONFIG
-// ─────────────────────────────────────────────
+export interface SiteSeo {
+  siteTitle: string              // ex: 'Finanças BR'
+  defaultTitleTemplate: string   // ex: '%s | Finanças BR'
+  defaultDescription: string
+  baseUrl: string                // ex: 'https://aura.vercel.app/financas'
+  defaultOgImage?: string        // URL absoluta da imagem OG padrão do site
+}
+
+export interface SiteAnalytics {
+  ga4MeasurementId: string       // ex: 'G-XXXXXXXXXX'
+  enabled: boolean
+}
 
 export interface AdsConfig {
-  publisherId: string   // ex: 'pub-XXXXXXXXXXXXXXXX' ou 'PLACEHOLDER_PUBLISHER_ID'
-  testMode: boolean     // true = modo de teste; false = modo real
+  enabled: boolean
+  provider: 'adsense'
+  publisherId?: string           // opcional — ausente = sem ads reais
 }
 
-// ─────────────────────────────────────────────
-// AFFILIATE CONFIG
-// ─────────────────────────────────────────────
-
 export interface AffiliateProgram {
-  programId: string
+  id: string
   name: string
-  trackingUrl: string
+  baseUrl: string
 }
 
 export interface AffiliateConfig {
+  enabled: boolean
   programs: AffiliateProgram[]
 }
 
-// ─────────────────────────────────────────────
-// SITE CONFIG — configuração por site
-// ─────────────────────────────────────────────
-
-export interface SiteConfig {
-  siteId: string        // ex: 'financas-br'
-  name: string          // ex: 'Finanças BR'
-  routePath: string     // ex: 'financas' (prefixo de rota, único)
-  defaultLocale: string // ex: 'pt-BR'
-  analytics: AnalyticsConfig
+export interface SiteMonetization {
   ads: AdsConfig
   affiliates: AffiliateConfig
+}
+
+export interface SiteConfig {
+  siteKey: string                 // único no registry; ex: 'financas-br'
+  publicName: string              // ex: 'Finanças BR'
+  routePath: string               // prefixo de rota único; ex: 'financas'
+  locale: 'pt-BR'
+  market: 'BR'
+  status: 'draft' | 'active'     // draft = site não servido
+  theme: SiteTheme
+  seo: SiteSeo
+  analytics: SiteAnalytics
+  monetization: SiteMonetization
 }
 
 // ─────────────────────────────────────────────
@@ -207,5 +244,18 @@ export type RuntimeEnvMode = 'development' | 'preview' | 'production'
 
 export interface RuntimeEnv {
   mode: RuntimeEnvMode
-  baseUrl: string
+  baseUrl: string   // baseUrl global — cada site tem sua própria em config.seo.baseUrl
+}
+
+// ─────────────────────────────────────────────
+// RESULTADO DE VALIDAÇÃO — suporte a warnings
+// ─────────────────────────────────────────────
+
+export type ValidationSeverity = 'error' | 'warning'
+
+export interface ValidationResult {
+  severity: ValidationSeverity
+  code: string
+  message: string
+  context: string
 }

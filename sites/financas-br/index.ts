@@ -1,52 +1,75 @@
 /**
  * sites/financas-br/index.ts
  * Pacote do site financas-br.
- * Exporta SiteEntry completo para o registry.
  */
 
 import type { SiteEntry } from '../../core/types/contracts'
 
+const SITE_KEY = 'financas-br'
+const ROUTE_PATH = 'financas'
+const BASE_URL = (process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000') + `/${ROUTE_PATH}`
+
 export const financasBrSite: SiteEntry = {
   config: {
-    siteId: 'financas-br',
-    name: 'Finanças BR',
-    routePath: 'financas',
-    defaultLocale: 'pt-BR',
+    siteKey: SITE_KEY,
+    publicName: 'Finanças BR',
+    routePath: ROUTE_PATH,
+    locale: 'pt-BR',
+    market: 'BR',
+    status: 'active',
+    theme: {
+      brandName: 'Finanças BR',
+      primaryColor: '#1d4ed8',
+    },
+    seo: {
+      siteTitle: 'Finanças BR',
+      defaultTitleTemplate: '%s | Finanças BR',
+      defaultDescription: 'Educação financeira prática para brasileiros: investimentos, crédito, financiamentos e planejamento.',
+      baseUrl: BASE_URL,
+      defaultOgImage: `${BASE_URL}/og-default.png`,
+    },
     analytics: {
-      // PLACEHOLDER — substituir pelo GA4 ID real em NEXT_PUBLIC_GA4_FINANCAS_BR
-      ga4Id: process.env.NEXT_PUBLIC_GA4_FINANCAS_BR ?? 'PLACEHOLDER_GA4_FINANCAS_BR',
+      // PLACEHOLDER — substitua por NEXT_PUBLIC_GA4_FINANCAS_BR no Vercel
+      ga4MeasurementId: process.env.NEXT_PUBLIC_GA4_FINANCAS_BR ?? 'PLACEHOLDER_GA4',
+      enabled: process.env.NEXT_PUBLIC_GA4_FINANCAS_BR?.startsWith('G-') ?? false,
     },
-    ads: {
-      // PLACEHOLDER — substituir pelo publisherId real quando conta AdSense aprovada
-      publisherId: process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID ?? 'PLACEHOLDER_PUBLISHER_ID',
-      testMode: process.env.NEXT_PUBLIC_ADS_TEST_MODE !== 'false',
-    },
-    affiliates: {
-      programs: [
-        {
-          programId: 'PLACEHOLDER_AFFILIATE_FINANCAS',
-          name: 'Programa de Afiliados Finanças (placeholder)',
-          trackingUrl: 'https://example.com/afiliados/financas',
-        },
-      ],
+    monetization: {
+      ads: {
+        enabled: process.env.NEXT_PUBLIC_ADS_TEST_MODE !== 'true',
+        provider: 'adsense',
+        publisherId: process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID,
+      },
+      affiliates: {
+        enabled: false, // ativar quando programas reais forem configurados
+        programs: [
+          {
+            id: 'PLACEHOLDER_AFFILIATE_FINANCAS',
+            name: 'Programa de Afiliados Finanças (placeholder)',
+            baseUrl: 'https://example.com/afiliados/financas',
+          },
+        ],
+      },
     },
   },
   pages: [
     {
+      id: 'financas-home',
+      siteKey: SITE_KEY,
+      type: 'home',
       slug: 'home',
+      title: 'Início',
+      status: 'published',
       meta: {
         title: 'Finanças BR — Educação Financeira e Investimentos',
-        description:
-          'Aprenda sobre finanças pessoais, investimentos, crédito e planejamento financeiro com conteúdo claro e direto.',
+        description: 'Aprenda sobre finanças pessoais, investimentos, crédito e planejamento financeiro com conteúdo claro e direto.',
       },
       blocks: [
         {
           type: 'hero',
           heading: 'Tome o controle das suas finanças',
-          subheading:
-            'Conteúdo prático sobre investimentos, crédito, financiamentos e planejamento financeiro para brasileiros.',
-          ctaLabel: 'Ver artigos',
-          ctaHref: '/financas/investimentos',
+          subheading: 'Conteúdo prático sobre investimentos, crédito, financiamentos e planejamento financeiro para brasileiros.',
+          ctaLabel: 'Ver investimentos',
+          ctaHref: `/${ROUTE_PATH}/investimentos`,
         },
         {
           type: 'richText',
@@ -60,18 +83,28 @@ export const financasBrSite: SiteEntry = {
         {
           type: 'relatedLinks',
           links: [
-            { label: 'Financiamento imobiliário: tudo que você precisa saber', href: '/financas/financiamento' },
-            { label: 'Como começar a investir com pouco dinheiro', href: '/financas/investimentos' },
+            { label: 'Financiamento imobiliário: tudo que você precisa saber', href: `/${ROUTE_PATH}/financiamento` },
+            { label: 'Como começar a investir com pouco dinheiro', href: `/${ROUTE_PATH}/investimentos` },
           ],
+        },
+        {
+          type: 'cta',
+          label: 'Explorar todos os conteúdos',
+          href: `/${ROUTE_PATH}/investimentos`,
+          variant: 'primary',
         },
       ],
     },
     {
+      id: 'financas-financiamento',
+      siteKey: SITE_KEY,
+      type: 'article',
       slug: 'financiamento',
+      title: 'Financiamento Imobiliário',
+      status: 'published',
       meta: {
-        title: 'Financiamento Imobiliário — Guia Completo | Finanças BR',
-        description:
-          'Entenda como funciona o financiamento imobiliário no Brasil, taxas, simulações e como escolher o melhor crédito.',
+        title: 'Financiamento Imobiliário — Guia Completo',
+        description: 'Entenda como funciona o financiamento imobiliário no Brasil, taxas, simulações e como escolher o melhor crédito.',
       },
       blocks: [
         {
@@ -109,18 +142,9 @@ export const financasBrSite: SiteEntry = {
         {
           type: 'faq',
           items: [
-            {
-              question: 'Qual é o valor máximo que posso financiar?',
-              answer: 'Geralmente bancos financiam até 80% do valor do imóvel. O restante deve ser pago como entrada.',
-            },
-            {
-              question: 'Preciso ter renda comprovada?',
-              answer: 'Sim. A parcela do financiamento não pode ultrapassar 30% da sua renda bruta mensal.',
-            },
-            {
-              question: 'Posso usar o FGTS?',
-              answer: 'Sim, o FGTS pode ser usado como entrada ou para amortizar parcelas em financiamentos pelo SFH.',
-            },
+            { question: 'Qual é o valor máximo que posso financiar?', answer: 'Geralmente bancos financiam até 80% do valor do imóvel. O restante deve ser pago como entrada.' },
+            { question: 'Preciso ter renda comprovada?', answer: 'Sim. A parcela do financiamento não pode ultrapassar 30% da sua renda bruta mensal.' },
+            { question: 'Posso usar o FGTS?', answer: 'Sim, o FGTS pode ser usado como entrada ou para amortizar parcelas em financiamentos pelo SFH.' },
           ],
         },
         {
@@ -129,14 +153,24 @@ export const financasBrSite: SiteEntry = {
           href: '#simulador',
           variant: 'primary',
         },
+        {
+          type: 'relatedLinks',
+          links: [
+            { label: 'Como começar a investir', href: `/${ROUTE_PATH}/investimentos` },
+          ],
+        },
       ],
     },
     {
+      id: 'financas-investimentos',
+      siteKey: SITE_KEY,
+      type: 'article',
       slug: 'investimentos',
+      title: 'Como Começar a Investir',
+      status: 'published',
       meta: {
-        title: 'Como Investir — Guia para Iniciantes | Finanças BR',
-        description:
-          'Descubra como começar a investir no Brasil com segurança: Tesouro Direto, CDB, ações e fundos explicados de forma simples.',
+        title: 'Como Investir — Guia para Iniciantes',
+        description: 'Descubra como começar a investir no Brasil com segurança: Tesouro Direto, CDB, ações e fundos explicados de forma simples.',
       },
       blocks: [
         {
@@ -175,20 +209,20 @@ export const financasBrSite: SiteEntry = {
         {
           type: 'faq',
           items: [
-            {
-              question: 'Com quanto posso começar a investir?',
-              answer: 'Com R$ 30 já é possível comprar Tesouro Direto. Muitos CDBs aceitam a partir de R$ 100.',
-            },
-            {
-              question: 'Preciso pagar imposto sobre investimentos?',
-              answer: 'Depende do tipo. Renda fixa tem IR regressivo. Ações têm isenção de IR para vendas mensais abaixo de R$ 20 mil.',
-            },
+            { question: 'Com quanto posso começar a investir?', answer: 'Com R$ 30 já é possível comprar Tesouro Direto. Muitos CDBs aceitam a partir de R$ 100.' },
+            { question: 'Preciso pagar imposto sobre investimentos?', answer: 'Depende do tipo. Renda fixa tem IR regressivo. Ações têm isenção de IR para vendas mensais abaixo de R$ 20 mil.' },
           ],
+        },
+        {
+          type: 'cta',
+          label: 'Abrir conta em uma corretora',
+          href: '#corretoras',
+          variant: 'primary',
         },
         {
           type: 'relatedLinks',
           links: [
-            { label: 'Entenda o financiamento imobiliário', href: '/financas/financiamento' },
+            { label: 'Entenda o financiamento imobiliário', href: `/${ROUTE_PATH}/financiamento` },
           ],
         },
       ],

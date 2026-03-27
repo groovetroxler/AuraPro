@@ -9,12 +9,13 @@ export default function RootPage() {
       <p className="text-gray-500 mb-10">Sites disponíveis neste framework:</p>
       <ul className="space-y-4 w-full max-w-sm">
         {sites.map((entry) => (
-          <li key={entry.config.siteId}>
+          <li key={entry.config.siteKey}>
             <Link
               href={`/${entry.config.routePath}`}
-              className="block w-full text-center bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-800 transition-colors"
+              className="block w-full text-center text-white font-semibold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity"
+              style={{ backgroundColor: entry.config.theme.primaryColor }}
             >
-              {entry.config.name}
+              {entry.config.publicName}
             </Link>
           </li>
         ))}

@@ -15,6 +15,10 @@ O contrato é dividido em:
 - contrato de bloco;
 - regras de validação.
 
+O arquivo de implementação é `core/types/contracts.ts`.
+O validador de runtime é `core/types/contract-validator.ts`.
+Em caso de conflito entre este documento e o código, o código prevalece.
+
 ## Contrato mínimo de site
 
 Todo site válido deve ter:
@@ -43,23 +47,24 @@ type SiteConfig = {
   status: 'draft' | 'active'
   theme: {
     brandName: string
-    primaryColor: string
+    primaryColor: string       // hex, ex: '#1d4ed8'
   }
   seo: {
     siteTitle: string
-    defaultTitleTemplate: string
+    defaultTitleTemplate: string  // ex: '%s | Finanças BR'
     defaultDescription: string
-    baseUrl: string
+    baseUrl: string               // URL base do site incluindo prefixo de rota
+    defaultOgImage?: string       // URL absoluta da imagem OG padrão
   }
   analytics: {
-    ga4MeasurementId: string
-    enabled: boolean
+    ga4MeasurementId: string      // formato G-XXXXXXXXXX
+    enabled: boolean              // false = GA4 não carregado mesmo com id presente
   }
   monetization: {
     ads: {
       enabled: boolean
       provider: 'adsense'
-      publisherId?: string
+      publisherId?: string        // formato pub-XXXXXXXXXXXXXXXX; opcional
     }
     affiliates: {
       enabled: boolean
@@ -73,14 +78,32 @@ type SiteConfig = {
 }
 ```
 
+### Regras de validação do SiteConfig
+
+- `siteKey` vazio → erro bloqueante
+- `routePath` vazio → erro bloqueante
+- `publicName` vazio → erro bloqueante
+- `seo.baseUrl` vazio → erro bloqueante
+- `seo.siteTitle` vazio → erro bloqueante
+- `seo.defaultDescription` vazio → erro bloqueante
+- `theme.brandName` vazio → erro bloqueante
+- `theme.primaryColor` vazio → erro bloqueante
+- site com `status: 'active'` e `analytics.enabled: true` e `ga4MeasurementId` com formato inválido → erro bloqueante
+- `monetization.ads.publisherId` presente mas com formato inválido → erro bloqueante
+
+### Comportamento por status
+
+- `status: 'draft'` → site validado pelo contrato mas **não servido** pelo runtime
+- `status: 'active'` → site validado e servido
+
 ### Kit mínimo obrigatório de site
 
 Todo site deve nascer com:
 - config válida;
-- home válida;
-- pelo menos uma página interna válida;
+- home publicada (`status: 'published'`);
+- pelo menos uma página interna publicada;
 - SEO mínimo;
-- analytics mínimo;
+- analytics configurado (pode estar com `enabled: false`);
 - monetização estrutural mínima.
 
 ## Contrato mínimo de página
@@ -105,94 +128,152 @@ type PageSchema = {
   siteKey: string
   type: 'home' | 'article' | 'tool' | 'faq' | 'comparison' | 'tutorial' | 'video' | 'hub'
   slug: string
-  title: string
+  title: string                   // título editorial
   status: 'draft' | 'published'
   meta: {
-    title: string
+    title: string                 // título SEO
     description: string
+    canonical?: string            // gerado automaticamente se omitido
+    ogImage?: string              // URL absoluta; usa defaultOgImage do site se omitido
+    noIndex?: boolean
   }
   blocks: Block[]
 }
 ```
 
+### Comportamento por status
+
+- `status: 'draft'` → página validada mas não servida pelo runtime nem incluída no sitemap
+- `status: 'published'` → página servida e incluída no sitemap
+
+### Regras de validação de página
+
+- `id` vazio → erro bloqueante
+- `siteKey` vazio → erro bloqueante
+- `type` fora do catálogo → erro bloqueante
+- `slug` vazio → erro bloqueante
+- `title` vazio → erro bloqueante
+- `meta.title` vazio → erro bloqueante
+- `meta.description` vazio → erro bloqueante
+- `blocks` vazio → erro bloqueante
+- bloco com tipo fora do catálogo → erro bloqueante
+- bloco com props obrigatórias ausentes → erro bloqueante
+- combinação inválida de tipo de página e blocos → erro bloqueante
+- `siteKey` da página diferente do `siteKey` do site container → erro bloqueante
+
 ## Tipos de página aceitos
 
-- `home`
-- `article`
-- `tool`
-- `faq`
-- `comparison`
-- `tutorial`
-- `video`
-- `hub`
+| Tipo | Blocos obrigatórios |
+|---|---|
+| `home` | ao menos um bloco de conteúdo real (hero, richText, articleContent, faq, comparisonTable, details) |
+| `article` | ao menos um bloco de conteúdo real |
+| `tool` | `toolInput` + `toolResult` |
+| `faq` | `faq` |
+| `video` | `videoEmbed` |
+| `comparison` | livre (recomendado: comparisonTable) |
+| `tutorial` | livre (recomendado: articleContent) |
+| `hub` | livre (recomendado: relatedLinks) |
 
 ## Catálogo inicial de blocos
 
-Blocos oficialmente suportados na Fase 1A:
+Blocos oficialmente suportados na Fase 1A e suas props obrigatórias:
 
-- `hero`
-- `richText`
-- `faq`
-- `comparisonTable`
-- `toolInput`
-- `toolResult`
-- `cta`
-- `adSlot`
-- `relatedLinks`
-- `videoEmbed`
-- `details`
-- `articleContent`
+| Bloco | Props obrigatórias |
+|---|---|
+| `hero` | `heading` |
+| `richText` | `html` |
+| `faq` | `items` (array com `question` e `answer`) |
+| `comparisonTable` | `headers`, `rows` |
+| `toolInput` | `toolId`, `label` |
+| `toolResult` | `toolId` |
+| `cta` | `label`, `href` |
+| `adSlot` | `slotId` |
+| `relatedLinks` | `links` (array com `label` e `href`) |
+| `videoEmbed` | `url` |
+| `details` | `summary`, `content` |
+| `articleContent` | `html` |
 
-## Regras de composição
+## SEO técnico — comportamento do framework
 
-A composição é flexível, mas não livre de regras.
+- `meta.title` de páginas internas é formatado via `seo.defaultTitleTemplate` do site (ex: `%s | Finanças BR`)
+- `meta.title` da home é usado diretamente, sem template
+- `canonical` é gerado automaticamente como `seo.baseUrl + '/' + slug` se não declarado
+- `og:image` usa `meta.ogImage` da página ou `seo.defaultOgImage` do site como fallback
+- `twitter:card` é sempre `summary_large_image`
+- JSON-LD `Article` é gerado automaticamente para páginas do tipo `article`
+- JSON-LD `WebSite` é gerado automaticamente na home de cada site
+- Sitemap inclui apenas páginas com `status: 'published'`
+- Robots usa `seo.baseUrl` para a referência do sitemap
 
-### Regras mínimas por tipo
+## Analytics — comportamento do framework
 
-- página `tool` deve ter `toolInput` e `toolResult`
-- página `faq` deve ter `faq`
-- página `video` deve ter `videoEmbed`
-- página publicada deve ter metadata mínima e blocos válidos
-- home e article devem conter pelo menos um bloco real de conteúdo
+- GA4 carrega **apenas** se `analytics.enabled === true` E `ga4MeasurementId` tem formato `G-XXXXXXX`
+- Com `enabled: false` ou id com formato inválido, o script não é injetado (sem hits inválidos)
+- GA4 é isolado por site — cada site tem seu próprio measurement ID
+- O `ga4MeasurementId` vem sempre do registry — sem hardcodes paralelos
+
+## Monetização — comportamento do framework
+
+- AdSense carrega **apenas** se `ads.enabled === true` E `publisherId` tem formato `pub-XXXXXXXX`
+- Com `enabled: false` ou publisherId ausente/inválido, o script não é injetado
+- Slots de anúncio (`adSlot`) exibem placeholder visual quando ads não está em modo real
+- Placeholder pré-reserva o espaço visual (evita CLS — crítico para Core Web Vitals)
+- `cta` com `programId` appends `?ref=<programId>` na URL para rastreamento de afiliados
 
 ## Defaults automáticos
 
 O framework pode preencher automaticamente:
-- templates de título;
-- descrição padrão;
-- defaults visuais não críticos;
-- textos auxiliares;
-- parâmetros editoriais não críticos.
+- `canonical` → derivado de `seo.baseUrl + slug`
+- `og:image` → fallback para `seo.defaultOgImage`
+- `meta.title` → formatado via `defaultTitleTemplate`
+- `twitter:card` → sempre `summary_large_image`
+- JSON-LD → gerado por tipo de página
 
-O framework não deve inferir livremente:
+O framework **não** deve inferir livremente:
 - `siteKey`
 - `routePath`
 - `status`
 - `ga4MeasurementId`
-- ausência de home
-- ausência de páginas válidas
+- ausência de home publicada
+- ausência de páginas internas publicadas
 
 ## Regras de bloqueio
 
-### Bloqueiam
+### Bloqueiam (erros fatais)
 
 - `siteKey` duplicado
 - `routePath` duplicado
 - site sem config mínima
-- site sem home
-- site sem página interna válida
+- site ativo sem home publicada
+- site ativo sem página interna publicada
+- página sem `id`
+- página sem `siteKey` coerente com o site
+- página sem `type` válido
 - página sem `slug`
-- página sem metadata mínima
-- bloco inválido
+- página sem `title`
+- página sem metadata mínima (`meta.title`, `meta.description`)
+- bloco inválido (tipo fora do catálogo)
 - bloco sem props obrigatórias
-- combinação inválida de página e bloco
-- site ativo sem GA4 válido
-- links fora do prefixo correto
+- combinação inválida de tipo de página e bloco
+- site ativo com GA4 habilitado e id com formato inválido
+- publisherId presente com formato inválido
 
-### Warnings
+### Warnings (não fatais — logados no build)
 
-- ausência de related links
-- ausência de CTA
-- ausência de ad slot
-- conteúdo ainda curto
-- campos enriquecedores ausentes
+- ausência de `relatedLinks` em páginas publicadas
+- ausência de `cta` em páginas publicadas
+- ausência de `adSlot` em páginas publicadas
+- ausência de `meta.ogImage` em páginas publicadas (usa default do site como fallback)
+
+## Variáveis de ambiente
+
+| Variável | Ambiente | Efeito |
+|---|---|---|
+| `NEXT_PUBLIC_BASE_URL` | todos | URL base global; obrigatória em produção |
+| `NEXT_PUBLIC_GA4_FINANCAS_BR` | todos | GA4 ID de financas-br; habilita analytics se formato G-XX |
+| `NEXT_PUBLIC_GA4_ENERGIA_SOLAR_BR` | todos | GA4 ID de energia-solar-br |
+| `NEXT_PUBLIC_GA4_AGROFLORESTA_BR` | todos | GA4 ID de agrofloresta-br |
+| `NEXT_PUBLIC_ADSENSE_PUBLISHER_ID` | produção | Publisher ID AdSense; habilita ads reais se formato pub-XX |
+| `NEXT_PUBLIC_ADS_TEST_MODE` | todos | `true` = ads desabilitados (modo teste visual) |
+
+Consulte `.env.example` para o template completo.
