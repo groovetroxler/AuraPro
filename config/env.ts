@@ -1,7 +1,8 @@
 /**
  * config/env.ts
  * Resolve ambiente de runtime e baseUrl.
- * Impede build quebrado por ausência de configuração essencial em produção.
+ * Em produção, usa NEXT_PUBLIC_BASE_URL se definida, senão VERCEL_URL como fallback.
+ * Isso permite o primeiro deploy funcionar antes de configurar a variável manual.
  */
 
 import type { RuntimeEnv, RuntimeEnvMode } from '../core/types/contracts'
@@ -19,17 +20,18 @@ function resolveBaseUrl(mode: RuntimeEnvMode): string {
   // Variável explícita sempre tem prioridade
   if (explicit) return explicit
 
-  // Em produção sem variável explícita → erro (impede deploy quebrado)
-  if (mode === 'production') {
-    throw new Error(
-      '[EnvError] NEXT_PUBLIC_BASE_URL é obrigatória em produção. ' +
-      'Configure no Vercel: Settings > Environment Variables.'
-    )
+  // Vercel (produção ou preview): usa VERCEL_URL como fallback
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`
   }
 
-  // Preview: usa URL automática do Vercel
-  if (mode === 'preview' && process.env.VERCEL_URL) {
-    return `https://${process.env.VERCEL_URL}`
+  // Produção sem nenhum fallback → warning (não bloqueia mais o build)
+  if (mode === 'production') {
+    console.warn(
+      '[EnvWarning] NEXT_PUBLIC_BASE_URL não definida em produção. ' +
+      'Usando fallback. Configure no Vercel: Settings > Environment Variables.'
+    )
+    return 'https://localhost:3000'
   }
 
   // Development: localhost
