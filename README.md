@@ -1,92 +1,36 @@
-# Multi-Site Framework — Fase 1
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Este repositório contém a base de um **framework neutro multi-site** para criação, publicação e operação de sites monetizáveis.
+## Getting Started
 
-O foco da Fase 1 não é apenas estruturar código local. O foco é fechar uma base que já possa ser **publicada, acessada, monitorada e monetizada**.
+First, run the development server:
 
-## Objetivo da Fase 1
-
-Entregar um framework funcional em produção, hospedado no Vercel, com três sites iniciais publicados por prefixo de rota, cada um com:
-- páginas acessíveis;
-- SEO técnico válido;
-- monitoramento por GA4;
-- estrutura de anúncios e afiliados integrada;
-- operação mínima validada em ambiente publicado.
-
-## Sites iniciais
-
-Os três sites iniciais da Fase 1 são:
-- `financas-br`
-- `energia-solar-br`
-- `agrofloresta-br`
-
-Nenhum deles é o site principal. Todos são instâncias pares dentro do framework.
-
-## Critério real de conclusão
-
-A Fase 1 só fecha quando o sistema estiver:
-- publicado no Vercel;
-- acessível publicamente;
-- com os 3 sites ativos por prefixo;
-- com `baseUrl`, canonical, sitemap e robots válidos em produção;
-- com pageview chegando no GA4 por site;
-- com slots de anúncios renderizando em modo real ou modo de teste operacionalmente verificável.
-
-Sem publicação, monitoramento e monetização operacional, a Fase 1 não está concluída.
-
-## Estrutura esperada
-
-```text
-app/
-core/
-config/
-sites/
-  registry.ts
-  financas-br/
-  energia-solar-br/
-  agrofloresta-br/
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## Documentos-base do projeto
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Os documentos abaixo são a fonte de verdade estrutural do projeto e devem acompanhar o código no próprio repositório:
-- `PROJECT_SCOPE.md`
-- `ARCHITECTURE.md`
-- `SYSTEM_CONTRACTS.md`
-- `DECISIONS.md`
-- `ROADMAP.md`
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-Se a implementação alterar escopo, arquitetura, contratos, organização estrutural ou regras de publicação/operação, os documentos relevantes também devem ser atualizados.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Stack fechada
+## Learn More
 
-- Next.js
-- App Router
-- TypeScript
-- Tailwind CSS
-- renderer central por blocos
-- registry central explícito
-- deploy inicial em Vercel
+To learn more about Next.js, take a look at the following resources:
 
-## Regras de trabalho da Fase 1
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-- não tratar nenhum site inicial como fundação principal;
-- não introduzir CMS pesado;
-- não expandir para automação ampla;
-- não criar abstrações desnecessárias;
-- manter fonte única de verdade para runtime, SEO, analytics e monetização;
-- bloquear erros essenciais de contrato em vez de mascará-los.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Operação mínima obrigatória
+## Deploy on Vercel
 
-A Fase 1 precisa conter, além do código:
-- configuração de ambiente para development, preview e production;
-- resolução correta de `baseUrl`;
-- variáveis necessárias para GA4 e ads;
-- deploy funcional no Vercel;
-- validação de URLs públicas;
-- validação de sitemap, robots e metadata em produção.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## Próximo degrau após a Fase 1A
-
-A Fase 1B adiciona apenas um scaffold mínimo para criar um novo pacote de site válido e registrá-lo automaticamente no framework.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
