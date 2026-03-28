@@ -24,18 +24,19 @@
 - robots;
 - baseUrl resolvida por ambiente.
 
-### Etapa 5 — Analytics ✅ (código pronto — validação em produção pendente)
+### Etapa 5 — Analytics ✅
 - GA4 isolado por site;
 - resolução pelo registry;
 - sem hardcodes paralelos;
-- pageview funcional em produção. ← pendente: requer deploy + IDs reais
+- pageview funcional em produção. ✅ validado sessão 2
 
-### Etapa 6 — Monetização ✅ (código pronto — validação em produção pendente)
+### Etapa 6 — Monetização ✅ (estrutura pronta — operação real pendente de aprovação AdSense)
 - contrato de ads;
 - contrato de afiliados;
 - slots declarativos;
 - CTA preparado para `programId`;
-- modo real ou modo de teste operacional para ads. ← pendente: requer deploy
+- modo teste operacional verificado em produção. ✅
+- modo real pendente: requer aprovação AdSense + substituição de slotIds placeholder por IDs numéricos reais.
 
 ### Etapa 7 — Sites iniciais ✅
 Subir os três sites iniciais:

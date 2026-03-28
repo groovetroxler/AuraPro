@@ -33,6 +33,7 @@ Atualizado pelo assistente a cada sessão de trabalho.
 - **Status:** ⏳ aguardando aprovação do Google — ads.txt ainda não encontrado pelo AdSense
 - **Modo atual:** teste visual (NEXT_PUBLIC_ADS_TEST_MODE=true)
 - **Quando aprovado:** mudar NEXT_PUBLIC_ADS_TEST_MODE para false no Vercel
+- **SlotIds:** ⚠️ Os slotIds atuais (`financas-home-top`, `solar-home-top`, etc.) são **placeholders semânticos**. Após aprovação da conta AdSense, criar unidades de anúncio no painel e substituir por IDs numéricos reais (formato `1234567890`). A estrutura de código não precisa mudar — apenas os valores nos pacotes de site.
 
 ### Afiliados
 - **Status:** estrutura pronta com placeholders
@@ -118,9 +119,20 @@ Atualizado pelo assistente a cada sessão de trabalho.
   - Prompt-Base.txt removido do repo e adicionado ao .gitignore
 - Decisões 34-38 registradas
 
+### Sessão 4 — 2026-03-28
+- Análise de relatório diagnóstico externo (auditoria pré-Fase 2)
+- 3 bloqueadores analisados, 2 corrigidos, 1 documentado:
+  - `metadataBase` no root layout agora usa `getBaseUrl()` (decisão #39 — fonte única respeitada)
+  - DetailsBlock: hardcode `text-blue-600` substituído por `var(--color-primary)` (decisão #41)
+  - SlotIds documentados como placeholders semânticos (decisão #40 — dependência externa do AdSense)
+- Scripts `typecheck` e `validate` adicionados ao package.json (decisão #42)
+- ROADMAP ajustado: etapa 5 e 6 com status mais preciso
+- CHECKLIST_FASE1 ampliado: itens pendentes de monetização real explicitados
+- Decisões 39-42 registradas
+
 ### Próxima sessão — o que fazer
 1. Verificar status de aprovação do AdSense (ads.txt ainda não encontrado)
-2. Se aprovado: mudar NEXT_PUBLIC_ADS_TEST_MODE para false no Vercel
+2. Se aprovado: criar unidades de anúncio no painel AdSense, substituir slotIds placeholder por IDs reais, mudar NEXT_PUBLIC_ADS_TEST_MODE para false no Vercel
 3. Gerar OG images por site (9 warnings pendentes)
 4. Remover env vars GA4 fantasmas do Vercel (NEXT_PUBLIC_GA4_* — não são usadas pelo código)
 5. Implementar Fase 1B — scaffold de criação de novo site (ver `SITE_CREATION.md`)

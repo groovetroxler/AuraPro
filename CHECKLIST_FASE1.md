@@ -32,6 +32,8 @@ Marcar a Fase 1A como concluída apenas quando todos os itens abaixo estiverem v
 - [x] contrato de afiliados existe e está integrado ao framework.
 - [x] slots declarativos renderizam corretamente.
 - [x] anúncios aparecem em modo de teste operacionalmente verificável.
+- [ ] slotIds substituídos por IDs reais do AdSense (pendente: aprovação da conta).
+- [ ] modo real ativado em produção (pendente: aprovação + slotIds reais).
 
 ### Publicação
 - [x] projeto está publicado no Vercel.

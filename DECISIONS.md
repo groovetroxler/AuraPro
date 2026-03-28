@@ -68,3 +68,10 @@
 36. A resolução de baseUrl global tem fonte única em `config/env.ts` (`getBaseUrl()`). O módulo `config/site-url.ts` importa de `config/env.ts` em vez de duplicar a lógica.
 37. Arquivos de prompt operacional (`Prompt-Base.txt`) não devem ser versionados no repositório. Adicionados ao `.gitignore`.
 38. O arquivo de credenciais local se chama `_credentials.env` (com underscore). O `.gitignore` deve usar esse nome exato.
+
+## Decisões operacionais — Sessão 4 (2026-03-28)
+
+39. O root layout (`app/layout.tsx`) deve usar `getBaseUrl()` de `config/env.ts` para resolver `metadataBase`. Eliminada resolução local duplicada que violava a decisão #36.
+40. Os `slotId` atuais nos pacotes de site são **placeholders semânticos** (`financas-home-top`, etc.). Após aprovação da conta AdSense, devem ser substituídos pelos IDs numéricos reais das unidades de anúncio. A estrutura de código não precisa mudar — apenas os valores.
+41. Todos os blocos devem respeitar `var(--color-primary)` sem exceção. Corrigido hardcode residual (`text-blue-600`) no `DetailsBlock`.
+42. O `package.json` deve incluir scripts `typecheck` (`tsc --noEmit`) e `validate` (`typecheck + lint + build`) como gate mínimo de qualidade.

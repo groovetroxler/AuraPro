@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
+import { getBaseUrl } from '../config/env'
 import './globals.css'
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
-
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
+  metadataBase: new URL(getBaseUrl()),
   title: 'Framework Multi-Site',
   description: 'Framework multi-site neutro para sites monetizáveis.',
   verification: {
