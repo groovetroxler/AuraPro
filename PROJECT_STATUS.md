@@ -123,7 +123,7 @@ Atualizado pelo assistente a cada sessão de trabalho.
 2. Se aprovado: mudar NEXT_PUBLIC_ADS_TEST_MODE para false no Vercel
 3. Gerar OG images por site (9 warnings pendentes)
 4. Remover env vars GA4 fantasmas do Vercel (NEXT_PUBLIC_GA4_* — não são usadas pelo código)
-5. Iniciar Fase 2
+5. Implementar Fase 1B — scaffold de criação de novo site (ver `SITE_CREATION.md`)
 
 ## Instruções para o assistente em novas sessões
 

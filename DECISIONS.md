@@ -28,7 +28,7 @@
 10. O contrato do sistema é forte no núcleo e extensível nas bordas.
 11. Erros essenciais bloqueiam.
 12. A IA deve preencher modelos, não inventar estrutura livremente.
-13. A Fase 1B conterá scaffold mínimo de novo site.
+13. A Fase 1B implementa o scaffold de criação de novos sites, conforme `SITE_CREATION.md`.
 14. Notion/planilha não entram no núcleo da Fase 1.
 15. Não haverá CMS pesado na Fase 1.
 16. A Fase 1 só fecha com deploy funcional em Vercel.

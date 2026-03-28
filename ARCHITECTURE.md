@@ -49,8 +49,8 @@ O sistema deve ser organizado em 5 camadas:
    - validações de variáveis obrigatórias.
 
 5. `scripts/`
-   - entra na Fase 1B;
-   - scaffold e automações operacionais mínimas.
+   - scaffold de criação de novos sites (ver `SITE_CREATION.md`);
+   - automações operacionais mínimas.
 
 ## Estrutura-base esperada
 
@@ -63,7 +63,7 @@ sites/
   financas-br/
   energia-solar-br/
   agrofloresta-br/
-scripts/   # Fase 1B
+scripts/   # scaffold de novo site (ver SITE_CREATION.md)
 ```
 
 ## Registry
@@ -135,7 +135,7 @@ A Fase 1A prepara:
 - publicação operacional mínima.
 
 A Fase 1B cria:
-- scaffold mínimo de site.
+- scaffold de criação de novos sites (ver `SITE_CREATION.md`).
 
 Integrações com Notion/planilha:
 - não entram no núcleo da Fase 1;

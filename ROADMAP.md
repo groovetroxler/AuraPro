@@ -76,12 +76,24 @@ Subir os três sites iniciais:
 - validar monetização estrutural e renderização operacional dos slots;
 - validar que o framework está publicado, acessível e utilizável.
 
-## Fase 1B — Scaffold mínimo
+## Fase 1B — Scaffold de criação de novos sites
 
-- criar comando/script de novo site;
-- gerar pacote-base válido;
-- registrar automaticamente no registry;
-- aplicar defaults do framework.
+Implementar e validar o scaffold descrito em `SITE_CREATION.md`.
+
+### Entregáveis
+- Script `scripts/create-site.ts` funcional
+- Geração de pacote de site válido com config e páginas placeholder
+- Atualização automática do registry
+- Validação de contrato integrada
+- Commit + push automático (publicação via auto-deploy)
+
+### Critério de conclusão
+A Fase 1B está concluída quando for possível executar o comando e obter um site novo que:
+- passa na validação de contrato;
+- aparece no registry;
+- faz build sem erro;
+- é publicado automaticamente via auto-deploy;
+- fica acessível na URL pública `<NEXT_PUBLIC_BASE_URL>/<routePath>`.
 
 ## Fora da Fase 1
 

@@ -77,10 +77,8 @@ Fundação confiável e operação inicial real do framework:
 - 3 sites iniciais publicados e acessíveis.
 
 ### Fase 1B
-Scaffold mínimo:
-- geração de um novo pacote de site válido;
-- registro automático no registry;
-- uso de defaults e contratos da Fase 1A.
+Scaffold de criação automática de novos sites com publicação via auto-deploy.
+Instruções operacionais detalhadas em `SITE_CREATION.md`.
 
 ## Critério de sucesso da Fase 1
 

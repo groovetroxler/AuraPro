@@ -55,6 +55,7 @@ Os documentos abaixo são a fonte de verdade estrutural do projeto e devem acomp
 - `SYSTEM_CONTRACTS.md`
 - `DECISIONS.md`
 - `ROADMAP.md`
+- `SITE_CREATION.md`
 
 Se a implementação alterar escopo, arquitetura, contratos, organização estrutural ou regras de publicação/operação, os documentos relevantes também devem ser atualizados.
 
@@ -89,4 +90,5 @@ A Fase 1 precisa conter, além do código:
 
 ## Próximo degrau após a Fase 1A
 
-A Fase 1B adiciona apenas um scaffold mínimo para criar um novo pacote de site válido e registrá-lo automaticamente no framework.
+A Fase 1B implementa e valida o scaffold de criação automática de novos sites.
+As instruções operacionais estão em `SITE_CREATION.md`.
