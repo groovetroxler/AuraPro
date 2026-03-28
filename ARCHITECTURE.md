@@ -137,6 +137,13 @@ A Fase 1A prepara:
 A Fase 1B cria:
 - scaffold de criação de novos sites (ver `SITE_CREATION.md`).
 
+A Fase 1C cria:
+- expansão do contrato de tema (`SiteTheme`) com variáveis visuais opcionais;
+- regras e instruções de conteúdo e estilização (ver `CONTENT_GUIDE.md`).
+
+Estilização visual é responsabilidade do pacote de cada site, não do core.
+O core entrega blocos funcionais e neutros. A personalização visual é controlada pelas variáveis de tema definidas no contrato.
+
 Integrações com Notion/planilha:
 - não entram no núcleo da Fase 1;
 - ficam previstas apenas como expansão futura.

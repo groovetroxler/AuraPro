@@ -77,3 +77,12 @@
 42. O `package.json` deve incluir scripts `typecheck` (`tsc --noEmit`) e `validate` (`typecheck + lint + build`) como gate mínimo de qualidade.
 43. O catálogo de blocos foi expandido de 12 para 25 tipos. Os 13 novos blocos são: `image`, `callout`, `divider`, `breadcrumb`, `quote`, `prosCons`, `stats`, `tableOfContents`, `authorBox`, `testimonial`, `cardsGrid`, `logoStrip`, `affiliateCard`. Todos possuem contrato, validação e renderer. Nenhum bloco existente foi alterado. Páginas existentes não são afetadas.
 44. O bloco `affiliateCard` é o componente dedicado para monetização de afiliados. Diferente do `cta` (botão genérico com `programId` opcional), o `affiliateCard` exibe card completo de produto (imagem, nome, descrição, preço, CTA) com link rastreado e `rel="sponsored"`.
+
+## Decisões estruturais — Sessão 5 (2026-03-28)
+
+45. **Fase vs Rotina:** uma **fase** é desenvolvimento de regras, ferramentas e instruções — feito uma vez. Uma **rotina** é execução repetida do que a fase produziu. Fases e rotinas são conceitos distintos e não devem ser misturados no roadmap.
+46. **Fase 1C criada:** desenvolvimento das regras e instruções de conteúdo e estilização de sites. Produz a **Rotina 2** (conteúdo e estilização). A Fase 1 só está completa quando as duas rotinas (scaffold + conteúdo) existem, estão documentadas e foram validadas.
+47. **Expansão do contrato de tema pertence à Fase 1C.** O `SiteTheme` atual (`brandName` + `primaryColor`) será expandido com variáveis opcionais durante a Fase 1C. Campos opcionais não quebram sites existentes. A Fase 1A permanece fechada.
+48. **Estilização visual é responsabilidade do site, não do core.** O core entrega blocos funcionais e neutros. A personalização visual vive no pacote de cada site, controlada pelas variáveis de tema definidas no contrato. Não existe fase de "refinamento visual global" — o refinamento acontece site a site na Rotina 2.
+49. **Melhoria contínua é categoria separada.** Ajustes pontuais no framework (ex: implementar eventos de analytics nos blocos, corrigir bugs, expandir catálogo de blocos) não são fases nem rotinas. São manutenção feita quando necessário.
+50. **Fases futuras reorganizadas:** Fase 2 (OG images + domínios próprios) e Fase 3 (automação e escala) seguem a mesma disciplina de fase/rotina. Cada fase que produz processo repetível documenta sua rotina correspondente.

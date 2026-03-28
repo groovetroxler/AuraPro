@@ -79,17 +79,25 @@ Fundação confiável e operação inicial real do framework:
 ### Fase 1B
 Scaffold de criação automática de novos sites com publicação via auto-deploy.
 Instruções operacionais detalhadas em `SITE_CREATION.md`.
+Produz a **Rotina 1** (criar site novo).
+
+### Fase 1C
+Regras e instruções de conteúdo e estilização de sites.
+Inclui expansão do contrato de tema (`SiteTheme`) com variáveis visuais opcionais.
+Instruções operacionais em `CONTENT_GUIDE.md`.
+Produz a **Rotina 2** (conteúdo e estilização de site).
 
 ## Critério de sucesso da Fase 1
 
-A Fase 1 só é considerada concluída quando existir um **framework funcional publicado em produção**, com:
-- inclusão e exclusão de sites de forma limpa;
-- 3 sites iniciais válidos e publicados;
-- URLs acessíveis em produção;
+A Fase 1 só é considerada concluída quando:
+- o framework estiver funcional e publicado em produção;
+- a Rotina 1 (scaffold de criação de site) existir e funcionar;
+- a Rotina 2 (conteúdo e estilização) existir e funcionar;
+- o ciclo completo Rotina 1 → Rotina 2 → push → site real no ar for reproduzível;
 - GA4 isolado corretamente por site e recebendo eventos/página vista;
 - SEO técnico correto em produção;
 - AdSense e afiliados encaixados no framework;
-- exibição de anúncios em produção, em modo real ou modo de teste operacionalmente verificável, conforme disponibilidade de `publisherId` e aprovação da conta;
+- exibição de anúncios em produção, em modo real ou modo de teste operacionalmente verificável;
 - possibilidade futura de geração automática sem refactor do core.
 
 ## Observação operacional crítica

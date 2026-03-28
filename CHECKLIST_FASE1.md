@@ -53,6 +53,45 @@ Se qualquer item acima estiver falso, a Fase 1A não deve ser considerada conclu
 
 ---
 
+## Checklist da Fase 1B — Scaffold de criação de site
+
+- [ ] Script `scripts/create-site.ts` existe e executa sem erro
+- [ ] Coleta inputs obrigatórios: siteKey, publicName, routePath, primaryColor
+- [ ] Valida que siteKey não existe no registry
+- [ ] Valida que routePath não existe no registry
+- [ ] Valida inputs não vazios e primaryColor hex válido
+- [ ] Gera `sites/<siteKey>/index.ts` com config válida e páginas placeholder
+- [ ] Atualiza `sites/registry.ts` com import e entrada no ALL_ENTRIES
+- [ ] Validação de contrato passa no registry completo após geração
+- [ ] Build passa sem erro após geração
+- [ ] Commit automático com mensagem descritiva
+- [ ] Push automático para GitHub
+- [ ] Site acessível na URL pública via auto-deploy do Vercel
+- [ ] Testado com criação de um site real
+
+Se qualquer item acima estiver falso, a Fase 1B não deve ser considerada concluída.
+
+---
+
+## Checklist da Fase 1C — Regras de conteúdo e estilização
+
+- [ ] Contrato `SiteTheme` expandido com variáveis visuais opcionais
+- [ ] Sites existentes continuam válidos sem alteração (campos opcionais)
+- [ ] Validator atualizado para os novos campos de tema
+- [ ] CSS variables injection no layout de site atualizado
+- [ ] Documento `CONTENT_GUIDE.md` criado com:
+  - [ ] Regras de uso de blocos por tipo de página/nicho
+  - [ ] Instruções de SEO editorial
+  - [ ] Instruções de estilização por site
+  - [ ] Instruções de monetização (ads, afiliados, CTAs)
+  - [ ] Checklist de qualidade por site
+- [ ] Regras validadas aplicando num dos sites iniciais
+- [ ] Rotina 2 é executável seguindo apenas o CONTENT_GUIDE.md
+
+Se qualquer item acima estiver falso, a Fase 1C não deve ser considerada concluída.
+
+---
+
 ## Histórico de progresso
 
 ### Sessão 1 — 2026-03-27
@@ -83,8 +122,18 @@ Se qualquer item acima estiver falso, a Fase 1A não deve ser considerada conclu
 - Diagnóstico completo de coerência documentação ↔ código
 - Decisões 39-44 registradas
 
+### Sessão 5 — 2026-03-28
+- Discussão estrutural: distinção entre fase (desenvolvimento) e rotina (execução)
+- Fase 1C criada: regras e instruções de conteúdo e estilização
+- Roadmap reestruturado com disciplina fase/rotina
+- Fases futuras reorganizadas (Fase 2: OG images + domínios; Fase 3: automação)
+- Melhorias contínuas definidas como categoria separada
+- Decisões 45-50 registradas
+- Documentação atualizada: ROADMAP, PROJECT_SCOPE, ARCHITECTURE, DECISIONS, CHECKLIST
+
 ### Pendente
+- **Fase 1B:** implementar scaffold de criação de site
+- **Fase 1C:** regras de conteúdo e estilização + expansão do contrato de tema
 - AdSense: aguardando aprovação do Google (script já carregando)
 - Quando aprovado: criar unidades de anúncio no painel, substituir slotIds placeholder por IDs reais, mudar NEXT_PUBLIC_ADS_TEST_MODE para false no Vercel
-- OG images por site (9 warnings pendentes)
-- Implementar Fase 1B — scaffold de criação de novo site
+- OG images por site (9 warnings pendentes — Fase 2A)

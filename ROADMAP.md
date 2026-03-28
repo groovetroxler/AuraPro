@@ -1,110 +1,122 @@
 # ROADMAP
 
-## Fase 1A — Fundação confiável e operação publicada
+## Conceitos-chave
 
-### Etapa 1 — Fundação do repositório ✅
-- criar novo repositório/framework;
-- estruturar `app/`, `core/`, `config/`, `sites/`, `registry`;
-- formalizar contratos centrais.
+| Conceito | Definição | Frequência |
+|----------|-----------|------------|
+| **Fase** | Desenvolvimento de regras, ferramentas e instruções | Feita uma vez |
+| **Rotina** | Execução do que uma fase produziu | Executada N vezes |
+| **Melhoria contínua** | Ajustes pontuais no framework | Feita quando necessário |
 
-### Etapa 2 — Runtime multi-site ✅
-- implementar roteamento por prefixo;
-- resolver site ativo via registry;
-- conectar runtime às páginas declarativas.
+Fases e rotinas são conceitos distintos. O roadmap registra fases de desenvolvimento. As rotinas são documentadas em seus respectivos guias operacionais.
 
-### Etapa 3 — Renderer e blocos ✅
-- implementar renderer central;
-- implementar catálogo inicial de blocos;
-- alinhar types e renderer.
+---
 
-### Etapa 4 — SEO técnico ✅
-- metadata centralizada;
-- canonical;
-- sitemap derivado;
-- robots;
-- baseUrl resolvida por ambiente.
+## Fase 1 — Construção do sistema de produção
 
-### Etapa 5 — Analytics ✅
-- GA4 isolado por site;
-- resolução pelo registry;
-- sem hardcodes paralelos;
-- pageview funcional em produção. ✅ validado sessão 2
+Objetivo: ao final da Fase 1, existem todas as ferramentas e instruções para criar um site real do zero, de ponta a ponta, sem improvisar.
 
-### Etapa 6 — Monetização ✅ (estrutura pronta — operação real pendente de aprovação AdSense)
-- contrato de ads;
-- contrato de afiliados;
-- slots declarativos;
-- CTA preparado para `programId`;
-- modo teste operacional verificado em produção. ✅
-- modo real pendente: requer aprovação AdSense + substituição de slotIds placeholder por IDs numéricos reais.
+### Fase 1A — Fundação técnica ✅
 
-### Etapa 7 — Sites iniciais ✅
-Subir os três sites iniciais:
+Desenvolveu: framework multi-site, contratos centrais, catálogo de 25 blocos, runtime por prefixo de rota, SEO técnico, GA4 isolado por site, monetização estrutural (AdSense + afiliados), configuração operacional, publicação em Vercel.
 
-#### financas-br
-- home
-- financiamento
-- investimentos
+Entregou: 3 sites iniciais publicados com placeholders (financas-br, energia-solar-br, agrofloresta-br), 12 URLs públicas validadas, analytics recebendo dados, ads em modo teste operacional.
 
-#### energia-solar-br
-- home
-- 2 páginas internas válidas
+Não produz rotina diretamente — é a fundação sobre a qual as rotinas operam.
 
-#### agrofloresta-br
-- home
-- 2 páginas internas válidas
+### Fase 1B — Regras e ferramenta de criação de site (scaffold)
 
-### Etapa 8 — Configuração operacional ✅
-- configurar projeto no Vercel; ✅
-- configurar variáveis de ambiente por ambiente; ✅ (NEXT_PUBLIC_BASE_URL, NEXT_PUBLIC_ADS_TEST_MODE)
-- definir `baseUrl` de produção; ✅ (https://aura-pro-eosin.vercel.app)
-- conectar domínio principal ou domínio operacional inicial; ✅ (aura-pro-eosin.vercel.app)
-- validar build, preview e produção; ✅
-- garantir que registry, SEO, analytics e monetização usem configuração coerente de ambiente. ✅
-
-### Etapa 9 — Publicação ✅
-- publicar a base no Vercel; ✅
-- validar URLs públicas dos 3 sites; ✅ (12 URLs validadas)
-- validar acessibilidade básica das páginas; ✅
-- validar que o sitemap e robots estão acessíveis em produção; ✅ (sitemap com 9 URLs, robots com baseUrl correta)
-- validar metadata/canonical renderizadas em produção. ✅
-
-### Etapa 10 — Validação de fechamento da Fase 1A ✅ (estrutural fechada — monetização real pendente de aprovação externa)
-- validar inclusão/exclusão limpa de sites; ✅ (registry filtra por status, site não registrado retorna 404)
-- validar consistência de rota; ✅ (routePaths únicos, validador bloqueia duplicatas)
-- validar GA4 recebendo dados por site; ✅ (pageviews confirmados sessão 2)
-- validar SEO técnico em produção; ✅ (sitemap, robots, canonical, metadata, JSON-LD validados)
-- validar monetização estrutural e renderização operacional dos slots; ✅ modo teste (slotIds placeholder — IDs reais pendentes de aprovação AdSense)
-- validar que o framework está publicado, acessível e utilizável. ✅ (12 URLs públicas validadas)
-
-## Fase 1B — Scaffold de criação de novos sites
-
-Implementar e validar o scaffold descrito em `SITE_CREATION.md`.
-
-### Entregáveis
-- Script `scripts/create-site.ts` funcional
-- Geração de pacote de site válido com config e páginas placeholder
+Desenvolve:
+- Script `scripts/create-site.ts`
+- Regras operacionais em `SITE_CREATION.md`
+- Validações de segurança (siteKey/routePath únicos, inputs válidos)
 - Atualização automática do registry
-- Validação de contrato integrada
 - Commit + push automático (publicação via auto-deploy)
 
-### Critério de conclusão
-A Fase 1B está concluída quando for possível executar o comando e obter um site novo que:
-- passa na validação de contrato;
-- aparece no registry;
-- faz build sem erro;
-- é publicado automaticamente via auto-deploy;
-- fica acessível na URL pública `<NEXT_PUBLIC_BASE_URL>/<routePath>`.
+Produz → **Rotina 1: Criar site novo**
 
-## Fora da Fase 1
+Critério de conclusão: é possível executar o comando e obter um site novo que passa na validação de contrato, aparece no registry, faz build sem erro, é publicado automaticamente via auto-deploy, e fica acessível na URL pública.
 
-Não entra agora:
-- automação completa de sites;
-- integração com Notion;
-- integração com planilha;
-- CMS;
-- geração massiva de páginas;
-- eventos avançados de analytics;
-- otimização avançada de monetização;
-- refinamento visual avançado;
-- modelos matemáticos reais.
+### Fase 1C — Regras e instruções de conteúdo e estilização
+
+Desenvolve:
+- Expansão do contrato de tema (SiteTheme) com variáveis visuais opcionais (campos opcionais — não quebra sites existentes)
+- Atualização do validator e da injeção de CSS variables
+- Documento `CONTENT_GUIDE.md` com:
+  - Regras de uso de blocos por tipo de página/nicho
+  - Instruções de SEO editorial (titles, descriptions, headings)
+  - Instruções de estilização por site (variáveis de tema)
+  - Instruções de monetização (posicionamento de ads, configuração de afiliados, CTAs)
+  - Checklist de qualidade por site
+- Validação aplicando as regras num dos sites iniciais
+
+Produz → **Rotina 2: Conteúdo e estilização de site**
+
+Critério de conclusão: é possível pegar o output da Rotina 1 e, seguindo apenas o `CONTENT_GUIDE.md`, transformá-lo num site com conteúdo real publicável — sem improvisar, sem depender de conhecimento implícito.
+
+### Critério de conclusão da Fase 1
+
+A Fase 1 está completa quando:
+- A Rotina 1 (scaffold) existe e funciona
+- A Rotina 2 (conteúdo e estilização) existe e funciona
+- As duas rotinas estão documentadas e foram validadas
+- O ciclo completo Rotina 1 → Rotina 2 → push → site real no ar é reproduzível
+
+---
+
+## Rotinas de operação
+
+Rotinas são processos executados repetidamente. Cada rotina tem seu guia operacional.
+
+| Rotina | Origem | Guia | Quando executar |
+|--------|--------|------|-----------------|
+| **Rotina 1:** Criar site | Fase 1B | `SITE_CREATION.md` | Cada site novo |
+| **Rotina 2:** Conteúdo e estilização | Fase 1C | `CONTENT_GUIDE.md` | Cada site novo, após Rotina 1 |
+| **Rotina 3:** OG images | Fase 2A | (a definir) | Cada site novo, após Rotina 2 |
+| **Rotina 4:** Domínio próprio | Fase 2B | (a definir) | Quando um site justificar domínio dedicado |
+
+Ciclo de produção de um site novo: **Rotina 1 → Rotina 2 → (Rotina 3) → push → site real no ar.**
+
+---
+
+## Fase 2 — Capacidades adicionais de produção
+
+Cada subfase desenvolve uma capacidade nova e pode produzir uma rotina.
+
+### Fase 2A — Sistema de geração de OG images
+
+Desenvolve: script ou sistema para gerar OG images por site e por página.
+
+Produz → **Rotina 3: Gerar OG images**
+
+### Fase 2B — Suporte a domínios próprios
+
+Desenvolve: adaptação do framework para suportar domínios dedicados por site (além do modelo de prefixo de rota).
+
+Produz → **Rotina 4: Configurar domínio por site**
+
+---
+
+## Fase 3 — Automação e escala
+
+Objetivo: reduzir trabalho manual e aumentar volume de produção.
+
+- Geração massiva de páginas (clusters SEO)
+- Integração com Notion/planilha como fonte de conteúdo
+- Pipeline automatizado: briefing → Rotina 1 → Rotina 2 → deploy
+- Modelos matemáticos reais (calculadoras, simuladores)
+- CMS leve se necessário
+
+Pode produzir rotinas automatizadas que substituem ou aceleram as rotinas manuais.
+
+---
+
+## Melhorias contínuas
+
+Não são fases nem rotinas. São ajustes feitos quando necessário:
+
+- Implementar eventos de analytics nos blocos (clique em CTA, affiliate card)
+- Corrigir bugs e ajustar contratos
+- Expandir catálogo de blocos
+- Ajustes de responsividade ou acessibilidade no core
+- Ativação de AdSense em modo real (quando aprovado pelo Google)

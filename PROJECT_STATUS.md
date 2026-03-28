@@ -141,12 +141,23 @@ Atualizado pelo assistente a cada sessão de trabalho.
 - SYSTEM_CONTRACTS: catálogo de blocos e regras de composição atualizados
 - Decisões 39-44 registradas
 
+### Sessão 5 — 2026-03-28
+- Discussão estrutural: distinção entre fase (desenvolvimento, feito uma vez) e rotina (execução repetida)
+- Fase 1C criada no roadmap: regras e instruções de conteúdo e estilização
+- Expansão do contrato de tema (SiteTheme) planejada para Fase 1C
+- Estilização visual definida como responsabilidade do site, não do core
+- Roadmap reestruturado com disciplina fase/rotina
+- Fases futuras reorganizadas: Fase 2 (OG images + domínios), Fase 3 (automação e escala)
+- Melhorias contínuas definidas como categoria separada
+- Decisões 45-50 registradas
+- Documentação atualizada: ROADMAP, PROJECT_SCOPE, ARCHITECTURE, DECISIONS, CHECKLIST
+
 ### Próxima sessão — o que fazer
 1. Implementar Fase 1B — scaffold de criação de novo site (ver `SITE_CREATION.md`)
-2. Verificar status de aprovação do AdSense
-3. Se aprovado: criar unidades de anúncio, substituir slotIds, ativar modo real
-4. Gerar OG images por site (9 warnings pendentes)
-5. Remover env vars GA4 fantasmas do Vercel (NEXT_PUBLIC_GA4_* — não são usadas pelo código)
+2. Testar Rotina 1 com criação de um site real
+3. Verificar status de aprovação do AdSense
+4. Se aprovado: criar unidades de anúncio, substituir slotIds, ativar modo real
+5. Após Fase 1B concluída: avançar para Fase 1C
 
 ## Instruções para o assistente em novas sessões
 
