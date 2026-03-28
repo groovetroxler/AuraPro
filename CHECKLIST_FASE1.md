@@ -68,7 +68,23 @@ Se qualquer item acima estiver falso, a Fase 1A não deve ser considerada conclu
 - Títulos SEO corretos em produção
 - Ads em modo teste verificável em produção
 
+### Sessão 3 — 2026-03-27
+- Diagnóstico completo pré-Fase 2: documentação, código, build, TypeScript, ESLint
+- 8 problemas identificados, todos corrigidos
+- Decisões 34-38 registradas
+
+### Sessão 4 — 2026-03-28
+- Análise de relatório diagnóstico externo
+- Correção baseUrl no root layout (fonte única via getBaseUrl)
+- Correção hardcode cor no DetailsBlock
+- Scripts typecheck e validate adicionados
+- Catálogo de blocos expandido de 12 para 25 tipos
+- Bloco affiliateCard para monetização de afiliados
+- Diagnóstico completo de coerência documentação ↔ código
+- Decisões 39-44 registradas
+
 ### Pendente
 - AdSense: aguardando aprovação do Google (script já carregando)
-- Quando aprovado: mudar NEXT_PUBLIC_ADS_TEST_MODE para false no Vercel
-- OG images por site
+- Quando aprovado: criar unidades de anúncio no painel, substituir slotIds placeholder por IDs reais, mudar NEXT_PUBLIC_ADS_TEST_MODE para false no Vercel
+- OG images por site (9 warnings pendentes)
+- Implementar Fase 1B — scaffold de criação de novo site

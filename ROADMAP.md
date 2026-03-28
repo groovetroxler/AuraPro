@@ -69,13 +69,13 @@ Subir os três sites iniciais:
 - validar que o sitemap e robots estão acessíveis em produção; ✅ (sitemap com 9 URLs, robots com baseUrl correta)
 - validar metadata/canonical renderizadas em produção. ✅
 
-### Etapa 10 — Validação de fechamento da Fase 1A ⏳ (parcial)
-- validar inclusão/exclusão limpa de sites;
-- validar consistência de rota;
-- validar GA4 recebendo dados por site;
-- validar SEO técnico em produção;
-- validar monetização estrutural e renderização operacional dos slots;
-- validar que o framework está publicado, acessível e utilizável.
+### Etapa 10 — Validação de fechamento da Fase 1A ✅ (estrutural fechada — monetização real pendente de aprovação externa)
+- validar inclusão/exclusão limpa de sites; ✅ (registry filtra por status, site não registrado retorna 404)
+- validar consistência de rota; ✅ (routePaths únicos, validador bloqueia duplicatas)
+- validar GA4 recebendo dados por site; ✅ (pageviews confirmados sessão 2)
+- validar SEO técnico em produção; ✅ (sitemap, robots, canonical, metadata, JSON-LD validados)
+- validar monetização estrutural e renderização operacional dos slots; ✅ modo teste (slotIds placeholder — IDs reais pendentes de aprovação AdSense)
+- validar que o framework está publicado, acessível e utilizável. ✅ (12 URLs públicas validadas)
 
 ## Fase 1B — Scaffold de criação de novos sites
 

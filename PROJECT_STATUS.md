@@ -130,17 +130,23 @@ Atualizado pelo assistente a cada sessão de trabalho.
   - Novos: image, callout, divider, breadcrumb, quote, prosCons, stats, tableOfContents, authorBox, testimonial, cardsGrid, logoStrip, affiliateCard
   - Todos com contrato, validação e renderer implementados
   - Bloco `affiliateCard` dedicado para monetização de afiliados (decisão #44)
-- ROADMAP ajustado: etapa 5 e 6 com status mais preciso
-- CHECKLIST_FASE1 ampliado: itens pendentes de monetização real explicitados
-- SYSTEM_CONTRACTS atualizado: catálogo de blocos e regras de composição
+- Diagnóstico completo de coerência documentação ↔ código:
+  - 25 blocos: contracts.ts ↔ validator ↔ renderer ↔ SYSTEM_CONTRACTS.md — todos alinhados
+  - baseUrl: fonte única respeitada em todos os pontos (env.ts → site-url.ts → layout → robots → sitemap → sites)
+  - GA4: sem hardcodes paralelos, derivado do registry
+  - Theming: var(--color-primary) sem exceções
+  - Variáveis de ambiente: 2 no Vercel, 2 no código, 2 no .env.example — alinhadas
+- ROADMAP: etapas 5, 6 e 10 atualizadas com status preciso
+- CHECKLIST_FASE1: histórico de sessões 3 e 4 adicionado, pendentes atualizados
+- SYSTEM_CONTRACTS: catálogo de blocos e regras de composição atualizados
 - Decisões 39-44 registradas
 
 ### Próxima sessão — o que fazer
-1. Verificar status de aprovação do AdSense (ads.txt ainda não encontrado)
-2. Se aprovado: criar unidades de anúncio no painel AdSense, substituir slotIds placeholder por IDs reais, mudar NEXT_PUBLIC_ADS_TEST_MODE para false no Vercel
-3. Gerar OG images por site (9 warnings pendentes)
-4. Remover env vars GA4 fantasmas do Vercel (NEXT_PUBLIC_GA4_* — não são usadas pelo código)
-5. Implementar Fase 1B — scaffold de criação de novo site (ver `SITE_CREATION.md`)
+1. Implementar Fase 1B — scaffold de criação de novo site (ver `SITE_CREATION.md`)
+2. Verificar status de aprovação do AdSense
+3. Se aprovado: criar unidades de anúncio, substituir slotIds, ativar modo real
+4. Gerar OG images por site (9 warnings pendentes)
+5. Remover env vars GA4 fantasmas do Vercel (NEXT_PUBLIC_GA4_* — não são usadas pelo código)
 
 ## Instruções para o assistente em novas sessões
 
