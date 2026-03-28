@@ -10,11 +10,13 @@ import { validateRegistry } from '../core/types/contract-validator'
 import { financasBrSite } from './financas-br'
 import { energiaSolarBrSite } from './energia-solar-br'
 import { agroflorestaBrSite } from './agrofloresta-br'
+import { saudeBrSite } from './saude-br'
 
 const ALL_ENTRIES: SiteEntry[] = [
   financasBrSite,
   energiaSolarBrSite,
   agroflorestaBrSite,
+  saudeBrSite,
 ]
 
 // Validação executada na inicialização — erros bloqueiam, warnings são logados
