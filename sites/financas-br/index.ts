@@ -29,7 +29,7 @@ export const financasBrSite: SiteEntry = {
       baseUrl: BASE_URL,
     },
     analytics: {
-      ga4MeasurementId: 'G-JJ19JCER9K',
+      ga4MeasurementId: 'G-DMJ9QJZ7ZW',
       enabled: true,
     },
     monetization: {

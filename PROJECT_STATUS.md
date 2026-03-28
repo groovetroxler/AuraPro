@@ -21,10 +21,10 @@ Atualizado pelo assistente a cada sessão de trabalho.
 - **Env vars configuradas:** NEXT_PUBLIC_BASE_URL, NEXT_PUBLIC_ADS_TEST_MODE
 
 ### Google Analytics (GA4)
-- **financas-br:** ✅ G-JJ19JCER9K
-- **energia-solar-br:** ✅ G-52W2KZ7HH1
-- **agrofloresta-br:** ✅ G-HM2KTW995J
-- **Status:** ✅ IDs configurados — aguardando redeploy no Vercel para ativar
+- **financas-br:** ✅ G-DMJ9QJZ7ZW
+- **energia-solar-br:** ✅ G-LL5VYXQWV9
+- **agrofloresta-br:** ✅ G-C06N4NTLKR
+- **Status:** ✅ IDs configurados (conta nova, propriedades novas)
 
 ### Google AdSense
 - **Publisher ID:** ❌ não fornecido

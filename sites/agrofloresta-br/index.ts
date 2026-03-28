@@ -28,7 +28,7 @@ export const agroflorestaBrSite: SiteEntry = {
       baseUrl: BASE_URL,
     },
     analytics: {
-      ga4MeasurementId: 'G-HM2KTW995J',
+      ga4MeasurementId: 'G-C06N4NTLKR',
       enabled: true,
     },
     monetization: {

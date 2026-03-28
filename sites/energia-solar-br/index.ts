@@ -28,7 +28,7 @@ export const energiaSolarBrSite: SiteEntry = {
       baseUrl: BASE_URL,
     },
     analytics: {
-      ga4MeasurementId: 'G-52W2KZ7HH1',
+      ga4MeasurementId: 'G-LL5VYXQWV9',
       enabled: true,
     },
     monetization: {
