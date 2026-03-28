@@ -269,8 +269,8 @@ function updateRegistry(siteKey: string): void {
   const exportName = toExportName(siteKey)
   let content = fs.readFileSync(REGISTRY_PATH, 'utf-8')
 
-  // 1. Adicionar import — após o último import existente de sites
-  const lastImportRegex = /^(import\s+\{[^}]+\}\s+from\s+'\.\/[^']+'\s*)$/gm
+  // 1. Adicionar import — após o último import de site (from './<dir>')
+  const lastImportRegex = /^import\s+\{[^}]+\}\s+from\s+'\.\/[^']+'/gm
   let lastImportMatch: RegExpExecArray | null = null
   let match: RegExpExecArray | null
 
@@ -286,17 +286,19 @@ function updateRegistry(siteKey: string): void {
   const insertPos = lastImportMatch.index + lastImportMatch[0].length
   content = content.slice(0, insertPos) + '\n' + importLine + content.slice(insertPos)
 
-  // 2. Adicionar entrada no ALL_ENTRIES — antes do ']'
-  const entriesCloseRegex = /^(\s*)\]/m
-  const entriesMatch = content.match(/const ALL_ENTRIES[\s\S]*?\]/)
-  
-  if (!entriesMatch) {
-    throw new Error('Não foi possível localizar ALL_ENTRIES no registry.ts')
+  // 2. Adicionar entrada no ALL_ENTRIES
+  // Encontrar '= [' após ALL_ENTRIES para pegar o array, não o tipo SiteEntry[]
+  const allEntriesStart = content.indexOf('const ALL_ENTRIES')
+  const arrayOpenStr = '= ['
+  const arrayOpenPos = content.indexOf(arrayOpenStr, allEntriesStart)
+
+  if (arrayOpenPos === -1) {
+    throw new Error('Não foi possível localizar ALL_ENTRIES = [ no registry.ts')
   }
 
-  // Find the closing bracket of ALL_ENTRIES
-  const allEntriesStart = content.indexOf('const ALL_ENTRIES')
-  const bracketStart = content.indexOf('[', allEntriesStart)
+  const bracketStart = arrayOpenPos + arrayOpenStr.length - 1 // posição do '['
+
+  // Encontrar o ']' correspondente
   let depth = 0
   let closingBracketPos = -1
 
@@ -315,15 +317,12 @@ function updateRegistry(siteKey: string): void {
     throw new Error('Não foi possível localizar o fechamento de ALL_ENTRIES no registry.ts')
   }
 
-  // Insert before the closing bracket
-  const beforeClose = content.slice(0, closingBracketPos)
+  // Inserir antes do ']'
+  const beforeClose = content.slice(0, closingBracketPos).trimEnd()
   const afterClose = content.slice(closingBracketPos)
-  
-  // Check if we need a comma
-  const trimmedBefore = beforeClose.trimEnd()
-  const needsComma = !trimmedBefore.endsWith(',')
-  
-  content = trimmedBefore + (needsComma ? ',' : '') + '\n  ' + exportName + ',\n' + afterClose
+  const needsComma = !beforeClose.endsWith(',')
+
+  content = beforeClose + (needsComma ? ',' : '') + '\n  ' + exportName + ',\n' + afterClose
 
   fs.writeFileSync(REGISTRY_PATH, content, 'utf-8')
 }
