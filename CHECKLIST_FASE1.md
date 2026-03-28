@@ -24,8 +24,8 @@ Marcar a Fase 1A como concluída apenas quando todos os itens abaixo estiverem v
 
 ### Analytics
 - [x] GA4 está configurado por site sem hardcodes paralelos.
-- [ ] pageviews chegam no Analytics em produção. ← validar após redeploy
-- [ ] a separação por site está operacionalmente verificável. ← validar após redeploy
+- [x] pageviews chegam no Analytics em produção. ✅ validado
+- [x] a separação por site está operacionalmente verificável. ✅ validado
 
 ### Monetização
 - [x] contrato de ads existe e está integrado ao framework.
@@ -44,7 +44,7 @@ Marcar a Fase 1A como concluída apenas quando todos os itens abaixo estiverem v
 - [x] o framework está funcional.
 - [x] os 3 sites estão publicados.
 - [x] as páginas estão acessíveis.
-- [ ] o Analytics está recebendo dados. ← validar após redeploy
+- [x] o Analytics está recebendo dados. ✅ validado
 - [x] a exibição de anúncios está operacionalmente verificável.
 
 Se qualquer item acima estiver falso, a Fase 1A não deve ser considerada concluída.
