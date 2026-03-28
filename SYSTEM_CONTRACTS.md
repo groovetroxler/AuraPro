@@ -48,6 +48,11 @@ type SiteConfig = {
   theme: {
     brandName: string
     primaryColor: string       // hex, ex: '#1d4ed8'
+    accentColor?: string
+    surfaceColor?: string
+    textColor?: string
+    radius?: string
+    fontFamilyHeading?: string
   }
   seo: {
     siteTitle: string
@@ -88,6 +93,8 @@ type SiteConfig = {
 - `seo.defaultDescription` vazio → erro bloqueante
 - `theme.brandName` vazio → erro bloqueante
 - `theme.primaryColor` vazio → erro bloqueante
+- `theme.accentColor`, `theme.surfaceColor`, `theme.textColor`, `theme.radius` e `theme.fontFamilyHeading` sao opcionais
+- ausencia dos campos opcionais de `theme` preserva o comportamento visual atual
 - site com `status: 'active'` e `analytics.enabled: true` e `ga4MeasurementId` com formato inválido → erro bloqueante
 - `monetization.ads.publisherId` presente mas com formato inválido → erro bloqueante
 

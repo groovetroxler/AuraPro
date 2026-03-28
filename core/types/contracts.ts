@@ -322,6 +322,11 @@ export interface PageSchema {
 export interface SiteTheme {
   brandName: string
   primaryColor: string   // hex, ex: '#1d4ed8'
+  accentColor?: string
+  surfaceColor?: string
+  textColor?: string
+  radius?: string
+  fontFamilyHeading?: string
 }
 
 export interface SiteSeo {
