@@ -28,7 +28,9 @@ Atualizado pelo assistente a cada sessão de trabalho.
 
 ### Google AdSense
 - **Publisher ID:** ✅ ca-pub-7072076910984234
-- **Status:** ⏳ script carregando em produção, aguardando aprovação do Google
+- **ads.txt:** ✅ publicado e acessível em /ads.txt
+- **Script:** ✅ carregando no `<head>` de todas as páginas
+- **Status:** ⏳ aguardando aprovação do Google (status: "Preparando")
 - **Modo atual:** teste visual (NEXT_PUBLIC_ADS_TEST_MODE=true)
 - **Quando aprovado:** mudar NEXT_PUBLIC_ADS_TEST_MODE para false no Vercel
 
@@ -94,12 +96,18 @@ Atualizado pelo assistente a cada sessão de trabalho.
 - Title template fix (sem duplicação)
 - baseUrl centralizada via config/site-url.ts
 - Env vars configuradas no Vercel
-- Credenciais completas: Git + Vercel (token, org ID, project ID, domínio)
+- Google Search Console: verificado + sitemap submetido
+- Google Analytics: 3 propriedades configuradas, pageviews confirmados
+- Google AdSense: publisher ID configurado, ads.txt criado, aguardando aprovação
+- GA4 e AdSense simplificados (hardcoded no código, sem env vars)
+- Decisões 21-33 registradas
+- CHECKLIST Fase 1A: 100% concluído
 
 ### Próxima sessão — o que fazer
-1. Validar pageviews no GA4 (após redeploy com env vars)
-2. Configurar AdSense publisherId quando disponível
-3. Gerar OG images por site (quando decidido)
+1. Verificar status de aprovação do AdSense
+2. Se aprovado: mudar NEXT_PUBLIC_ADS_TEST_MODE para false no Vercel
+3. Gerar OG images por site
+4. Considerar início da Fase 1B (scaffold de novos sites)
 
 ## Instruções para o assistente em novas sessões
 
