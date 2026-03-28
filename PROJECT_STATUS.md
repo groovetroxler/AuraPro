@@ -126,9 +126,14 @@ Atualizado pelo assistente a cada sessão de trabalho.
   - DetailsBlock: hardcode `text-blue-600` substituído por `var(--color-primary)` (decisão #41)
   - SlotIds documentados como placeholders semânticos (decisão #40 — dependência externa do AdSense)
 - Scripts `typecheck` e `validate` adicionados ao package.json (decisão #42)
+- Catálogo de blocos expandido de 12 para 25 tipos (decisão #43):
+  - Novos: image, callout, divider, breadcrumb, quote, prosCons, stats, tableOfContents, authorBox, testimonial, cardsGrid, logoStrip, affiliateCard
+  - Todos com contrato, validação e renderer implementados
+  - Bloco `affiliateCard` dedicado para monetização de afiliados (decisão #44)
 - ROADMAP ajustado: etapa 5 e 6 com status mais preciso
 - CHECKLIST_FASE1 ampliado: itens pendentes de monetização real explicitados
-- Decisões 39-42 registradas
+- SYSTEM_CONTRACTS atualizado: catálogo de blocos e regras de composição
+- Decisões 39-44 registradas
 
 ### Próxima sessão — o que fazer
 1. Verificar status de aprovação do AdSense (ads.txt ainda não encontrado)

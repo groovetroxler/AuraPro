@@ -22,6 +22,19 @@ export const VALID_BLOCK_TYPES = [
   'videoEmbed',
   'details',
   'articleContent',
+  'image',
+  'callout',
+  'divider',
+  'breadcrumb',
+  'quote',
+  'prosCons',
+  'stats',
+  'tableOfContents',
+  'authorBox',
+  'testimonial',
+  'cardsGrid',
+  'logoStrip',
+  'affiliateCard',
 ] as const
 
 export type BlockType = (typeof VALID_BLOCK_TYPES)[number]
@@ -115,6 +128,125 @@ export interface ArticleContentBlock {
   publishedAt?: string
 }
 
+export interface ImageBlock {
+  type: 'image'
+  src: string
+  alt: string
+  caption?: string
+  width?: number
+  height?: number
+}
+
+export interface CalloutBlock {
+  type: 'callout'
+  content: string
+  calloutType: 'tip' | 'warning' | 'info' | 'danger'
+  title?: string
+}
+
+export interface DividerBlock {
+  type: 'divider'
+  style?: 'line' | 'dots' | 'space'
+}
+
+export interface BreadcrumbItem {
+  label: string
+  href: string
+}
+
+export interface BreadcrumbBlock {
+  type: 'breadcrumb'
+  items: BreadcrumbItem[]
+}
+
+export interface QuoteBlock {
+  type: 'quote'
+  text: string
+  author?: string
+  source?: string
+}
+
+export interface ProsConsBlock {
+  type: 'prosCons'
+  title?: string
+  pros: string[]
+  cons: string[]
+}
+
+export interface StatItem {
+  value: string
+  label: string
+  description?: string
+}
+
+export interface StatsBlock {
+  type: 'stats'
+  items: StatItem[]
+}
+
+export interface TocItem {
+  label: string
+  anchor: string
+}
+
+export interface TableOfContentsBlock {
+  type: 'tableOfContents'
+  items: TocItem[]
+  title?: string
+}
+
+export interface AuthorBoxBlock {
+  type: 'authorBox'
+  name: string
+  bio: string
+  avatarUrl?: string
+  role?: string
+}
+
+export interface TestimonialBlock {
+  type: 'testimonial'
+  quote: string
+  author: string
+  role?: string
+  avatarUrl?: string
+}
+
+export interface CardItem {
+  title: string
+  description: string
+  href: string
+  imageUrl?: string
+}
+
+export interface CardsGridBlock {
+  type: 'cardsGrid'
+  cards: CardItem[]
+  columns?: 2 | 3 | 4
+}
+
+export interface LogoItem {
+  name: string
+  src: string
+  href?: string
+}
+
+export interface LogoStripBlock {
+  type: 'logoStrip'
+  items: LogoItem[]
+  title?: string
+}
+
+export interface AffiliateCardBlock {
+  type: 'affiliateCard'
+  productName: string
+  href: string
+  programId: string
+  description?: string
+  imageUrl?: string
+  price?: string
+  ctaLabel?: string
+}
+
 export type Block =
   | HeroBlock
   | RichTextBlock
@@ -128,6 +260,19 @@ export type Block =
   | VideoEmbedBlock
   | DetailsBlock
   | ArticleContentBlock
+  | ImageBlock
+  | CalloutBlock
+  | DividerBlock
+  | BreadcrumbBlock
+  | QuoteBlock
+  | ProsConsBlock
+  | StatsBlock
+  | TableOfContentsBlock
+  | AuthorBoxBlock
+  | TestimonialBlock
+  | CardsGridBlock
+  | LogoStripBlock
+  | AffiliateCardBlock
 
 // ─────────────────────────────────────────────
 // PAGE TYPE — tipos aceitos pelo sistema

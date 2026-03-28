@@ -165,7 +165,7 @@ type PageSchema = {
 
 | Tipo | Blocos obrigatórios |
 |---|---|
-| `home` | ao menos um bloco de conteúdo real (hero, richText, articleContent, faq, comparisonTable, details) |
+| `home` | ao menos um bloco de conteúdo real (hero, richText, articleContent, faq, comparisonTable, details, image, callout, quote, prosCons, stats, testimonial, cardsGrid) |
 | `article` | ao menos um bloco de conteúdo real |
 | `tool` | `toolInput` + `toolResult` |
 | `faq` | `faq` |
@@ -174,9 +174,9 @@ type PageSchema = {
 | `tutorial` | livre (recomendado: articleContent) |
 | `hub` | livre (recomendado: relatedLinks) |
 
-## Catálogo inicial de blocos
+## Catálogo de blocos
 
-Blocos oficialmente suportados na Fase 1A e suas props obrigatórias:
+Blocos oficialmente suportados pelo framework e suas props obrigatórias:
 
 | Bloco | Props obrigatórias |
 |---|---|
@@ -192,6 +192,19 @@ Blocos oficialmente suportados na Fase 1A e suas props obrigatórias:
 | `videoEmbed` | `url` |
 | `details` | `summary`, `content` |
 | `articleContent` | `html` |
+| `image` | `src`, `alt` |
+| `callout` | `content`, `calloutType` (tip/warning/info/danger) |
+| `divider` | nenhuma |
+| `breadcrumb` | `items` (array com `label` e `href`) |
+| `quote` | `text` |
+| `prosCons` | `pros`, `cons` (arrays de strings) |
+| `stats` | `items` (array com `value` e `label`) |
+| `tableOfContents` | `items` (array com `label` e `anchor`) |
+| `authorBox` | `name`, `bio` |
+| `testimonial` | `quote`, `author` |
+| `cardsGrid` | `cards` (array com `title`, `description`, `href`) |
+| `logoStrip` | `items` (array com `name` e `src`) |
+| `affiliateCard` | `productName`, `href`, `programId` |
 
 ## SEO técnico — comportamento do framework
 
@@ -220,6 +233,7 @@ Blocos oficialmente suportados na Fase 1A e suas props obrigatórias:
 - Slots de anúncio (`adSlot`) exibem placeholder visual quando ads não está em modo real
 - Placeholder pré-reserva o espaço visual (evita CLS — crítico para Core Web Vitals)
 - `cta` com `programId` appends `?ref=<programId>` na URL para rastreamento de afiliados
+- `affiliateCard` exibe card de produto com link rastreado (`?ref=<programId>`) e atributo `rel="sponsored"` — bloco dedicado para monetização de afiliados
 
 ## Defaults automáticos
 

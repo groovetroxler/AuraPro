@@ -98,6 +98,91 @@ export function validateBlock(block: Block, context: string): void {
       if (!block.html?.trim())
         throw new Error(`[ContractError] articleContent sem html. Contexto: ${context}`)
       break
+    case 'image':
+      if (!block.src?.trim())
+        throw new Error(`[ContractError] image sem src. Contexto: ${context}`)
+      if (!block.alt?.trim())
+        throw new Error(`[ContractError] image sem alt. Contexto: ${context}`)
+      break
+    case 'callout':
+      if (!block.content?.trim())
+        throw new Error(`[ContractError] callout sem content. Contexto: ${context}`)
+      if (!block.calloutType || !['tip', 'warning', 'info', 'danger'].includes(block.calloutType))
+        throw new Error(`[ContractError] callout com calloutType inválido: "${block.calloutType}". Contexto: ${context}`)
+      break
+    case 'divider':
+      // nenhuma prop obrigatória
+      break
+    case 'breadcrumb':
+      if (!Array.isArray(block.items) || block.items.length === 0)
+        throw new Error(`[ContractError] breadcrumb sem items. Contexto: ${context}`)
+      for (const item of block.items) {
+        if (!item.label?.trim() || !item.href?.trim())
+          throw new Error(`[ContractError] breadcrumb com item incompleto (label/href). Contexto: ${context}`)
+      }
+      break
+    case 'quote':
+      if (!block.text?.trim())
+        throw new Error(`[ContractError] quote sem text. Contexto: ${context}`)
+      break
+    case 'prosCons':
+      if (!Array.isArray(block.pros) || block.pros.length === 0)
+        throw new Error(`[ContractError] prosCons sem pros. Contexto: ${context}`)
+      if (!Array.isArray(block.cons) || block.cons.length === 0)
+        throw new Error(`[ContractError] prosCons sem cons. Contexto: ${context}`)
+      break
+    case 'stats':
+      if (!Array.isArray(block.items) || block.items.length === 0)
+        throw new Error(`[ContractError] stats sem items. Contexto: ${context}`)
+      for (const item of block.items) {
+        if (!item.value?.trim() || !item.label?.trim())
+          throw new Error(`[ContractError] stats com item incompleto (value/label). Contexto: ${context}`)
+      }
+      break
+    case 'tableOfContents':
+      if (!Array.isArray(block.items) || block.items.length === 0)
+        throw new Error(`[ContractError] tableOfContents sem items. Contexto: ${context}`)
+      for (const item of block.items) {
+        if (!item.label?.trim() || !item.anchor?.trim())
+          throw new Error(`[ContractError] tableOfContents com item incompleto (label/anchor). Contexto: ${context}`)
+      }
+      break
+    case 'authorBox':
+      if (!block.name?.trim())
+        throw new Error(`[ContractError] authorBox sem name. Contexto: ${context}`)
+      if (!block.bio?.trim())
+        throw new Error(`[ContractError] authorBox sem bio. Contexto: ${context}`)
+      break
+    case 'testimonial':
+      if (!block.quote?.trim())
+        throw new Error(`[ContractError] testimonial sem quote. Contexto: ${context}`)
+      if (!block.author?.trim())
+        throw new Error(`[ContractError] testimonial sem author. Contexto: ${context}`)
+      break
+    case 'cardsGrid':
+      if (!Array.isArray(block.cards) || block.cards.length === 0)
+        throw new Error(`[ContractError] cardsGrid sem cards. Contexto: ${context}`)
+      for (const card of block.cards) {
+        if (!card.title?.trim() || !card.description?.trim() || !card.href?.trim())
+          throw new Error(`[ContractError] cardsGrid com card incompleto (title/description/href). Contexto: ${context}`)
+      }
+      break
+    case 'logoStrip':
+      if (!Array.isArray(block.items) || block.items.length === 0)
+        throw new Error(`[ContractError] logoStrip sem items. Contexto: ${context}`)
+      for (const item of block.items) {
+        if (!item.name?.trim() || !item.src?.trim())
+          throw new Error(`[ContractError] logoStrip com item incompleto (name/src). Contexto: ${context}`)
+      }
+      break
+    case 'affiliateCard':
+      if (!block.productName?.trim())
+        throw new Error(`[ContractError] affiliateCard sem productName. Contexto: ${context}`)
+      if (!block.href?.trim())
+        throw new Error(`[ContractError] affiliateCard sem href. Contexto: ${context}`)
+      if (!block.programId?.trim())
+        throw new Error(`[ContractError] affiliateCard sem programId. Contexto: ${context}`)
+      break
   }
 }
 
@@ -127,7 +212,10 @@ function validateComposition(page: PageSchema): void {
     case 'home':
     case 'article':
       // Deve ter pelo menos um bloco de conteúdo real (não apenas ads/cta)
-      const contentBlocks = ['hero', 'richText', 'articleContent', 'faq', 'comparisonTable', 'details']
+      const contentBlocks = [
+        'hero', 'richText', 'articleContent', 'faq', 'comparisonTable', 'details',
+        'image', 'callout', 'quote', 'prosCons', 'stats', 'testimonial', 'cardsGrid',
+      ]
       const hasContent = page.blocks.some((b) => contentBlocks.includes(b.type))
       if (!hasContent)
         throw new Error(`[ContractError] Página ${page.type} sem bloco de conteúdo real. Contexto: ${ctx}`)
