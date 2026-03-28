@@ -58,3 +58,5 @@
 29. A resolução de `baseUrl` para sites é centralizada em `config/site-url.ts`, com fallback para `VERCEL_URL` quando `NEXT_PUBLIC_BASE_URL` não está definida. Elimina duplicação nos pacotes de site.
 30. O primeiro deploy no Vercel não deve bloquear por falta de variáveis de ambiente. O código usa fallbacks seguros e emite warnings em vez de erros fatais.
 31. GA4 Measurement IDs são hardcoded no config de cada site, não em variáveis de ambiente. Não são dados secretos (aparecem no HTML público), simplifica a configuração e a automação futura de novos sites.
+32. AdSense Publisher ID é hardcoded no config de cada site pelo mesmo motivo. O formato correto é `ca-pub-XXXX` (não `pub-XXXX`).
+33. O script do AdSense carrega sempre que publisherId é válido, independente do modo teste. Isso é necessário para o Google verificar e aprovar o site. O flag `ads.enabled` controla apenas se os slots exibem anúncios reais ou placeholders.

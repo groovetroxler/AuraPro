@@ -24,7 +24,7 @@ const MIN_HEIGHT: Record<string, number> = {
 }
 
 function isValidPublisherId(id?: string): boolean {
-  return !!id && /^pub-\d+$/.test(id)
+  return !!id && /^ca-pub-\d+$/.test(id)
 }
 
 export function AdSlotBlock({ block, ads }: Props) {

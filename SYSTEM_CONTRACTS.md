@@ -64,7 +64,7 @@ type SiteConfig = {
     ads: {
       enabled: boolean
       provider: 'adsense'
-      publisherId?: string        // formato pub-XXXXXXXXXXXXXXXX; opcional
+      publisherId?: string        // formato ca-pub-XXXXXXXXXXXXXXXX; opcional
     }
     affiliates: {
       enabled: boolean
@@ -214,7 +214,8 @@ Blocos oficialmente suportados na Fase 1A e suas props obrigatórias:
 
 ## Monetização — comportamento do framework
 
-- AdSense carrega **apenas** se `ads.enabled === true` E `publisherId` tem formato `pub-XXXXXXXX`
+- AdSense script carrega sempre que `publisherId` tem formato `ca-pub-XXXXXXXX` válido (necessário para verificação do Google)
+- Slots de anúncio exibem ads reais apenas se `ads.enabled === true` (controlado por `NEXT_PUBLIC_ADS_TEST_MODE`)
 - Com `enabled: false` ou publisherId ausente/inválido, o script não é injetado
 - Slots de anúncio (`adSlot`) exibem placeholder visual quando ads não está em modo real
 - Placeholder pré-reserva o espaço visual (evita CLS — crítico para Core Web Vitals)
@@ -270,12 +271,11 @@ O framework **não** deve inferir livremente:
 | Variável | Ambiente | Efeito |
 |---|---|---|
 | `NEXT_PUBLIC_BASE_URL` | todos | URL base global; obrigatória em produção |
-| `NEXT_PUBLIC_ADSENSE_PUBLISHER_ID` | produção | Publisher ID AdSense; habilita ads reais se formato pub-XX |
 | `NEXT_PUBLIC_ADS_TEST_MODE` | todos | `true` = ads desabilitados (modo teste visual) |
 
 ### Dados hardcoded no config do site
 
-GA4 Measurement IDs são declarados diretamente no `SiteConfig.analytics.ga4MeasurementId` de cada site.
+GA4 Measurement IDs e AdSense Publisher ID são declarados diretamente no config de cada site.
 Não são dados secretos (aparecem no HTML público) e ficam no código para simplificar a automação futura.
 
 Consulte `.env.example` para o template completo.

@@ -67,6 +67,6 @@ Se qualquer item acima estiver falso, a Fase 1A não deve ser considerada conclu
 - Ads em modo teste verificável em produção
 
 ### Pendente
-- GA4: validar pageviews após redeploy com IDs reais
-- AdSense: publisherId quando conta aprovada
+- AdSense: aguardando aprovação do Google (script já carregando)
+- Quando aprovado: mudar NEXT_PUBLIC_ADS_TEST_MODE para false no Vercel
 - OG images por site

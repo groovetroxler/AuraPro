@@ -24,7 +24,7 @@ function isValidGa4Id(id: string): boolean {
 }
 
 function isValidPublisherId(id: string): boolean {
-  return /^pub-\d+$/.test(id)
+  return /^ca-pub-\d+$/.test(id)
 }
 
 // ─────────────────────────────────────────────

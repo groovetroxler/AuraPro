@@ -35,7 +35,7 @@ export const agroflorestaBrSite: SiteEntry = {
       ads: {
         enabled: process.env.NEXT_PUBLIC_ADS_TEST_MODE !== 'true',
         provider: 'adsense',
-        publisherId: process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID,
+        publisherId: 'ca-pub-7072076910984234',
       },
       affiliates: {
         enabled: false,

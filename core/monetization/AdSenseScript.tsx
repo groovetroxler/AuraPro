@@ -1,7 +1,8 @@
 /**
  * core/monetization/AdSenseScript.tsx
  * Injeta o script do AdSense baseado na config de monetização do site.
- * Só carrega se ads.enabled=true e publisherId tiver formato pub-XXXX válido.
+ * Carrega sempre que publisherId for válido (necessário para verificação do Google).
+ * O flag ads.enabled controla apenas se os slots exibem anúncios reais ou placeholders.
  */
 
 import Script from 'next/script'
@@ -12,11 +13,11 @@ interface Props {
 }
 
 function isValidPublisherId(id?: string): boolean {
-  return !!id && /^pub-\d+$/.test(id)
+  return !!id && /^ca-pub-\d+$/.test(id)
 }
 
 export function AdSenseScript({ ads }: Props) {
-  if (!ads.enabled || !isValidPublisherId(ads.publisherId)) {
+  if (!isValidPublisherId(ads.publisherId)) {
     return null
   }
 

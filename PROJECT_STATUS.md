@@ -27,8 +27,10 @@ Atualizado pelo assistente a cada sessão de trabalho.
 - **Status:** ✅ IDs configurados (conta nova, propriedades novas)
 
 ### Google AdSense
-- **Publisher ID:** ❌ não fornecido
-- **Status:** ⏳ código pronto, rodando em modo teste visual
+- **Publisher ID:** ✅ ca-pub-7072076910984234
+- **Status:** ⏳ script carregando em produção, aguardando aprovação do Google
+- **Modo atual:** teste visual (NEXT_PUBLIC_ADS_TEST_MODE=true)
+- **Quando aprovado:** mudar NEXT_PUBLIC_ADS_TEST_MODE para false no Vercel
 
 ### Afiliados
 - **Status:** estrutura pronta com placeholders
@@ -48,7 +50,7 @@ Atualizado pelo assistente a cada sessão de trabalho.
 | `NEXT_PUBLIC_GA4_FINANCAS_BR` | ✅ | `G-JJ19JCER9K` |
 | `NEXT_PUBLIC_GA4_ENERGIA_SOLAR_BR` | ✅ | `G-52W2KZ7HH1` |
 | `NEXT_PUBLIC_GA4_AGROFLORESTA_BR` | ✅ | `G-HM2KTW995J` |
-| `NEXT_PUBLIC_ADSENSE_PUBLISHER_ID` | ⏳ | pub-XXXXXXXXXXXXXXXX |
+| `NEXT_PUBLIC_ADSENSE_PUBLISHER_ID` | ✅ removida | hardcoded no código (`ca-pub-7072076910984234`) |
 
 ## Validação de produção — Sessão 2
 
