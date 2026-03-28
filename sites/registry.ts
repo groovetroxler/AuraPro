@@ -11,12 +11,14 @@ import { financasBrSite } from './financas-br'
 import { energiaSolarBrSite } from './energia-solar-br'
 import { agroflorestaBrSite } from './agrofloresta-br'
 import { saudeBrSite } from './saude-br'
+import { apiculturaBrSite } from './apicultura-br'
 
 const ALL_ENTRIES: SiteEntry[] = [
   financasBrSite,
   energiaSolarBrSite,
   agroflorestaBrSite,
   saudeBrSite,
+  apiculturaBrSite,
 ]
 
 // Validação executada na inicialização — erros bloqueiam, warnings são logados
