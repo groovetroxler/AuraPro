@@ -16,4 +16,7 @@ yarn-error.log*
 next-env.d.ts
 
 # Credenciais do projeto — nunca commitar
-.credentials.env
+_credentials.env
+
+# Prompt operacional — não versionar
+Prompt-Base.txt

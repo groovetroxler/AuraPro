@@ -6,10 +6,11 @@
  * Este layout injeta:
  * - CSS custom property --color-primary derivada do theme do site
  * - GA4 se analytics.enabled=true e id válido
- * - AdSense se ads.enabled=true e publisherId válido
+ * - AdSense se publisherId válido (necessário para verificação do Google)
  * - Header e footer com brand do site
  */
 
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getSiteByRoutePath } from '../../sites/registry'
 import { GoogleAnalytics } from '../../core/analytics/GoogleAnalytics'
@@ -38,17 +39,17 @@ export default async function SiteLayout({ children, params }: Props) {
 
       <header className="border-b border-gray-100 bg-white sticky top-0 z-10">
         <div className="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
-          <a
+          <Link
             href={`/${site}`}
             className="font-bold text-lg"
             style={{ color: theme.primaryColor }}
           >
             {theme.brandName}
-          </a>
+          </Link>
           <nav className="text-sm text-gray-500">
-            <a href="/" className="hover:underline transition-colors">
+            <Link href="/" className="hover:underline transition-colors">
               ← Todos os sites
-            </a>
+            </Link>
           </nav>
         </div>
       </header>

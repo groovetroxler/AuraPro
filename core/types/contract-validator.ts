@@ -222,11 +222,11 @@ function validateSiteConfig(config: SiteConfig): void {
     }
   }
 
-  // Publisher ID — se ads habilitados e publisherId presente, deve ter formato correto
-  if (config.monetization.ads.enabled && config.monetization.ads.publisherId) {
+  // Publisher ID — se presente, deve ter formato correto (independente de ads.enabled)
+  if (config.monetization.ads.publisherId) {
     if (!isValidPublisherId(config.monetization.ads.publisherId)) {
       throw new Error(
-        `[ContractError] Site "${ctx}" tem publisherId inválido: "${config.monetization.ads.publisherId}". Formato esperado: pub-XXXXXXXXXXXXXXXX`
+        `[ContractError] Site "${ctx}" tem publisherId inválido: "${config.monetization.ads.publisherId}". Formato esperado: ca-pub-XXXXXXXXXXXXXXXX`
       )
     }
   }

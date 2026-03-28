@@ -28,9 +28,9 @@ Atualizado pelo assistente a cada sessão de trabalho.
 
 ### Google AdSense
 - **Publisher ID:** ✅ ca-pub-7072076910984234
-- **ads.txt:** ✅ publicado e acessível em /ads.txt
-- **Script:** ✅ carregando no `<head>` de todas as páginas
-- **Status:** ⏳ aguardando aprovação do Google (status: "Preparando")
+- **ads.txt:** ✅ publicado em /ads.txt (formato: `pub-XXXX` sem prefixo `ca-`)
+- **Script:** ✅ carregando via componente AdSenseScript por site (quando publisherId válido)
+- **Status:** ⏳ aguardando aprovação do Google — ads.txt ainda não encontrado pelo AdSense
 - **Modo atual:** teste visual (NEXT_PUBLIC_ADS_TEST_MODE=true)
 - **Quando aprovado:** mudar NEXT_PUBLIC_ADS_TEST_MODE para false no Vercel
 
@@ -49,10 +49,12 @@ Atualizado pelo assistente a cada sessão de trabalho.
 |---|---|---|
 | `NEXT_PUBLIC_BASE_URL` | ✅ configurada | `https://aura-pro-eosin.vercel.app` |
 | `NEXT_PUBLIC_ADS_TEST_MODE` | ✅ configurada | `true` |
-| `NEXT_PUBLIC_GA4_FINANCAS_BR` | ✅ | `G-JJ19JCER9K` |
-| `NEXT_PUBLIC_GA4_ENERGIA_SOLAR_BR` | ✅ | `G-52W2KZ7HH1` |
-| `NEXT_PUBLIC_GA4_AGROFLORESTA_BR` | ✅ | `G-HM2KTW995J` |
-| `NEXT_PUBLIC_ADSENSE_PUBLISHER_ID` | ✅ removida | hardcoded no código (`ca-pub-7072076910984234`) |
+
+**Nota:** GA4 Measurement IDs e AdSense Publisher ID são hardcoded no config de cada site (Decisões #31 e #32). Não usam variáveis de ambiente. Os IDs ativos são:
+- financas-br: `G-DMJ9QJZ7ZW`
+- energia-solar-br: `G-LL5VYXQWV9`
+- agrofloresta-br: `G-C06N4NTLKR`
+- AdSense: `ca-pub-7072076910984234` (todos os sites)
 
 ## Validação de produção — Sessão 2
 
@@ -103,11 +105,25 @@ Atualizado pelo assistente a cada sessão de trabalho.
 - Decisões 21-33 registradas
 - CHECKLIST Fase 1A: 100% concluído
 
+### Sessão 3 — 2026-03-27
+- Diagnóstico completo pré-Fase 2: documentação, código, build, TypeScript, ESLint
+- 8 problemas identificados, todos corrigidos:
+  - AdSense script duplicado removido do root layout (mantido apenas AdSenseScript por site)
+  - PROJECT_STATUS corrigido (env vars GA4 fantasmas removidas)
+  - Mensagem de erro do validador publisherId corrigida (pub-XXXX → ca-pub-XXXX)
+  - Validação de publisherId alinhada com SYSTEM_CONTRACTS (independente de ads.enabled)
+  - Duplicação de resolveBaseUrl eliminada (site-url.ts agora usa env.ts)
+  - ESLint corrigido (Link do Next.js no layout de site)
+  - .gitignore corrigido (_credentials.env em vez de .credentials.env)
+  - Prompt-Base.txt removido do repo e adicionado ao .gitignore
+- Decisões 34-38 registradas
+
 ### Próxima sessão — o que fazer
-1. Verificar status de aprovação do AdSense
+1. Verificar status de aprovação do AdSense (ads.txt ainda não encontrado)
 2. Se aprovado: mudar NEXT_PUBLIC_ADS_TEST_MODE para false no Vercel
-3. Gerar OG images por site
-4. Considerar início da Fase 1B (scaffold de novos sites)
+3. Gerar OG images por site (9 warnings pendentes)
+4. Remover env vars GA4 fantasmas do Vercel (NEXT_PUBLIC_GA4_* — não são usadas pelo código)
+5. Iniciar Fase 2
 
 ## Instruções para o assistente em novas sessões
 

@@ -60,3 +60,11 @@
 31. GA4 Measurement IDs são hardcoded no config de cada site, não em variáveis de ambiente. Não são dados secretos (aparecem no HTML público), simplifica a configuração e a automação futura de novos sites.
 32. AdSense Publisher ID é hardcoded no config de cada site pelo mesmo motivo. O formato correto é `ca-pub-XXXX` (não `pub-XXXX`).
 33. O script do AdSense carrega sempre que publisherId é válido, independente do modo teste. Isso é necessário para o Google verificar e aprovar o site. O flag `ads.enabled` controla apenas se os slots exibem anúncios reais ou placeholders.
+
+## Decisões operacionais — Sessão 3 (2026-03-27)
+
+34. O root layout (`app/layout.tsx`) não deve carregar o script do AdSense. O carregamento do AdSense é responsabilidade do componente `AdSenseScript` no layout de cada site, que já valida publisherId. Evita duplicação de script e carregamento incondicional.
+35. A validação de `publisherId` no contrato é feita independente de `ads.enabled`, conforme SYSTEM_CONTRACTS. Se o publisherId está presente com formato inválido, é erro bloqueante mesmo que ads esteja desabilitado.
+36. A resolução de baseUrl global tem fonte única em `config/env.ts` (`getBaseUrl()`). O módulo `config/site-url.ts` importa de `config/env.ts` em vez de duplicar a lógica.
+37. Arquivos de prompt operacional (`Prompt-Base.txt`) não devem ser versionados no repositório. Adicionados ao `.gitignore`.
+38. O arquivo de credenciais local se chama `_credentials.env` (com underscore). O `.gitignore` deve usar esse nome exato.
