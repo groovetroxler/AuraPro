@@ -15,6 +15,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Logs locais do dev server do Next
+/.next-*.log
+
 # Credenciais do projeto — nunca commitar
 _credentials.env
 
