@@ -46,7 +46,7 @@ export default async function SiteLayout({ children, params }: Props) {
           >
             {theme.brandName}
           </Link>
-          {config.siteKey !== 'apicultura-br' ? (
+          {config.siteKey !== 'meliponicultura-br' ? (
             <nav className="text-sm text-gray-500">
               <Link href="/" className="hover:underline transition-colors">
                 ← Todos os sites
