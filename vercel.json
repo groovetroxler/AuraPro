@@ -4,14 +4,12 @@
     {
       "source": "/apicultura",
       "destination": "/meliponicultura",
-      "statusCode": 301,
-      "preserveQueryParams": true
+      "statusCode": 301
     },
     {
       "source": "/apicultura/:path*",
       "destination": "/meliponicultura/:path*",
-      "statusCode": 301,
-      "preserveQueryParams": true
+      "statusCode": 301
     }
   ]
 }
