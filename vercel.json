@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/apicultura",
+      "destination": "/meliponicultura",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/apicultura/:path*",
+      "destination": "/meliponicultura/:path*",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    }
+  ]
+}
