@@ -21,10 +21,8 @@ const SLUG_HEALTH = 'alimentacao-sanidade-e-erros'
 const SLUG_LEGAL = 'legalizacao-meliponicultura'
 
 const COLOR_PAPER = '#f4efe4'
-const COLOR_PAPER_SOFT = '#fbf8f1'
 const COLOR_GREEN = '#355241'
 const COLOR_HONEY = '#b67a1c'
-const COLOR_WAX = '#dcc79c'
 const COLOR_INK = '#2d2618'
 const COLOR_MUTED = '#5f665d'
 const COLOR_LINE = '#d7ccb5'
@@ -81,17 +79,6 @@ function relatedLinks(items: Array<{ label: string; slug: string }>): RelatedLin
       href: pageHref(item.slug),
     })),
   }
-}
-
-function allDetailLinks(): RelatedLinksBlock {
-  return relatedLinks([
-    { label: 'Passo 1: espécie certa para a sua região', slug: SLUG_SPECIES },
-    { label: 'Passo 2: caixa certa para cada espécie', slug: SLUG_BOXES },
-    { label: 'Passo 3: onde instalar o meliponário', slug: SLUG_LOCATION },
-    { label: 'Passo 4: o primeiro mês da colônia', slug: SLUG_FIRST_MONTH },
-    { label: 'Passo 5: alimentação, sanidade e erros', slug: SLUG_HEALTH },
-    { label: 'Leitura de apoio: legalização da meliponicultura', slug: SLUG_LEGAL },
-  ])
 }
 
 function allPageLinks(currentSlug: string): RelatedLinksBlock {
@@ -757,6 +744,9 @@ export const meliponiculturaBrSite: SiteEntry = {
     locale: 'pt-BR',
     market: 'BR',
     status: 'active',
+    ui: {
+      showAllSitesLink: false,
+    },
     theme: {
       brandName: 'Abelhas sem Ferrão',
       primaryColor: COLOR_GREEN,

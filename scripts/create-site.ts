@@ -10,7 +10,7 @@
  * 3. Gera sites/<siteKey>/index.ts com config e páginas placeholder
  * 4. Atualiza sites/registry.ts com import e entrada
  * 5. Executa validação de contrato (build)
- * 6. Commit + push automático
+ * 6. Exibe resumo e próximos passos
  */
 
 import * as fs from 'fs'
@@ -45,12 +45,6 @@ function ask(rl: readline.Interface, question: string): Promise<string> {
 }
 
 function getExistingSiteKeys(): string[] {
-  const content = fs.readFileSync(REGISTRY_PATH, 'utf-8')
-  const matches = content.match(/siteKey:\s*['"]([^'"]+)['"]/g) || []
-  // Also parse from import paths as fallback
-  const importMatches = content.match(/from\s+'\.\/([^']+)'/g) || []
-  const fromImports = importMatches.map((m) => m.match(/from\s+'\.\/([^']+)'/)?.[1] || '')
-  
   // Read actual directories in sites/
   const dirs = fs.readdirSync(SITES_DIR).filter((d) => {
     const fullPath = path.join(SITES_DIR, d)
@@ -61,7 +55,6 @@ function getExistingSiteKeys(): string[] {
 }
 
 function getExistingRoutePaths(): string[] {
-  const content = fs.readFileSync(REGISTRY_PATH, 'utf-8')
   // Read all site index files to find routePaths
   const dirs = getExistingSiteKeys()
   const routePaths: string[] = []
@@ -76,38 +69,6 @@ function getExistingRoutePaths(): string[] {
   }
   
   return routePaths
-}
-
-function readGitToken(): string | null {
-  // Try _credentials.env in project root
-  const credPath = path.join(ROOT, '_credentials.env')
-  if (!fs.existsSync(credPath)) {
-    // Try from /mnt/project
-    const mntPath = '/mnt/project/_credentials.env'
-    if (fs.existsSync(mntPath)) {
-      const content = fs.readFileSync(mntPath, 'utf-8')
-      const match = content.match(/GIT_TOKEN=(.+)/)
-      return match ? match[1].trim() : null
-    }
-    return null
-  }
-  const content = fs.readFileSync(credPath, 'utf-8')
-  const match = content.match(/GIT_TOKEN=(.+)/)
-  return match ? match[1].trim() : null
-}
-
-function readGitRepoUrl(): string | null {
-  const credPath = path.join(ROOT, '_credentials.env')
-  const paths = [credPath, '/mnt/project/_credentials.env']
-  
-  for (const p of paths) {
-    if (fs.existsSync(p)) {
-      const content = fs.readFileSync(p, 'utf-8')
-      const match = content.match(/GIT_REPO_URL=(.+)/)
-      return match ? match[1].trim() : null
-    }
-  }
-  return null
 }
 
 // ─────────────────────────────────────────────
@@ -127,7 +88,6 @@ function generateSiteFile(
   primaryColor: string
 ): string {
   const exportName = toExportName(siteKey)
-  const siteKeyUpper = siteKey.toUpperCase().replace(/-/g, '_')
 
   return `/**
  * sites/${siteKey}/index.ts
@@ -388,6 +348,7 @@ async function main() {
 
     // 4. Atualizar registry
     console.log('\n📝 Atualizando registry...')
+    const registryBackup = fs.readFileSync(REGISTRY_PATH, 'utf-8')
     updateRegistry(siteKey)
     console.log('  ✅ sites/registry.ts atualizado')
 
@@ -399,35 +360,14 @@ async function main() {
     } catch (buildError: unknown) {
       console.error('\n❌ Build falhou! Revertendo alterações...')
       fs.rmSync(siteDir, { recursive: true, force: true })
-      execSync('git checkout -- sites/registry.ts', { cwd: ROOT })
+      fs.writeFileSync(REGISTRY_PATH, registryBackup, 'utf-8')
 
       const stdout = (buildError as { stdout?: Buffer })?.stdout?.toString() || ''
       const stderr = (buildError as { stderr?: Buffer })?.stderr?.toString() || ''
       throw new Error(`Build falhou.\n${stdout}\n${stderr}`)
     }
 
-    // 6. Commit
-    console.log('\n📦 Commitando...')
-    execSync('git add -A', { cwd: ROOT })
-    const commitMsg = `feat: criar site ${siteKey} via scaffold (Fase 1B)\n\n- siteKey: ${siteKey}\n- publicName: ${publicName}\n- routePath: ${routePath}\n- primaryColor: ${primaryColor}\n- Conteúdo placeholder — substituir via Rotina 2`
-    execSync(`git commit -m "${commitMsg}"`, { cwd: ROOT })
-    console.log('  ✅ Commit realizado')
-
-    // 7. Push
-    console.log('\n🚀 Fazendo push...')
-    const gitToken = readGitToken()
-    const repoUrl = readGitRepoUrl()
-
-    if (gitToken && repoUrl) {
-      const authedUrl = repoUrl.replace('https://', `https://x-access-token:${gitToken}@`)
-      execSync(`git remote set-url origin "${authedUrl}"`, { cwd: ROOT })
-      execSync('git push origin main', { cwd: ROOT, stdio: 'pipe' })
-      console.log('  ✅ Push realizado — Vercel fará auto-deploy')
-    } else {
-      console.warn('  ⚠️  Token Git não encontrado. Faça push manualmente: git push origin main')
-    }
-
-    // 8. Resumo
+    // 6. Resumo
     console.log('\n' + '═'.repeat(60))
     console.log('✅ Site criado com sucesso!')
     console.log('═'.repeat(60))
@@ -438,10 +378,11 @@ async function main() {
     console.log(`\n  Arquivo:      sites/${siteKey}/index.ts`)
     console.log(`  URL:          <NEXT_PUBLIC_BASE_URL>/${routePath}`)
     console.log(`\n📋 Próximos passos:`)
-    console.log(`  1. Aguardar auto-deploy no Vercel`)
-    console.log(`  2. Verificar URL pública`)
-    console.log(`  3. Criar propriedade GA4 e inserir ga4MeasurementId`)
-    console.log(`  4. Substituir conteúdo placeholder via Rotina 2 (CONTENT_GUIDE.md)`)
+    console.log(`  1. Revisar o diff e validar o conteúdo placeholder`)
+    console.log(`  2. Commitar manualmente com mensagem apropriada`)
+    console.log(`  3. Fazer push para a branch desejada e aguardar deploy`)
+    console.log(`  4. Criar propriedade GA4 e inserir ga4MeasurementId`)
+    console.log(`  5. Substituir conteúdo placeholder via Rotina 2 (CONTENT_GUIDE.md)`)
     console.log('')
 
   } catch (error) {

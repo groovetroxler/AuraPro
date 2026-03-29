@@ -22,7 +22,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const slug = page.slug === 'home' ? '' : `/${page.slug}`
       urls.push({
         url: `${baseUrl}${slug}`,
-        lastModified: new Date(),
         changeFrequency: page.slug === 'home' ? 'weekly' : 'monthly',
         priority: page.slug === 'home' ? 1.0 : 0.8,
       })

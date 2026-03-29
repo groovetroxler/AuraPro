@@ -18,7 +18,7 @@ export const saudeBrSite: SiteEntry = {
     routePath: ROUTE_PATH,
     locale: 'pt-BR',
     market: 'BR',
-    status: 'active',
+    status: 'draft',
     theme: {
       brandName: 'Saúde BR',
       primaryColor: '#dc2626',

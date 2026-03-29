@@ -329,6 +329,11 @@ export interface SiteTheme {
   fontFamilyHeading?: string
 }
 
+export interface SiteUi {
+  showAllSitesLink?: boolean
+}
+
+
 export interface SiteSeo {
   siteTitle: string              // ex: 'Finanças BR'
   defaultTitleTemplate: string   // ex: '%s | Finanças BR'
@@ -372,6 +377,7 @@ export interface SiteConfig {
   market: 'BR'
   status: 'draft' | 'active'     // draft = site não servido
   theme: SiteTheme
+  ui?: SiteUi
   seo: SiteSeo
   analytics: SiteAnalytics
   monetization: SiteMonetization
@@ -409,3 +415,4 @@ export interface ValidationResult {
   message: string
   context: string
 }
+

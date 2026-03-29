@@ -46,7 +46,7 @@ export default async function SiteLayout({ children, params }: Props) {
           >
             {theme.brandName}
           </Link>
-          {config.siteKey !== 'meliponicultura-br' ? (
+          {config.ui?.showAllSitesLink !== false ? (
             <nav className="text-sm text-gray-500">
               <Link href="/" className="hover:underline transition-colors">
                 ← Todos os sites
@@ -71,3 +71,4 @@ export async function generateStaticParams() {
   const { getAllRoutePaths } = await import('../../sites/registry')
   return getAllRoutePaths().map((site) => ({ site }))
 }
+
