@@ -29,6 +29,36 @@ const COLOR_INK = '#2d2618'
 const COLOR_MUTED = '#5f665d'
 const COLOR_LINE = '#d7ccb5'
 const STEP_LINK_STYLE = `color:${COLOR_MUTED};font-weight:500;text-decoration-color:rgba(182,122,28,0.45);text-decoration-thickness:1px;text-underline-offset:0.14em;`
+const AFFILIATE_PROGRAM_ID = 'mercadolivre-abelhas-sem-ferrao'
+
+const PRODUCT_KIT_START = {
+  productName: 'Kit com 3 caixas para abelhas sem ferrão',
+  href: 'https://www.mercadolivre.com.br/kit-3-caixas-para-abelha-sem-ferrao--asf--jatai-mirim-irai/up/MLBU1113303396',
+  description: 'Kit voltado a espécies pequenas como jataí, mirim e iraí, útil para quem quer começar com uma base mais completa.',
+  ctaLabel: 'Ver kit no Mercado Livre',
+}
+
+const PRODUCT_SMART_BOX = {
+  productName: '3 caixas jataí modelo casa inteligente',
+  href: 'https://www.mercadolivre.com.br/3-caixa--abelhas-sem-ferrao-jatai-modelo-casa-inteligente/up/MLBU1965467871',
+  description: 'Modelo modular para jataí, com foco em estrutura organizada e manejo prático desde o começo.',
+  ctaLabel: 'Ver modelo no Mercado Livre',
+}
+
+const PRODUCT_INPA = {
+  productName: 'Kit 2 caixas INPA 20x20 com atrativo',
+  href: 'https://www.mercadolivre.com.br/2-caixa-inpa-20x20-abelha-sem-ferrao--atrativo-captura/up/MLBU3107840824',
+  description: 'Conjunto voltado a caixas maiores no padrão INPA, acompanhado de atrativo para captura.',
+  ctaLabel: 'Ver kit INPA',
+}
+
+const PRODUCT_ISCA = {
+  productName: 'Caixa isca para abelha jataí com atrativo',
+  href: 'https://produto.mercadolivre.com.br/MLB-5371523922-caixa-isca-para-abelha-jatai-criaco-de-abelhas-sem-ferro-_JM',
+  description: 'Solução compacta para quem quer testar captura e dar o primeiro passo com jataí.',
+  imageUrl: 'https://http2.mlstatic.com/D_NQ_NP_932496-MLB89659504645_082025-O-caixa-isca-para-abelha-jatai-criaco-de-abelhas-sem-ferro.webp',
+  ctaLabel: 'Ver caixa isca',
+}
 
 const pageHref = (slug: string) =>
   slug === 'home' ? `/${ROUTE_PATH}` : `/${ROUTE_PATH}/${slug}`
@@ -83,6 +113,26 @@ const authorBox: AuthorBoxBlock = {
   name: 'Equipe Abelhas sem Ferrão',
   role: 'Curadoria editorial',
   bio: 'Conteúdo voltado a iniciantes, com foco em clareza, responsabilidade e prazer de leitura antes da compra.',
+}
+
+function affiliateCard(
+  product: {
+    productName: string
+    href: string
+    description: string
+    ctaLabel: string
+    imageUrl?: string
+  }
+) {
+  return {
+    type: 'affiliateCard' as const,
+    productName: product.productName,
+    href: product.href,
+    programId: AFFILIATE_PROGRAM_ID,
+    description: product.description,
+    imageUrl: product.imageUrl,
+    ctaLabel: product.ctaLabel,
+  }
 }
 
 const homePage: PageSchema = {
@@ -157,11 +207,7 @@ const homePage: PageSchema = {
         </section>
       `,
     },
-    {
-      type: 'adSlot',
-      slotId: 'apicultura-home-mid',
-      format: 'responsive',
-    },
+    affiliateCard(PRODUCT_KIT_START),
     {
       type: 'richText',
       html: `
@@ -200,11 +246,7 @@ const homePage: PageSchema = {
       href: pageHref(SLUG_SPECIES),
       variant: 'primary',
     },
-    {
-      type: 'adSlot',
-      slotId: 'apicultura-home-bottom',
-      format: 'responsive',
-    },
+    affiliateCard(PRODUCT_ISCA),
     allPageLinks('home'),
   ],
 }
@@ -248,11 +290,7 @@ const speciesPage: PageSchema = {
         <p><strong>Jataí</strong> costuma entrar bem na conversa de quem quer uma porta de entrada mais observacional, com colônia menor e caixa compacta. <strong>Mandaçaia</strong> costuma fazer mais sentido quando o ambiente já comporta uma estrutura um pouco mais robusta. <strong>Jandaíra</strong> aparece muito onde existe tradição regional forte. O ponto central é este: essas espécies servem como referência de raciocínio, não como pódio nacional.</p>
       `,
     },
-    {
-      type: 'adSlot',
-      slotId: 'apicultura-especies-mid',
-      format: 'responsive',
-    },
+    affiliateCard(PRODUCT_KIT_START),
     {
       type: 'articleContent',
       html: `
@@ -278,11 +316,7 @@ const speciesPage: PageSchema = {
       href: pageHref(SLUG_BOXES),
       variant: 'primary',
     },
-    {
-      type: 'adSlot',
-      slotId: 'apicultura-especies-bottom',
-      format: 'responsive',
-    },
+    affiliateCard(PRODUCT_ISCA),
     allPageLinks(SLUG_SPECIES),
   ],
 }
@@ -326,11 +360,7 @@ const boxesPage: PageSchema = {
         <p>Mandaçaia, uruçu, tiúba e outras <em>Melipona</em> costumam pedir mais massa, mais módulo e mais equilíbrio térmico. É aqui que o modelo INPA aparece bastante como referência de raciocínio, porque organiza ninho, sobreninho e melgueiras de forma compatível com espécies maiores.</p>
       `,
     },
-    {
-      type: 'adSlot',
-      slotId: 'apicultura-caixas-mid',
-      format: 'responsive',
-    },
+    affiliateCard(PRODUCT_SMART_BOX),
     {
       type: 'articleContent',
       html: `
@@ -382,11 +412,7 @@ const boxesPage: PageSchema = {
       href: pageHref(SLUG_LOCATION),
       variant: 'primary',
     },
-    {
-      type: 'adSlot',
-      slotId: 'apicultura-caixas-bottom',
-      format: 'responsive',
-    },
+    affiliateCard(PRODUCT_ISCA),
     allPageLinks(SLUG_BOXES),
   ],
 }
@@ -430,11 +456,7 @@ const locationPage: PageSchema = {
         <p>Em materiais técnicos da Embrapa, as caixas aparecem em geral em torno de 0,5 metro do chão, sobre cavaletes ou suportes firmes. Isso ajuda a reduzir umidade, melhora acesso e dificulta parte dos problemas com solo, formigas e respingos de chuva.</p>
       `,
     },
-    {
-      type: 'adSlot',
-      slotId: 'apicultura-local-mid',
-      format: 'responsive',
-    },
+    affiliateCard(PRODUCT_ISCA),
     {
       type: 'articleContent',
       html: `
@@ -460,11 +482,7 @@ const locationPage: PageSchema = {
       href: pageHref(SLUG_FIRST_MONTH),
       variant: 'primary',
     },
-    {
-      type: 'adSlot',
-      slotId: 'apicultura-local-bottom',
-      format: 'responsive',
-    },
+    affiliateCard(PRODUCT_ISCA),
     allPageLinks(SLUG_LOCATION),
   ],
 }
@@ -514,11 +532,7 @@ const firstMonthPage: PageSchema = {
         <p>Se o problema parece ser calor, chuva, vento, formiga no suporte ou exposição excessiva, a primeira correção quase sempre está fora da caixa. Ajustar sombra, proteção e suporte costuma ser mais útil do que abrir o ninho por impulso.</p>
       `,
     },
-    {
-      type: 'adSlot',
-      slotId: 'apicultura-primeiro-mes-mid',
-      format: 'responsive',
-    },
+    affiliateCard(PRODUCT_ISCA),
     {
       type: 'articleContent',
       html: `
@@ -553,11 +567,7 @@ const firstMonthPage: PageSchema = {
       href: pageHref(SLUG_HEALTH),
       variant: 'primary',
     },
-    {
-      type: 'adSlot',
-      slotId: 'apicultura-primeiro-mes-bottom',
-      format: 'responsive',
-    },
+    affiliateCard(PRODUCT_ISCA),
     allPageLinks(SLUG_FIRST_MONTH),
   ],
 }
@@ -604,11 +614,7 @@ const healthPage: PageSchema = {
         <p>Forídeos, formigas, mofo, excesso de umidade, sujeira e cheiro estranho costumam pesar mais em colônias fracas ou mal instaladas. Por isso, sanidade não começa no remédio. Começa em espécie certa, caixa certa, local certo e revisão com critério.</p>
       `,
     },
-    {
-      type: 'adSlot',
-      slotId: 'apicultura-sanidade-mid',
-      format: 'responsive',
-    },
+    affiliateCard(PRODUCT_INPA),
     {
       type: 'articleContent',
       html: `
@@ -664,11 +670,7 @@ const healthPage: PageSchema = {
       href: pageHref('home'),
       variant: 'primary',
     },
-    {
-      type: 'adSlot',
-      slotId: 'apicultura-sanidade-bottom',
-      format: 'responsive',
-    },
+    affiliateCard(PRODUCT_ISCA),
     allPageLinks(SLUG_HEALTH),
   ],
 }
@@ -715,11 +717,7 @@ const legalPage: PageSchema = {
         <p>Esse é um ponto que costuma surpreender quem está começando. Em meliponicultura, não basta dizer “é abelha brasileira”. A pergunta é se ela ocorre naturalmente naquele território. É por isso que um criador pode estar lidando com uma espécie coerente em um estado e com uma situação bem mais sensível em outro.</p>
       `,
     },
-    {
-      type: 'adSlot',
-      slotId: 'apicultura-legal-mid',
-      format: 'responsive',
-    },
+    affiliateCard(PRODUCT_KIT_START),
     {
       type: 'articleContent',
       html: `
@@ -746,11 +744,7 @@ const legalPage: PageSchema = {
       href: pageHref('home'),
       variant: 'secondary',
     },
-    {
-      type: 'adSlot',
-      slotId: 'apicultura-legal-bottom',
-      format: 'responsive',
-    },
+    affiliateCard(PRODUCT_ISCA),
     allPageLinks(SLUG_LEGAL),
   ],
 }
@@ -790,8 +784,14 @@ export const apiculturaBrSite: SiteEntry = {
         publisherId: 'ca-pub-7072076910984234',
       },
       affiliates: {
-        enabled: false,
-        programs: [],
+        enabled: true,
+        programs: [
+          {
+            id: AFFILIATE_PROGRAM_ID,
+            name: 'Mercado Livre - Abelhas sem Ferrão',
+            baseUrl: 'https://www.mercadolivre.com.br',
+          },
+        ],
       },
     },
   },
