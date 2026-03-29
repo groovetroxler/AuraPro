@@ -1,12 +1,12 @@
 /**
  * app/[site]/layout.tsx
- * Layout por site — NÃO renderiza <html>/<body>/<head>.
- * Esses são responsabilidade exclusiva do root layout (app/layout.tsx).
- * 
+ * Layout por site - NAO renderiza <html>/<body>/<head>.
+ * Esses sao responsabilidade exclusiva do root layout (app/layout.tsx).
+ *
  * Este layout injeta:
  * - CSS custom property --color-primary derivada do theme do site
- * - GA4 se analytics.enabled=true e id válido
- * - AdSense se publisherId válido (necessário para verificação do Google)
+ * - GA4 se analytics.enabled=true e id valido
+ * - AdSense se publisherId valido (necessario para verificacao do Google)
  * - Header e footer com brand do site
  */
 
@@ -46,11 +46,13 @@ export default async function SiteLayout({ children, params }: Props) {
           >
             {theme.brandName}
           </Link>
-          <nav className="text-sm text-gray-500">
-            <Link href="/" className="hover:underline transition-colors">
-              ← Todos os sites
-            </Link>
-          </nav>
+          {config.siteKey !== 'apicultura-br' ? (
+            <nav className="text-sm text-gray-500">
+              <Link href="/" className="hover:underline transition-colors">
+                ← Todos os sites
+              </Link>
+            </nav>
+          ) : null}
         </div>
       </header>
 
