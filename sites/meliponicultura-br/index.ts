@@ -7,8 +7,8 @@ import type {
 } from '../../core/types/contracts'
 import { resolveSiteBaseUrl } from '../../config/site-url'
 
-const SITE_KEY = 'apicultura-br'
-const ROUTE_PATH = 'apicultura'
+const SITE_KEY = 'meliponicultura-br'
+const ROUTE_PATH = 'meliponicultura'
 const BASE_URL = resolveSiteBaseUrl(ROUTE_PATH)
 const OG_IMAGE = `${BASE_URL}/abelhas-sem-ferrao-meliponario.jpg`
 const PUBLISHED_AT = '2026-03-28'
@@ -136,7 +136,7 @@ function affiliateCard(
 }
 
 const homePage: PageSchema = {
-  id: 'apicultura-home',
+  id: 'meliponicultura-home',
   siteKey: SITE_KEY,
   type: 'home',
   slug: 'home',
@@ -252,7 +252,7 @@ const homePage: PageSchema = {
 }
 
 const speciesPage: PageSchema = {
-  id: 'apicultura-especie-certa',
+  id: 'meliponicultura-especie-certa',
   siteKey: SITE_KEY,
   type: 'article',
   slug: SLUG_SPECIES,
@@ -322,7 +322,7 @@ const speciesPage: PageSchema = {
 }
 
 const boxesPage: PageSchema = {
-  id: 'apicultura-caixa-certa',
+  id: 'meliponicultura-caixa-certa',
   siteKey: SITE_KEY,
   type: 'article',
   slug: SLUG_BOXES,
@@ -418,7 +418,7 @@ const boxesPage: PageSchema = {
 }
 
 const locationPage: PageSchema = {
-  id: 'apicultura-onde-instalar',
+  id: 'meliponicultura-onde-instalar',
   siteKey: SITE_KEY,
   type: 'article',
   slug: SLUG_LOCATION,
@@ -488,7 +488,7 @@ const locationPage: PageSchema = {
 }
 
 const firstMonthPage: PageSchema = {
-  id: 'apicultura-primeiro-mes',
+  id: 'meliponicultura-primeiro-mes',
   siteKey: SITE_KEY,
   type: 'article',
   slug: SLUG_FIRST_MONTH,
@@ -573,7 +573,7 @@ const firstMonthPage: PageSchema = {
 }
 
 const healthPage: PageSchema = {
-  id: 'apicultura-alimentacao-sanidade',
+  id: 'meliponicultura-alimentacao-sanidade',
   siteKey: SITE_KEY,
   type: 'article',
   slug: SLUG_HEALTH,
@@ -676,7 +676,7 @@ const healthPage: PageSchema = {
 }
 
 const legalPage: PageSchema = {
-  id: 'apicultura-legalizacao',
+  id: 'meliponicultura-legalizacao',
   siteKey: SITE_KEY,
   type: 'article',
   slug: SLUG_LEGAL,
@@ -749,7 +749,7 @@ const legalPage: PageSchema = {
   ],
 }
 
-export const apiculturaBrSite: SiteEntry = {
+export const meliponiculturaBrSite: SiteEntry = {
   config: {
     siteKey: SITE_KEY,
     publicName: 'Abelhas sem Ferrão',

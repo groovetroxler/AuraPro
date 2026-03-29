@@ -21,8 +21,8 @@ export default function RootPage() {
         ))}
       </ul>
       <footer className="mt-8 text-[10px] text-gray-500">
-        <Link href="/apicultura" className="hover:underline">
-          Guia de Apicultura
+        <Link href="/meliponicultura" className="hover:underline">
+          Guia de Meliponicultura
         </Link>
       </footer>
     </main>
