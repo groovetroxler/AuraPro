@@ -17,6 +17,9 @@ export const agroflorestaBrSite: SiteEntry = {
     locale: 'pt-BR',
     market: 'BR',
     status: 'active',
+    ui: {
+      showAllSitesLink: false,
+    },
     theme: {
       brandName: 'Agrofloresta BR',
       primaryColor: '#16a34a',

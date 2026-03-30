@@ -86,3 +86,8 @@
 48. **Estilização visual é responsabilidade do site, não do core.** O core entrega blocos funcionais e neutros. A personalização visual vive no pacote de cada site, controlada pelas variáveis de tema definidas no contrato. Não existe fase de "refinamento visual global" — o refinamento acontece site a site na Rotina 2.
 49. **Melhoria contínua é categoria separada.** Ajustes pontuais no framework (ex: implementar eventos de analytics nos blocos, corrigir bugs, expandir catálogo de blocos) não são fases nem rotinas. São manutenção feita quando necessário.
 50. **Fases futuras reorganizadas:** Fase 2 (OG images + domínios próprios) e Fase 3 (automação e escala) seguem a mesma disciplina de fase/rotina. Cada fase que produz processo repetível documenta sua rotina correspondente.
+
+## Decisões operacionais — Sessão 6 (2026-03-29)
+
+51. A rota raiz (`app/page.tsx`) deixa de funcionar como diretório técnico dos verticais e passa a ser uma página institucional mínima de consultoria (`Aura Pro Consulting`).
+52. Os sites do framework não devem exibir backlink para a root por padrão. O campo `ui.showAllSitesLink` deve ficar `false`, salvo quando um brief futuro pedir ligação explícita entre root e vertical.

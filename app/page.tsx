@@ -1,30 +1,79 @@
-import Link from 'next/link'
-import { getAllSiteEntries } from '../sites/registry'
+import type { Metadata } from 'next'
+
+const title = 'Aura Pro Consulting | Digital Infrastructure and Process Consulting'
+const description =
+  'Aura Pro Consulting helps small and medium-sized businesses adopt more modern digital infrastructure and clearer operational processes.'
+
+export const metadata: Metadata = {
+  title,
+  description,
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title,
+    description,
+    url: '/',
+    siteName: 'Aura Pro Consulting',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary',
+    title,
+    description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+}
 
 export default function RootPage() {
-  const sites = getAllSiteEntries()
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-6">
-      <h1 className="text-3xl font-bold text-gray-800 mb-2">Framework Multi-Site</h1>
-      <p className="text-gray-500 mb-10">Sites disponíveis neste framework:</p>
-      <ul className="space-y-4 w-full max-w-sm">
-        {sites.map((entry) => (
-          <li key={entry.config.siteKey}>
-            <Link
-              href={`/${entry.config.routePath}`}
-              className="block w-full text-center text-white font-semibold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity"
-              style={{ backgroundColor: entry.config.theme.primaryColor }}
+    <main
+      className="min-h-screen bg-white text-slate-900"
+      style={{ fontFamily: '"Bahnschrift", "Aptos", "Arial Narrow", Arial, sans-serif' }}
+    >
+      <div className="mx-auto flex min-h-screen max-w-4xl items-center justify-center px-8">
+        <section className="relative w-full max-w-2xl text-center">
+          <div
+            aria-hidden="true"
+            className="mx-auto mb-10 h-3 w-44 rounded-full bg-gradient-to-r from-slate-300 via-sky-700 to-slate-500 opacity-90 shadow-[0_0_24px_rgba(3,105,161,0.12)]"
+          />
+
+          <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-slate-400">
+            Aura Pro Consulting
+          </p>
+
+          <h1 className="mx-auto mt-5 max-w-xl text-2xl font-semibold tracking-[-0.04em] text-slate-900 sm:text-[2rem]">
+            We are a consulting company that helps small and medium-sized
+            businesses use more modern digital infrastructure and processes.
+          </h1>
+
+          <div className="mx-auto mt-7 max-w-xl space-y-4 text-sm leading-7 text-slate-600 sm:text-[15px]">
+            <p>
+              Our work is focused on practical organization, lightweight systems,
+              and digital tools that make operations clearer and easier to run.
+            </p>
+            <p>
+              We usually work with setups involving Google Workspace, Notion, and
+              simple process design adapted to the real stage of each business.
+            </p>
+          </div>
+
+          <div className="mt-10 flex items-center justify-center gap-4 text-sm text-slate-500">
+            <span className="h-px w-10 bg-slate-200" />
+            <a
+              href="mailto:mateus@aurapro-consulting.com"
+              className="text-sky-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-sky-800"
             >
-              {entry.config.publicName}
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <footer className="mt-8 text-[10px] text-gray-500">
-        <Link href="/meliponicultura" className="hover:underline">
-          Guia de Meliponicultura
-        </Link>
-      </footer>
+              mateus@aurapro-consulting.com
+            </a>
+            <span className="h-px w-10 bg-slate-200" />
+          </div>
+        </section>
+      </div>
     </main>
   )
 }

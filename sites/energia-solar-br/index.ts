@@ -17,6 +17,9 @@ export const energiaSolarBrSite: SiteEntry = {
     locale: 'pt-BR',
     market: 'BR',
     status: 'active',
+    ui: {
+      showAllSitesLink: false,
+    },
     theme: {
       brandName: 'Energia Solar BR',
       primaryColor: '#d97706',

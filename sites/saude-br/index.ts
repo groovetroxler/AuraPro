@@ -19,6 +19,9 @@ export const saudeBrSite: SiteEntry = {
     locale: 'pt-BR',
     market: 'BR',
     status: 'draft',
+    ui: {
+      showAllSitesLink: false,
+    },
     theme: {
       brandName: 'Saúde BR',
       primaryColor: '#dc2626',

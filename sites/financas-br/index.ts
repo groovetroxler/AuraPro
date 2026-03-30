@@ -18,6 +18,9 @@ export const financasBrSite: SiteEntry = {
     locale: 'pt-BR',
     market: 'BR',
     status: 'active',
+    ui: {
+      showAllSitesLink: false,
+    },
     theme: {
       brandName: 'Finanças BR',
       primaryColor: '#1d4ed8',

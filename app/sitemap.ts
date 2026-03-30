@@ -6,11 +6,19 @@
  */
 
 import type { MetadataRoute } from 'next'
+import { getBaseUrl } from '../config/env'
 import { getAllSiteEntries } from '../sites/registry'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries = getAllSiteEntries()
-  const urls: MetadataRoute.Sitemap = []
+  const rootUrl = getBaseUrl().replace(/\/$/, '')
+  const urls: MetadataRoute.Sitemap = [
+    {
+      url: rootUrl,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+  ]
 
   for (const entry of entries) {
     const { seo } = entry.config
