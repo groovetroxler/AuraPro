@@ -31,7 +31,8 @@ Atualizado pelo assistente ao final de cada ciclo relevante.
 - **ads.txt:** publicado em `/ads.txt`
 - **Script:** carregando via `AdSenseScript` por site quando publisherId e valido
 - **Modo atual:** teste visual (`NEXT_PUBLIC_ADS_TEST_MODE=true`)
-- **Pendente externo:** aprovacao da conta + substituicao de slotIds semanticos por IDs numericos reais
+- **Checagem 2026-03-30:** `https://aurapro-consulting.com/ads.txt` retornando `200` com linha correta; `https://aurapro-consulting.com/financas` contem `client=ca-pub-7072076910984234`
+- **Pendente externo:** confirmar no painel AdSense (Sites) que `aurapro-consulting.com` esta apto para exibicao + substituicao futura de slotIds semanticos por IDs numericos reais
 
 ### Google Search Console
 - **Propriedade alvo:** https://aurapro-consulting.com
@@ -103,10 +104,17 @@ Observacao:
 - Implementado: documentacao operacional atualizada para dominio canonico novo
 - Validado: checks locais de codigo e endpoints publicos criticos
 
+### Sessao 9 - 2026-03-30
+- Validado: dominio canonico em `config/env.ts` mantido como `https://aurapro-consulting.com`
+- Validado: `public/ads.txt` e publisher IDs dos sites/scaffold alinhados em `ca-pub-7072076910984234`
+- Validado: `npm run validate` sem erros bloqueantes
+- Validado em producao: `ads.txt` com `200` e script AdSense com client correto em pagina ativa
+- Pendente externo: confirmacao final do status do site em Google AdSense > Sites
+
 ## Proxima Sessao - Prioridades
-1. Confirmar no Vercel que `NEXT_PUBLIC_BASE_URL` em producao esta em `https://aurapro-consulting.com`
-2. Confirmar novo deploy de producao apos ajuste de env
-3. Validar novamente canonical/og:url/JSON-LD no HTML publicado
+1. Confirmar no Google AdSense (Sites) que `aurapro-consulting.com` esta apto para exibicao
+2. Quando a conta/site estiverem aprovados, decidir virada de `NEXT_PUBLIC_ADS_TEST_MODE` para `false`
+3. Substituir slotIds semanticos por IDs numericos reais do AdSense no ciclo de ativacao de ads reais
 4. Seguir com refinamentos de Rotina 2 nos sites ativos
 
 ## Instrucoes para novas sessoes
