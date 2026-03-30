@@ -1,168 +1,116 @@
 # PROJECT_STATUS
 
 Documento operacional persistente do projeto.
-Registra o estado de cada integração, credenciais necessárias, e contexto entre sessões.
-Atualizado pelo assistente a cada sessão de trabalho.
+Registra estado de integracoes, configuracoes de ambiente e contexto entre sessoes.
+Atualizado pelo assistente ao final de cada ciclo relevante.
 
-## Credenciais e integrações
+## Credenciais e Integracoes
 
-### Repositório Git
+### Repositorio Git
 - **URL:** https://github.com/groovetroxler/AuraPro
-- **Acesso:** token PAT com leitura e escrita
-- **Status:** ✅ operacional
+- **Status:** operacional
 
 ### Vercel
-- **Token:** ✅ fornecido
 - **Org ID:** team_ILWAbOykNwdFS6J4RJY82lJv
 - **Project ID:** prj_Es65QbtrnifMtH9M86KFJAsGl7ZQ
-- **Domínio:** aura-pro-eosin.vercel.app
-- **URL de produção:** https://aura-pro-eosin.vercel.app
-- **Status:** ✅ deploy ativo, auto-deploy via GitHub
-- **Env vars configuradas:** NEXT_PUBLIC_BASE_URL, NEXT_PUBLIC_ADS_TEST_MODE
+- **Dominio canonico:** https://aurapro-consulting.com
+- **Dominio legado (redirect 301):** https://aura-pro-eosin.vercel.app
+- **Status:** deploy ativo, auto-deploy via GitHub
+- **Governanca de redirects:** 100% no painel do Vercel (sem redirects versionados no repo)
+- **Guardrail de runtime:** em producao, `config/env.ts` usa fallback canonico `https://aurapro-consulting.com` quando `NEXT_PUBLIC_BASE_URL` nao estiver definida
 
 ### Google Analytics (GA4)
-- **financas-br:** ✅ G-DMJ9QJZ7ZW
-- **energia-solar-br:** ✅ G-LL5VYXQWV9
-- **agrofloresta-br:** ✅ G-C06N4NTLKR
-- **Status:** ✅ IDs configurados (conta nova, propriedades novas)
+- **financas-br:** G-DMJ9QJZ7ZW
+- **energia-solar-br:** G-LL5VYXQWV9
+- **agrofloresta-br:** G-C06N4NTLKR
+- **meliponicultura-br:** G-G04VC9SZ3Z
+- **Status:** IDs configurados por site
 
 ### Google AdSense
-- **Publisher ID:** ✅ ca-pub-7072076910984234
-- **ads.txt:** ✅ publicado em /ads.txt (formato: `pub-XXXX` sem prefixo `ca-`)
-- **Script:** ✅ carregando via componente AdSenseScript por site (quando publisherId válido)
-- **Status:** ⏳ aguardando aprovação do Google — ads.txt ainda não encontrado pelo AdSense
-- **Modo atual:** teste visual (NEXT_PUBLIC_ADS_TEST_MODE=true)
-- **Quando aprovado:** mudar NEXT_PUBLIC_ADS_TEST_MODE para false no Vercel
-- **SlotIds:** ⚠️ Os slotIds atuais (`financas-home-top`, `solar-home-top`, etc.) são **placeholders semânticos**. Após aprovação da conta AdSense, criar unidades de anúncio no painel e substituir por IDs numéricos reais (formato `1234567890`). A estrutura de código não precisa mudar — apenas os valores nos pacotes de site.
-
-### Afiliados
-- **Status:** estrutura pronta com placeholders
+- **Publisher ID:** ca-pub-7072076910984234
+- **ads.txt:** publicado em `/ads.txt`
+- **Script:** carregando via `AdSenseScript` por site quando publisherId e valido
+- **Modo atual:** teste visual (`NEXT_PUBLIC_ADS_TEST_MODE=true`)
+- **Pendente externo:** aprovacao da conta + substituicao de slotIds semanticos por IDs numericos reais
 
 ### Google Search Console
-- **Propriedade:** https://aura-pro-eosin.vercel.app
-- **Verificação:** ✅ tag HTML implementada
-- **Sitemap:** ✅ submetido (/sitemap.xml)
-- **Status:** ✅ verificado e operacional
+- **Propriedade alvo:** https://aurapro-consulting.com
+- **Sitemap:** `/sitemap.xml`
+- **Status:** ativo
 
-## Variáveis de ambiente no Vercel
+## Variaveis de Ambiente no Vercel
 
-| Variável | Status | Valor |
-|---|---|---|
-| `NEXT_PUBLIC_BASE_URL` | ✅ configurada | `https://aura-pro-eosin.vercel.app` |
-| `NEXT_PUBLIC_ADS_TEST_MODE` | ✅ configurada | `true` |
+| Variavel | Valor esperado em producao |
+|---|---|
+| `NEXT_PUBLIC_BASE_URL` | `https://aurapro-consulting.com` |
+| `NEXT_PUBLIC_ADS_TEST_MODE` | `true` (trocar para `false` quando AdSense estiver aprovado) |
 
-**Nota:** GA4 Measurement IDs e AdSense Publisher ID são hardcoded no config de cada site (Decisões #31 e #32). Não usam variáveis de ambiente. Os IDs ativos são:
-- financas-br: `G-DMJ9QJZ7ZW`
-- energia-solar-br: `G-LL5VYXQWV9`
-- agrofloresta-br: `G-C06N4NTLKR`
-- AdSense: `ca-pub-7072076910984234` (todos os sites)
+Observacao:
+- IDs de GA4 e Publisher ID do AdSense permanecem hardcoded no config de cada site, por decisao arquitetural do projeto.
 
-## Validação de produção — Sessão 2
+## Validacao de Producao
 
-### URLs públicas (todas validadas ✅)
-- ✅ https://aura-pro-eosin.vercel.app/ (root)
-- ✅ https://aura-pro-eosin.vercel.app/financas
-- ✅ https://aura-pro-eosin.vercel.app/financas/financiamento
-- ✅ https://aura-pro-eosin.vercel.app/financas/investimentos
-- ✅ https://aura-pro-eosin.vercel.app/energia-solar
-- ✅ https://aura-pro-eosin.vercel.app/energia-solar/custo-instalacao
-- ✅ https://aura-pro-eosin.vercel.app/energia-solar/financiamento-solar
-- ✅ https://aura-pro-eosin.vercel.app/agrofloresta
-- ✅ https://aura-pro-eosin.vercel.app/agrofloresta/como-implantar
-- ✅ https://aura-pro-eosin.vercel.app/agrofloresta/especies
+### URLs publicas validas
+- `https://aurapro-consulting.com/`
+- `https://aurapro-consulting.com/financas`
+- `https://aurapro-consulting.com/financas/investimentos`
+- `https://aurapro-consulting.com/energia-solar`
+- `https://aurapro-consulting.com/agrofloresta`
+- `https://aurapro-consulting.com/meliponicultura`
+- `https://aurapro-consulting.com/meliponicultura/legalizacao-meliponicultura`
 
-### SEO
-- ✅ Títulos corretos (sem duplicação de template)
-- ✅ defaultTitleTemplate funcionando por site
-- ✅ sitemap.xml acessível com 9 URLs e baseUrl correta
-- ✅ robots.txt acessível com referência ao sitemap
-- ✅ canonicals usando baseUrl correta
-- ✅ JSON-LD para artigos e homes
+### SEO tecnico
+- `https://aurapro-consulting.com/robots.txt` acessivel
+- `https://aurapro-consulting.com/sitemap.xml` acessivel
+- Canonicals, `og:url` e JSON-LD devem usar dominio canonico `aurapro-consulting.com`
 
-### Monetização
-- ✅ Slots renderizando em modo teste visual em produção
+### Redirects
+- Dominio legado redireciona para dominio canonico com `301`
+- Path e query devem ser preservados no redirect
+- Redirect legado de rota `/apicultura` deve ser mantido no Vercel para `/meliponicultura`
 
-### Analytics
-- ✅ GA4 configurado com IDs reais para os 3 sites
-- ⏳ Validar pageviews após redeploy
+## Historico de Sessoes
 
-## Histórico de sessões
+### Sessao 1 - 2026-03-27
+- Estrutura base do framework criada e validada
 
-### Sessão 1 — 2026-03-27
-- Estrutura-base completa criada
-- 47 arquivos commitados, build limpo
-
-### Sessão 2 — 2026-03-27
-- Diagnóstico: 9 problemas identificados e corrigidos
+### Sessao 2 - 2026-03-27
+- Diagnostico e correcoes iniciais
 - Primeiro deploy no Vercel
-- 12 URLs públicas validadas
-- Title template fix (sem duplicação)
-- baseUrl centralizada via config/site-url.ts
-- Env vars configuradas no Vercel
-- Google Search Console: verificado + sitemap submetido
-- Google Analytics: 3 propriedades configuradas, pageviews confirmados
-- Google AdSense: publisher ID configurado, ads.txt criado, aguardando aprovação
-- GA4 e AdSense simplificados (hardcoded no código, sem env vars)
-- Decisões 21-33 registradas
-- CHECKLIST Fase 1A: 100% concluído
 
-### Sessão 3 — 2026-03-27
-- Diagnóstico completo pré-Fase 2: documentação, código, build, TypeScript, ESLint
-- 8 problemas identificados, todos corrigidos:
-  - AdSense script duplicado removido do root layout (mantido apenas AdSenseScript por site)
-  - PROJECT_STATUS corrigido (env vars GA4 fantasmas removidas)
-  - Mensagem de erro do validador publisherId corrigida (pub-XXXX → ca-pub-XXXX)
-  - Validação de publisherId alinhada com SYSTEM_CONTRACTS (independente de ads.enabled)
-  - Duplicação de resolveBaseUrl eliminada (site-url.ts agora usa env.ts)
-  - ESLint corrigido (Link do Next.js no layout de site)
-  - .gitignore corrigido (_credentials.env em vez de .credentials.env)
-  - Prompt-Base.txt removido do repo e adicionado ao .gitignore
-- Decisões 34-38 registradas
+### Sessao 3 - 2026-03-27
+- Diagnostico pre-Fase 2 e correcoes de coerencia tecnica
 
-### Sessão 4 — 2026-03-28
-- Análise de relatório diagnóstico externo (auditoria pré-Fase 2)
-- 3 bloqueadores analisados, 2 corrigidos, 1 documentado:
-  - `metadataBase` no root layout agora usa `getBaseUrl()` (decisão #39 — fonte única respeitada)
-  - DetailsBlock: hardcode `text-blue-600` substituído por `var(--color-primary)` (decisão #41)
-  - SlotIds documentados como placeholders semânticos (decisão #40 — dependência externa do AdSense)
-- Scripts `typecheck` e `validate` adicionados ao package.json (decisão #42)
-- Catálogo de blocos expandido de 12 para 25 tipos (decisão #43):
-  - Novos: image, callout, divider, breadcrumb, quote, prosCons, stats, tableOfContents, authorBox, testimonial, cardsGrid, logoStrip, affiliateCard
-  - Todos com contrato, validação e renderer implementados
-  - Bloco `affiliateCard` dedicado para monetização de afiliados (decisão #44)
-- Diagnóstico completo de coerência documentação ↔ código:
-  - 25 blocos: contracts.ts ↔ validator ↔ renderer ↔ SYSTEM_CONTRACTS.md — todos alinhados
-  - baseUrl: fonte única respeitada em todos os pontos (env.ts → site-url.ts → layout → robots → sitemap → sites)
-  - GA4: sem hardcodes paralelos, derivado do registry
-  - Theming: var(--color-primary) sem exceções
-  - Variáveis de ambiente: 2 no Vercel, 2 no código, 2 no .env.example — alinhadas
-- ROADMAP: etapas 5, 6 e 10 atualizadas com status preciso
-- CHECKLIST_FASE1: histórico de sessões 3 e 4 adicionado, pendentes atualizados
-- SYSTEM_CONTRACTS: catálogo de blocos e regras de composição atualizados
-- Decisões 39-44 registradas
+### Sessao 4 - 2026-03-28
+- Expansao de blocos para 25 tipos
+- Hardening de contratos, validacao e documentacao
 
-### Sessão 5 — 2026-03-28
-- Discussão estrutural: distinção entre fase (desenvolvimento, feito uma vez) e rotina (execução repetida)
-- Fase 1C criada no roadmap: regras e instruções de conteúdo e estilização
-- Expansão do contrato de tema (SiteTheme) planejada para Fase 1C
-- Estilização visual definida como responsabilidade do site, não do core
-- Roadmap reestruturado com disciplina fase/rotina
-- Fases futuras reorganizadas: Fase 2 (OG images + domínios), Fase 3 (automação e escala)
-- Melhorias contínuas definidas como categoria separada
-- Decisões 45-50 registradas
-- Documentação atualizada: ROADMAP, PROJECT_SCOPE, ARCHITECTURE, DECISIONS, CHECKLIST
+### Sessao 5 - 2026-03-28
+- Formalizacao de fase vs rotina
+- Planejamento da Fase 1C
 
-### Próxima sessão — o que fazer
-1. Implementar Fase 1B — scaffold de criação de novo site (ver `SITE_CREATION.md`)
-2. Testar Rotina 1 com criação de um site real
-3. Verificar status de aprovação do AdSense
-4. Se aprovado: criar unidades de anúncio, substituir slotIds, ativar modo real
-5. Após Fase 1B concluída: avançar para Fase 1C
+### Sessao 6 - 2026-03-29
+- Refinamento da root institucional
+- Governanca de navegacao entre root e verticais
 
-## Instruções para o assistente em novas sessões
+### Sessao 7 - 2026-03-30
+- Diagnostico completo pos-mudancas recentes
+- Identificado drift de dominio canonicamente (old host em canonical/og/sitemap)
+- Plano definido para alinhar dominio canonico novo
 
-1. Ler credenciais de /mnt/project/_credentials.env
-2. Clonar o repo e ler PROJECT_STATUS.md
-3. Este documento é o contexto operacional
-4. Atualizar ao final de cada sessão
-5. Commitar e fazer push antes de encerrar
+### Sessao 8 - 2026-03-30
+- Implementado: redirects removidos do repo (fonte unica no Vercel)
+- Implementado: documentacao operacional atualizada para dominio canonico novo
+- Validado: checks locais de codigo e endpoints publicos criticos
+
+## Proxima Sessao - Prioridades
+1. Confirmar no Vercel que `NEXT_PUBLIC_BASE_URL` em producao esta em `https://aurapro-consulting.com`
+2. Confirmar novo deploy de producao apos ajuste de env
+3. Validar novamente canonical/og:url/JSON-LD no HTML publicado
+4. Seguir com refinamentos de Rotina 2 nos sites ativos
+
+## Instrucoes para novas sessoes
+1. Ler este arquivo antes de iniciar alteracoes
+2. Validar build local com `npm run validate`
+3. Para redirects, usar painel do Vercel como fonte unica (nao versionar em codigo)
+4. Atualizar este documento ao final do ciclo
