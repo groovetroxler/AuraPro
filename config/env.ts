@@ -18,13 +18,13 @@ function resolveMode(): RuntimeEnvMode {
 function resolveBaseUrl(mode: RuntimeEnvMode): string {
   const explicit = process.env.NEXT_PUBLIC_BASE_URL?.replace(/\/$/, '')
 
-  // Explicit env var always wins.
-  if (explicit) return explicit
-
   // Production fallback is pinned to canonical domain.
   if (mode === 'production') {
     return CANONICAL_PRODUCTION_BASE_URL
   }
+
+  // Explicit env var wins outside production.
+  if (explicit) return explicit
 
   // Preview fallback on Vercel URL.
   if (process.env.VERCEL_URL) {
@@ -46,4 +46,11 @@ export function getRuntimeEnv(): RuntimeEnv {
  */
 export function getBaseUrl(): string {
   return getRuntimeEnv().baseUrl
+}
+
+/**
+ * Canonical domain used for production SEO surfaces.
+ */
+export function getCanonicalBaseUrl(): string {
+  return CANONICAL_PRODUCTION_BASE_URL
 }

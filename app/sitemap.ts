@@ -6,12 +6,12 @@
  */
 
 import type { MetadataRoute } from 'next'
-import { getBaseUrl } from '../config/env'
+import { getCanonicalBaseUrl } from '../config/env'
 import { getAllSiteEntries } from '../sites/registry'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries = getAllSiteEntries()
-  const rootUrl = getBaseUrl().replace(/\/$/, '')
+  const rootUrl = getCanonicalBaseUrl().replace(/\/$/, '')
   const urls: MetadataRoute.Sitemap = [
     {
       url: rootUrl,

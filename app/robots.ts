@@ -1,8 +1,8 @@
 import type { MetadataRoute } from 'next'
-import { getBaseUrl } from '../config/env'
+import { getCanonicalBaseUrl } from '../config/env'
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = getBaseUrl()
+  const baseUrl = getCanonicalBaseUrl()
   return {
     rules: {
       userAgent: '*',
