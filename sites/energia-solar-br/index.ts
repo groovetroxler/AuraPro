@@ -393,7 +393,158 @@ const pageCusto: PageSchema = {
   id: 'solar-custo', siteKey: SITE_KEY, type: 'article', slug: SLUG_CUSTO,
   title: 'Quanto custa e quanto você economiza', status: 'published',
   meta: { title: 'Quanto custa instalar energia solar e quanto você realmente economiza', description: 'Valores reais de mercado em 2026, simulação por faixa de consumo, payback, comparação com investimentos e impacto do Fio B.' },
-  blocks: [ breadcrumb('Quanto custa', SLUG_CUSTO), { type: 'articleContent', html: '<h2>Quanto custa e quanto você economiza</h2><p>Conteúdo completo em desenvolvimento.</p>', publishedAt: PUBLISHED_AT }, allGuideLinks(SLUG_CUSTO) ],
+  blocks: [
+    breadcrumb('Quanto custa', SLUG_CUSTO),
+    {
+      type: 'articleContent',
+      html: `
+<p>A pergunta "quanto custa?" é a mais comum — e a mais mal respondida na internet. A maioria dos sites dá faixas genéricas ou valores otimistas para atrair leads. Aqui vamos ser honestos: os números reais de mercado em 2026, com as regras atuais da <a href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2022/lei/l14300.htm" target="_blank" rel="noopener">Lei 14.300</a>, e uma comparação justa com outros investimentos.</p>
+
+<h2>Quanto custa um sistema solar residencial em 2026</h2>
+
+<p>O custo de um sistema fotovoltaico residencial on-grid depende basicamente de dois fatores: o tamanho do sistema (medido em kWp) e a qualidade dos equipamentos escolhidos. O tamanho, por sua vez, depende do seu consumo mensal de energia.</p>
+
+<p>Em março de 2026, o custo médio por watt-pico instalado no Brasil está em torno de R$ 2,30/Wp para sistemas residenciais, incluindo equipamentos, mão de obra, projeto e homologação. Esse valor vem caindo ano a ano — em 2020 era cerca de R$ 4,50/Wp.</p>
+      `,
+      publishedAt: PUBLISHED_AT,
+    },
+    {
+      type: 'comparisonTable',
+      headers: ['Consumo mensal', 'Sistema necessário', 'Custo médio instalado', 'Nº de painéis (550Wp)'],
+      rows: [
+        { label: 'Baixo', values: ['200 kWh/mês', '2,0 kWp', 'R$ 9.000 – 12.000', '4'] },
+        { label: 'Médio', values: ['350 kWh/mês', '3,5 kWp', 'R$ 14.000 – 18.000', '6-7'] },
+        { label: 'Médio-alto', values: ['500 kWh/mês', '5,0 kWp', 'R$ 19.000 – 24.000', '9-10'] },
+        { label: 'Alto', values: ['800 kWh/mês', '8,0 kWp', 'R$ 28.000 – 36.000', '14-15'] },
+        { label: 'Muito alto', values: ['1.200 kWh/mês', '12,0 kWp', 'R$ 40.000 – 52.000', '22'] },
+      ],
+    },
+    {
+      type: 'articleContent',
+      html: `
+<p>Esses valores incluem todos os componentes (painéis, inversor, string box, estrutura, cabeamento) e os serviços (projeto elétrico, instalação, homologação na concessionária). Não incluem o medidor bidirecional, que é fornecido pela concessionária.</p>
+
+<p>A variação dentro de cada faixa depende principalmente da marca dos equipamentos. Painéis de primeira linha (Canadian Solar, JA Solar, Trina Solar, LONGi) com inversor de qualidade (Fronius, SMA, Growatt, Goodwe) ficam na faixa superior. Equipamentos de marcas menos conhecidas ou sem representação no Brasil ficam na faixa inferior — mas atenção: economia no equipamento pode significar perda de eficiência, garantia mais curta e dificuldade de assistência técnica.</p>
+
+<h2>Quanto você realmente economiza por mês</h2>
+
+<p>A economia mensal depende de três variáveis: seu consumo, a tarifa da sua concessionária e o tamanho do sistema instalado. Com a <a href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2022/lei/l14300.htm" target="_blank" rel="noopener">Lei 14.300</a> e a cobrança progressiva do Fio B (em 60% em 2026), a economia real para novos sistemas fica entre 70% e 82% da conta — não os "até 95%" que muitos sites ainda prometem.</p>
+
+<p>Vamos a exemplos concretos para a região Sudeste, com tarifa média de R$ 0,85/kWh:</p>
+      `,
+      publishedAt: PUBLISHED_AT,
+    },
+    {
+      type: 'comparisonTable',
+      headers: ['Consumo', 'Conta sem solar', 'Conta com solar', 'Economia mensal'],
+      rows: [
+        { label: '200 kWh', values: ['R$ 220', 'R$ 60-70', 'R$ 150-160'] },
+        { label: '350 kWh', values: ['R$ 380', 'R$ 80-100', 'R$ 280-300'] },
+        { label: '500 kWh', values: ['R$ 530', 'R$ 100-130', 'R$ 400-430'] },
+        { label: '800 kWh', values: ['R$ 830', 'R$ 140-180', 'R$ 650-690'] },
+      ],
+    },
+    {
+      type: 'callout',
+      content: 'Mesmo com solar, você continua pagando a taxa mínima da concessionária (custo de disponibilidade), que varia de R$ 50 a R$ 100/mês dependendo da categoria (monofásico, bifásico, trifásico). Esse valor não é eliminável.',
+      calloutType: 'warning',
+    },
+    {
+      type: 'adSlot',
+      slotId: 'solar-custo-mid',
+      format: 'responsive',
+    },
+    {
+      type: 'articleContent',
+      html: `
+<h2>Payback: em quanto tempo o investimento se paga</h2>
+
+<p>O payback é o cálculo mais importante da decisão. Ele mostra quantos meses de economia são necessários para recuperar o valor investido.</p>
+
+<p>A conta é simples: <strong>payback = custo do sistema ÷ economia mensal</strong>.</p>
+
+<p>Para um sistema de 5 kWp (consumo de ~500 kWh/mês) no Sudeste:</p>
+
+<ul>
+<li>Custo: R$ 22.000</li>
+<li>Economia mensal: ~R$ 415</li>
+<li>Payback: ~53 meses (4,4 anos)</li>
+</ul>
+
+<p>Após o payback, toda a economia é lucro líquido. Considerando que o sistema dura 25+ anos e o payback é de 4-6 anos, você tem 19-21 anos de energia praticamente gratuita.</p>
+
+<p>O payback varia conforme a região. No Nordeste, a irradiação solar mais alta e as tarifas geralmente mais altas resultam em payback mais curto (3-4 anos). No Sul, a irradiação menor e os dias mais curtos no inverno estendem o payback para 5-7 anos.</p>
+
+<h2>Energia solar como investimento: comparação honesta</h2>
+
+<p>Uma forma útil de avaliar a energia solar é compará-la com outros investimentos de mesmo valor. Considere R$ 22.000 investidos:</p>
+      `,
+      publishedAt: PUBLISHED_AT,
+    },
+    {
+      type: 'comparisonTable',
+      headers: ['Investimento', 'Rendimento anual', 'Retorno em 25 anos', 'Risco'],
+      rows: [
+        { label: 'Energia solar (5 kWp)', values: ['~23% a.a. (economia)', '~R$ 125.000', 'Baixo (equipamento no telhado)'] },
+        { label: 'Poupança', values: ['~7% a.a.', '~R$ 52.000', 'Baixo'] },
+        { label: 'CDB 100% CDI', values: ['~10% a.a. (bruto)', '~R$ 78.000', 'Baixo'] },
+        { label: 'Tesouro IPCA+', values: ['~6% a.a. + inflação', '~R$ 85.000', 'Baixo-médio'] },
+      ],
+    },
+    {
+      type: 'articleContent',
+      html: `
+<p>A comparação revela por que energia solar é um dos melhores investimentos disponíveis para pessoa física no Brasil: o retorno anualizado supera qualquer aplicação de renda fixa, com risco comparável (o equipamento está no seu telhado, não num banco). A principal diferença é que o "rendimento" vem na forma de economia, não de dinheiro na conta.</p>
+
+<p>Um ponto que os críticos levantam é válido: o dinheiro investido em solar fica "preso" (ilíquido) — você não pode resgatar. Mas considerando que a economia começa no primeiro mês e os painéis duram 25+ anos, a falta de liquidez é compensada pelo retorno consistente.</p>
+
+<h2>O impacto do Fio B na sua economia</h2>
+
+<p>A <a href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2022/lei/l14300.htm" target="_blank" rel="noopener">Lei 14.300/2022</a> criou uma cobrança gradual chamada Fio B, que incide sobre a energia injetada na rede e depois recuperada como crédito. A transição é assim:</p>
+
+<ul>
+<li>2023: 15% do Fio B cobrado</li>
+<li>2024: 30%</li>
+<li>2025: 45%</li>
+<li><strong>2026: 60%</strong></li>
+<li>2027: 75%</li>
+<li>2028: 90%</li>
+<li>2029 em diante: 100%</li>
+</ul>
+
+<p>Na prática, para quem instala em 2026, o Fio B representa uma redução de 8-15% na economia em comparação com quem instalou antes de 2023. Mas a economia ainda é muito expressiva — entre 70% e 82% da conta. O ponto importante: quem instala agora garante a progressão a partir de 60%. Quem esperar para 2027, começa em 75%.</p>
+
+<p>Outro detalhe: o Fio B incide apenas sobre a energia que passa pela rede (injetada e depois compensada). A energia que você consome diretamente dos painéis (autoconsumo) não paga Fio B. Por isso, sistemas bem dimensionados que maximizam o autoconsumo são mais eficientes financeiramente do que sistemas superdimensionados que injetam muito na rede.</p>
+
+<h2>Financiar ou pagar à vista?</h2>
+
+<p>Se você tem o capital disponível, pagar à vista é sempre melhor — o payback é mais curto e não há juros. Mas a realidade é que muita gente financia, e existem linhas de crédito específicas para energia solar com taxas menores que o crédito pessoal.</p>
+
+<p>A lógica do financiamento solar é interessante: se a parcela mensal do financiamento for menor que a economia mensal na conta de luz, o sistema se paga sozinho desde o primeiro mês. Em muitos casos isso acontece, especialmente com financiamentos de 60-84 meses.</p>
+
+<p>Os detalhes sobre linhas de crédito disponíveis estão em <a href="${pageHref(SLUG_LEGISLACAO)}">Legislação, Fio B e financiamento</a>.</p>
+
+<h2>Erros de dimensionamento que custam caro</h2>
+
+<p><strong>Subdimensionar:</strong> instalar um sistema menor do que o necessário para "economizar" no investimento. Resultado: você continua pagando uma conta de luz alta e o payback se alonga.</p>
+
+<p><strong>Superdimensionar:</strong> instalar um sistema maior do que o necessário. Resultado: você gera créditos que não consegue usar, e com o Fio B progressivo, cada kWh injetado na rede rende menos do que o kWh consumido direto. Dinheiro jogado fora.</p>
+
+<p>O dimensionamento correto parte do seu consumo médio dos últimos 12 meses (não do mês de pico) e considera a irradiação da sua região. Uma boa empresa entrega essa análise antes do orçamento — se alguém te propõe um sistema sem olhar suas últimas 12 contas, desconfie.</p>
+
+<h2>Próximo passo: escolher os equipamentos certos</h2>
+
+<p>Agora que você sabe quanto custa e quanto economiza, o próximo passo é entender o que diferencia um equipamento bom de um ruim — e por que a diferença de preço nem sempre significa a diferença que parece. Veja em <a href="${pageHref(SLUG_EQUIPAMENTOS)}">Como escolher painel solar e inversor</a>.</p>
+      `,
+      publishedAt: PUBLISHED_AT,
+    },
+    allGuideLinks(SLUG_CUSTO),
+    {
+      type: 'adSlot',
+      slotId: 'solar-custo-bottom',
+      format: 'responsive',
+    },
+  ],
 }
 
 const pageEquipamentos: PageSchema = {
