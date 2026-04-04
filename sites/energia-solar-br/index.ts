@@ -215,7 +215,178 @@ const pageComoFunciona: PageSchema = {
   id: 'solar-como-funciona', siteKey: SITE_KEY, type: 'article', slug: SLUG_COMO_FUNCIONA,
   title: 'Como funciona a energia solar residencial', status: 'published',
   meta: { title: 'Como funciona a energia solar residencial: do painel à conta de luz', description: 'Entenda como painéis solares geram energia, o papel do inversor, como funciona o medidor bidirecional e o sistema de créditos com a concessionária.' },
-  blocks: [ breadcrumb('Como funciona', SLUG_COMO_FUNCIONA), { type: 'articleContent', html: '<h2>Como funciona a energia solar residencial</h2><p>Conteúdo completo em desenvolvimento.</p>', publishedAt: PUBLISHED_AT }, allGuideLinks(SLUG_COMO_FUNCIONA) ],
+  blocks: [
+    breadcrumb('Como funciona', SLUG_COMO_FUNCIONA),
+    {
+      type: 'image',
+      src: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1200&q=80',
+      alt: 'Painéis solares fotovoltaicos de perto sob luz solar intensa',
+    },
+    {
+      type: 'articleContent',
+      html: `
+<p>Antes de pedir orçamento ou conversar com qualquer instalador, vale investir 10 minutos para entender como um sistema solar residencial realmente funciona. Não é complicado — e esse conhecimento básico evita que você dependa exclusivamente do vendedor para tomar decisões.</p>
+
+<p>A lógica é simples: painéis no telhado captam a luz do sol e a transformam em eletricidade. Um aparelho chamado inversor converte essa eletricidade para o formato que sua casa usa. E um medidor especial registra quanta energia você consumiu da rede e quanta injetou nela. Fim.</p>
+
+<p>O que torna o assunto mais interessante são os detalhes — porque cada um deles afeta diretamente o quanto você vai economizar.</p>
+
+<h2>O que são painéis solares e como geram eletricidade</h2>
+
+<p>Os painéis solares fotovoltaicos são compostos por células feitas de silício — o mesmo material base dos chips de computador. Quando a luz do sol atinge essas células, ela provoca um movimento de elétrons que gera corrente elétrica. Esse fenômeno se chama efeito fotovoltaico, e foi descoberto em 1839 pelo físico francês Edmond Becquerel.</p>
+
+<p>Na prática, cada painel é formado por 60 ou 72 células fotovoltaicas conectadas em série. Um painel residencial típico em 2026 tem potência entre 400 e 600 watts-pico (Wp) e mede aproximadamente 1,7 x 1,1 metros. A eficiência dos painéis comerciais atuais fica entre 20% e 22% — ou seja, eles convertem cerca de um quinto da energia solar que recebem em eletricidade.</p>
+
+<p>Um detalhe importante: os painéis geram corrente contínua (CC), que é o mesmo tipo de corrente de uma pilha ou bateria. Mas os aparelhos da sua casa funcionam com corrente alternada (CA). Por isso existe o inversor.</p>
+
+<h2>O inversor solar: o cérebro do sistema</h2>
+
+<p>O inversor é o equipamento que converte a corrente contínua (CC) gerada pelos painéis em corrente alternada (CA), compatível com as tomadas da sua casa. Mas ele faz mais do que isso:</p>
+
+<ul>
+<li><strong>Otimiza a geração:</strong> o inversor busca constantemente o ponto de máxima potência dos painéis (MPPT), ajustando tensão e corrente para extrair o máximo de energia em cada momento.</li>
+<li><strong>Monitora o sistema:</strong> inversores modernos se conectam ao Wi-Fi e permitem que você acompanhe a geração de energia em tempo real pelo celular.</li>
+<li><strong>Protege a rede:</strong> em caso de queda de energia da concessionária, o inversor on-grid desliga automaticamente o sistema. Isso protege os técnicos que estão trabalhando na rede.</li>
+</ul>
+
+<p>Existem dois tipos principais de inversor para sistemas residenciais: o <strong>inversor string</strong> (um único inversor central para todos os painéis) e os <strong>microinversores</strong> (um pequeno inversor por painel ou par de painéis). O string é mais comum e mais barato. Os microinversores são melhores para telhados com sombreamento parcial, porque o problema em um painel não afeta os outros.</p>
+
+<h2>O medidor bidirecional: como a concessionária conta o saldo</h2>
+
+<p>Quando você instala um sistema on-grid (conectado à rede), a concessionária substitui seu medidor de energia antigo por um <strong>medidor bidirecional</strong>. Esse equipamento mede duas coisas:</p>
+
+<ul>
+<li><strong>Quanto você consumiu da rede:</strong> a energia que veio da concessionária para sua casa.</li>
+<li><strong>Quanto você injetou na rede:</strong> a energia excedente que seus painéis geraram e foi enviada de volta para a rede.</li>
+</ul>
+
+<p>A diferença entre essas duas medições é o que define o valor da sua conta. Se você injetou mais do que consumiu, os créditos ficam armazenados por até 60 meses e podem ser usados nos meses seguintes — ou até em outros imóveis no mesmo CPF, dentro da mesma concessionária.</p>
+
+<p>Esse sistema se chama <strong>compensação de energia</strong> (ou net metering), regulamentado pela <a href="https://www.aneel.gov.br/" target="_blank" rel="noopener">ANEEL</a> através da Resolução Normativa 1.000/2021.</p>
+
+<h2>On-grid, off-grid e híbrido: qual é o seu caso</h2>
+
+<p>A grande maioria das instalações residenciais no Brasil é <strong>on-grid</strong> (conectada à rede). E faz sentido: é o modelo mais barato, mais simples e que oferece o melhor retorno financeiro. Mas vale conhecer as três opções:</p>
+
+<h3>Sistema on-grid (conectado à rede)</h3>
+
+<p>É o mais comum. Seus painéis geram energia, o que você não usa vai para a rede, e você recebe créditos. À noite ou em dias nublados, você consome da rede normalmente. Não tem bateria — a rede funciona como seu "armazenamento".</p>
+
+<p><strong>Vantagem:</strong> custo mais baixo, melhor payback, manutenção mínima.</p>
+<p><strong>Limitação:</strong> se cair a luz da rua, seu sistema também para. Isso é uma proteção de segurança (anti-ilhamento), não um defeito.</p>
+
+<h3>Sistema off-grid (isolado)</h3>
+
+<p>Não tem conexão com a rede. Toda a energia gerada é armazenada em baterias e consumida pelo imóvel. É a solução para propriedades rurais ou locais sem acesso à rede elétrica.</p>
+
+<p><strong>Vantagem:</strong> independência total da concessionária.</p>
+<p><strong>Limitação:</strong> custo significativamente maior (as baterias podem custar mais que os próprios painéis), manutenção mais frequente e risco de ficar sem energia se o banco de baterias não for bem dimensionado.</p>
+
+<h3>Sistema híbrido</h3>
+
+<p>Combina on-grid com baterias. No dia a dia funciona como on-grid, mas quando cai a luz, as baterias assumem cargas prioritárias (geladeira, luzes, internet). É a solução mais cara, mas faz sentido para quem tem equipamentos que não podem parar.</p>
+
+<p><strong>Vantagem:</strong> economia do on-grid + segurança do backup.</p>
+<p><strong>Limitação:</strong> o custo adicional das baterias (R$ 30-40 mil a mais para um sistema residencial típico) pode não se justificar em regiões com rede estável.</p>
+      `,
+      publishedAt: PUBLISHED_AT,
+    },
+    {
+      type: 'comparisonTable',
+      headers: ['Característica', 'On-grid', 'Off-grid', 'Híbrido'],
+      rows: [
+        { label: 'Conexão com a rede', values: ['Sim', 'Não', 'Sim'] },
+        { label: 'Baterias', values: ['Não', 'Sim (obrigatório)', 'Sim (backup)'] },
+        { label: 'Custo relativo', values: ['Menor', 'Alto', 'Mais alto'] },
+        { label: 'Payback', values: ['4-6 anos', '8-12 anos', '7-10 anos'] },
+        { label: 'Funciona na queda de luz', values: ['Não', 'Sim', 'Sim (cargas prioritárias)'] },
+        { label: 'Indicado para', values: ['Área urbana', 'Área remota', 'Quem precisa de backup'] },
+      ],
+    },
+    {
+      type: 'adSlot',
+      slotId: 'solar-como-funciona-mid',
+      format: 'responsive',
+    },
+    {
+      type: 'articleContent',
+      html: `
+<h2>O que acontece de noite e em dias nublados</h2>
+
+<p>Essa é a pergunta mais frequente — e a resposta é simples:</p>
+
+<p><strong>De noite:</strong> os painéis não geram energia. Sua casa consome da rede normalmente, usando os créditos que acumulou durante o dia. Por isso é que o sistema on-grid funciona tão bem: a rede atua como sua bateria virtual, sem custo de equipamento.</p>
+
+<p><strong>Em dias nublados:</strong> os painéis continuam gerando, mas com eficiência reduzida — entre 10% e 30% da capacidade nominal, dependendo da densidade das nuvens. Painéis modernos são mais sensíveis à luz difusa do que as gerações anteriores, mas não espere produção cheia num dia cinzento.</p>
+
+<p><strong>Em dias de chuva:</strong> geração mínima, mas ainda existente. O sistema compensa nos dias bons — por isso o dimensionamento leva em conta a média anual de irradiação da sua região, não o pior dia do ano.</p>
+
+<h2>Autoconsumo vs. injeção na rede: por que isso importa</h2>
+
+<p>Quando seus painéis geram energia, ela é consumida primeiro pela sua casa. Se naquele momento seus aparelhos estão usando menos do que os painéis produzem, o excedente vai para a rede e vira crédito.</p>
+
+<p>Essa distinção entre <strong>autoconsumo</strong> (energia usada direto) e <strong>injeção</strong> (energia enviada para a rede) ficou mais importante depois da <a href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2022/lei/l14300.htm" target="_blank" rel="noopener">Lei 14.300/2022</a>. Isso porque a cobrança do Fio B incide sobre a energia que passa pela rede (injetada e depois recuperada), mas não sobre o autoconsumo. Em termos práticos: quanto mais energia você consumir no momento em que ela é gerada, melhor.</p>
+
+<p>Dicas para aumentar o autoconsumo:</p>
+
+<ul>
+<li>Programar a máquina de lavar, lava-louças e bomba da piscina para o período diurno</li>
+<li>Carregar veículo elétrico durante o dia, se aplicável</li>
+<li>Usar aquecedor de água elétrico com timer para o meio do dia</li>
+<li>Manter o ar-condicionado ligado de tarde (quando a geração é alta) em vez de à noite</li>
+</ul>
+
+<h2>O que afeta a eficiência do seu sistema</h2>
+
+<p>Nem todo telhado produz a mesma quantidade de energia. Os fatores que mais influenciam são:</p>
+
+<p><strong>Orientação:</strong> no Brasil (hemisfério sul), o ideal é que os painéis apontem para o Norte. Painéis voltados para Leste ou Oeste ainda funcionam, mas com geração 10-15% menor. Voltados para o Sul, a perda pode chegar a 25%.</p>
+
+<p><strong>Inclinação:</strong> o ângulo ideal varia conforme a latitude da sua cidade. Em São Paulo, fica em torno de 23°. Em Fortaleza, cerca de 4°. A maioria dos telhados residenciais tem inclinação entre 15° e 25°, o que funciona bem na maior parte do Brasil.</p>
+
+<p><strong>Sombreamento:</strong> é o fator que mais gente ignora e que mais estrago faz. Uma sombra parcial sobre os painéis — causada por árvores, antenas, caixas d'água ou prédios vizinhos — pode reduzir a geração em até 50%. Em sistemas com inversor string, a sombra em um painel afeta toda a série. Com microinversores, o impacto fica localizado.</p>
+
+<p><strong>Temperatura:</strong> parece contraintuitivo, mas painéis solares produzem menos em temperaturas muito altas. Para cada grau acima de 25°C, a eficiência cai cerca de 0,4%. Regiões muito quentes do Brasil (como o sertão nordestino) têm muita irradiação, mas também sofrem com essa perda térmica. Telhados com boa ventilação por baixo dos painéis ajudam a mitigar isso.</p>
+
+<p><strong>Limpeza:</strong> poeira, folhas e fezes de pássaros acumulados sobre os painéis reduzem a geração gradualmente. Uma limpeza a cada 6-12 meses com água e pano macio é suficiente na maioria dos casos.</p>
+
+<h2>Componentes adicionais do sistema</h2>
+
+<p>Além dos painéis e do inversor, um sistema fotovoltaico inclui:</p>
+
+<ul>
+<li><strong>String box (caixa de junção):</strong> quadro de proteção elétrica que fica entre os painéis e o inversor. Contém fusíveis, disjuntores e DPS (dispositivo de proteção contra surtos) para proteger o sistema de descargas atmosféricas e sobrecargas.</li>
+<li><strong>Estrutura de fixação:</strong> suportes de alumínio que prendem os painéis ao telhado. O tipo de estrutura depende do material do telhado (cerâmica, metálico, fibrocimento, laje).</li>
+<li><strong>Cabeamento:</strong> cabos solares específicos (geralmente 4mm² ou 6mm²) que conectam os painéis ao inversor. São cabos resistentes a UV e intempéries.</li>
+<li><strong>Medidor bidirecional:</strong> fornecido e instalado pela concessionária após a aprovação do sistema.</li>
+</ul>
+
+<h2>Quanto tempo dura o sistema</h2>
+
+<p>Os painéis solares têm garantia de desempenho de 25 a 30 anos dos fabricantes, com degradação média de 0,5% ao ano. Isso significa que, após 25 anos, seus painéis ainda estarão produzindo cerca de 87% da capacidade original. Na prática, muitos sistemas duram 30-35 anos com manutenção mínima.</p>
+
+<p>O inversor tem vida útil mais curta — entre 10 e 15 anos. É o componente que você provavelmente vai precisar trocar uma vez durante a vida do sistema. O custo de um inversor novo em 2026 está entre R$ 2.000 e R$ 6.000, dependendo da potência.</p>
+
+<p>A manutenção ao longo desse período é mínima: limpeza periódica dos painéis, verificação visual das conexões e monitoramento da geração pelo aplicativo do inversor.</p>
+
+<h2>Próximo passo: entender os custos reais</h2>
+
+<p>Agora que você sabe como o sistema funciona, a próxima pergunta natural é: <a href="${pageHref(SLUG_CUSTO)}">quanto custa e quanto você realmente economiza?</a> Lá você vai encontrar valores de mercado atualizados, simulações por faixa de consumo e a comparação honesta com outros investimentos.</p>
+      `,
+      publishedAt: PUBLISHED_AT,
+    },
+    {
+      type: 'callout',
+      content: 'Dica: antes de receber orçamentos, use o aplicativo do Google Project Sunroof ou o Atlas Solar do INPE para ter uma estimativa da irradiação no seu endereço. Isso ajuda a comparar propostas com mais segurança.',
+      calloutType: 'tip',
+    },
+    allGuideLinks(SLUG_COMO_FUNCIONA),
+    {
+      type: 'adSlot',
+      slotId: 'solar-como-funciona-bottom',
+      format: 'responsive',
+    },
+  ],
 }
 
 const pageCusto: PageSchema = {
