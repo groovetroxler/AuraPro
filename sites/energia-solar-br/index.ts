@@ -457,6 +457,8 @@ const pageCusto: PageSchema = {
     {
       type: 'articleContent',
       html: `
+<img src="https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?w=900&q=80" alt="Telhado residencial com painéis solares instalados gerando economia na conta de luz" style="width:100%;border-radius:8px;margin:1em 0" />
+
 <h2>Payback: em quanto tempo o investimento se paga</h2>
 
 <p>O payback é o cálculo mais importante da decisão. Ele mostra quantos meses de economia são necessários para recuperar o valor investido.</p>
@@ -630,6 +632,8 @@ const pageEquipamentos: PageSchema = {
     {
       type: 'articleContent',
       html: `
+<img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=900&q=80" alt="Detalhe de painéis solares fotovoltaicos mostrando células de silício sob luz solar" style="width:100%;border-radius:8px;margin:1em 0" />
+
 <h3>Principais marcas de inversor no Brasil</h3>
 
 <ul>
@@ -877,6 +881,8 @@ const pagePassoAPasso: PageSchema = {
     {
       type: 'articleContent',
       html: `
+<img src="https://images.unsplash.com/photo-1611365892117-00ac6fb5cec2?w=900&q=80" alt="Técnicos instalando painéis solares no telhado de uma residência" style="width:100%;border-radius:8px;margin:1em 0" />
+
 <h2>Etapa 5: Instalação física (1-3 dias)</h2>
 
 <p>Com o parecer aprovado (ou em paralelo), a equipe técnica realiza a instalação:</p>
@@ -1039,6 +1045,8 @@ const pageLegislacao: PageSchema = {
 <li>Direitos do consumidor-gerador (incluindo o direito de usar créditos em outros imóveis no mesmo CPF/CNPJ)</li>
 <li>Limites de potência para micro e minigeração (até 75 kW para micro, até 5 MW para mini)</li>
 </ul>
+
+<img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&q=80" alt="Cálculo de economia e financiamento — avaliação do retorno do investimento em energia solar" style="width:100%;border-radius:8px;margin:1em 0" />
 
 <h2>Linhas de financiamento para energia solar em 2026</h2>
 

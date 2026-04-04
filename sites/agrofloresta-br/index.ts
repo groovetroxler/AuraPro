@@ -82,8 +82,8 @@ const homePage: PageSchema = {
     },
     {
       type: 'image',
-      src: 'https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?w=1200&q=80',
-      alt: 'Plantação diversificada com bananeiras e outras espécies em sistema agroflorestal tropical',
+      src: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1200&q=80',
+      alt: 'Terraços de cultivo diversificado em sistema agroflorestal — múltiplas espécies ocupando diferentes estratos',
       caption: 'Agrofloresta combina árvores, frutíferas, hortaliças e adubação verde no mesmo espaço — imitando a lógica da floresta.',
     },
     {
@@ -267,6 +267,11 @@ const pageOQueE: PageSchema = {
 <p>O erro mais comum de quem começa é sair plantando sem plano. A agrofloresta exige um projeto — escolha de espécies, espaçamento, consórcios, cronograma. Esse projeto é a diferença entre um sistema que funciona e um que vira mato. Veja em <a href="${pageHref(SLUG_PLANEJAR)}">Como planejar sua agrofloresta</a>.</p>
       `,
       publishedAt: PUBLISHED_AT,
+    },
+    {
+      type: 'image',
+      src: 'https://images.unsplash.com/photo-1574943320219-555f076ef3e0?w=1200&q=80',
+      alt: 'Canteiros de hortaliças em sistema agroflorestal com cobertura de solo e diversidade de espécies',
     },
     allGuideLinks(SLUG_O_QUE_E),
     { type: 'adSlot', slotId: 'agro-oque-bottom', format: 'responsive' },
@@ -549,6 +554,8 @@ const pageEquipamentos: PageSchema = {
 
 <h2>Mecanização leve: motocultivador e implementos</h2>
 
+<img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=900&q=80" alt="Agricultor preparando solo com equipamento em pequena propriedade" style="width:100%;border-radius:8px;margin:1em 0" />
+
 <p>O motocultivador (também chamado de tratorito) é o equipamento que mais transforma a produtividade de um SAF a partir de 2.000 m². Ele prepara o solo, roça entrelinhas, tritura biomassa e até transporta carga com carreta acoplada. É compacto o suficiente para passar entre linhas de árvores sem causar dano.</p>
 
 <h3>Principais modelos no Brasil</h3>
@@ -662,6 +669,8 @@ const pageManejo: PageSchema = {
 <li>Podar preferencialmente no período seco — reduz risco de fungos no corte</li>
 <li>Nunca podar mais de 50% da copa de uma árvore produtiva de uma vez — estresse excessivo reduz produção</li>
 </ul>
+
+<img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=900&q=80" alt="Manejo de plantas em sistema diversificado com diferentes espécies crescendo juntas" style="width:100%;border-radius:8px;margin:1em 0" />
 
 <h2>Capina seletiva: o que tirar e o que deixar</h2>
 
@@ -848,6 +857,8 @@ const pageCusto: PageSchema = {
     {
       type: 'articleContent',
       html: `
+<img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=900&q=80" alt="Diversidade de frutas e legumes orgânicos colhidos — resultado de sistema agroflorestal diversificado" style="width:100%;border-radius:8px;margin:1em 0" />
+
 <h2>Onde vender a produção</h2>
 
 <p>A diversidade de produtos do SAF abre canais de venda que monocultura não acessa:</p>
@@ -943,6 +954,8 @@ const pageFinanciamento: PageSchema = {
 <p>O <strong>CAR</strong> (Cadastro Ambiental Rural) é obrigatório para todas as propriedades rurais e é pré-requisito para acessar crédito rural. Pode ser feito gratuitamente no <a href="https://www.car.gov.br/" target="_blank" rel="noopener">SICAR</a>.</p>
 
 <p>O <strong>PRA</strong> (Programa de Regularização Ambiental) permite que proprietários com passivo ambiental (desmatamento em RL ou APP) regularizem a situação implantando SAF — ou seja, transformem uma obrigação legal em oportunidade de renda.</p>
+
+<img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=900&q=80" alt="Propriedade rural com áreas de cultivo diversificado e árvores em diferentes estágios" style="width:100%;border-radius:8px;margin:1em 0" />
 
 <h2>Certificação orgânica para SAF</h2>
 
