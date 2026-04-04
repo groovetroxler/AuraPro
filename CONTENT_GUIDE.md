@@ -59,7 +59,49 @@ Antes de escrever qualquer coisa:
 - O tom é informativo sem ser acadêmico?
 - O site tem boa estrutura de navegação e conteúdo?
 
-### Etapa 2 — Estrutura completa
+### Etapa 2 — Mapeamento de players e produtos do mercado
+
+Antes de definir a estrutura do site, pesquisar e mapear o ecossistema comercial do nicho. Essa etapa descobre os produtos, equipamentos, empresas, serviços e instituições que se relacionam com o tema — e que vão dar concretude, credibilidade e potencial de monetização ao conteúdo.
+
+**O que mapear:**
+
+1. **Equipamentos e ferramentas** — o que as pessoas compram para praticar a atividade (ex: motocultivador, kit de irrigação, painéis solares, caixas para abelhas)
+2. **Insumos e materiais** — o que é consumido regularmente (ex: mudas, sementes, substratos, fertilizantes)
+3. **Serviços e consultorias** — quem presta serviço no setor (ex: instaladores, planejadores, técnicos)
+4. **Cursos e formações** — onde aprender (ex: cursos online, universidades, EMBRAPA, SENAR)
+5. **Instituições e associações** — quem regula, apoia ou representa o setor (ex: ABSOLAR, EMBRAPA, IBAMA, ICMBio)
+6. **Linhas de crédito e financiamento** — como financiar (ex: PRONAF, FNE Sol, bancos com linhas específicas)
+7. **Legislação relevante** — leis, normas e regulamentações que afetam a atividade
+8. **Marketplaces e canais de venda** — onde os produtos são vendidos (ex: Mercado Livre, lojas especializadas)
+
+**Como pesquisar:**
+
+- Buscar "equipamentos para [nicho]", "melhores [produtos] para [atividade]"
+- Consultar sites de associações do setor
+- Verificar marketplaces (Mercado Livre, Amazon) para entender o que se vende e a que preço
+- Buscar programas governamentais de incentivo
+- Identificar marcas líderes e suas faixas de preço
+
+**O que produzir:**
+
+Um mapeamento curto (pode ser mental ou em notas) com:
+- Lista de 5-15 produtos/equipamentos relevantes, com marcas e faixas de preço
+- Lista de 3-5 instituições/associações de referência
+- Lista de linhas de crédito ou incentivos disponíveis
+- Lista de leis/regulamentações que o leitor precisa conhecer
+
+Esse mapeamento alimenta diretamente o conteúdo: tabelas comparativas de equipamentos, menções a marcas nos textos, links para instituições oficiais, e seções sobre financiamento e legislação.
+
+**Convergência entre sites:**
+
+Parte do ecossistema de um nicho pode se sobrepor a outro. Exemplos:
+- Energia solar serve para propriedades rurais que praticam agrofloresta
+- Financiamento rural (PRONAF) serve tanto para agrofloresta quanto para meliponicultura
+- Saúde e bem-estar se conectam com alimentação orgânica de sistemas agroflorestais
+
+Essas conexões devem ser exploradas naturalmente no conteúdo — com links internos entre sites quando fizer sentido. Cada site permanece independente, mas pode referenciar conteúdo de outro site da rede como recurso complementar.
+
+### Etapa 3 — Estrutura completa
 
 Definir antes de escrever qualquer conteúdo:
 
@@ -69,7 +111,7 @@ Definir antes de escrever qualquer conteúdo:
 4. Arquitetura de links internos: qual página aponta para qual
 5. Apresentar o mapa completo para aprovação
 
-### Etapa 3 — Metadados
+### Etapa 4 — Metadados
 
 Para cada página definida:
 
@@ -80,7 +122,7 @@ Para cada página definida:
 
 Regra: metadado bom descreve exatamente o conteúdo, corresponde à busca real e gera clique sem ser enganoso.
 
-### Etapa 4 — Home
+### Etapa 5 — Home
 
 Escrever a home como validação de tom. Estrutura:
 
@@ -93,7 +135,7 @@ Escrever a home como validação de tom. Estrutura:
 
 **Submeter a home para aprovação antes de avançar.** Se o tom estiver bom, as internas seguem sem parar.
 
-### Etapa 5 — Páginas internas
+### Etapa 6 — Páginas internas
 
 Após aprovação da home, escrever cada página interna em sequência:
 
@@ -106,7 +148,7 @@ Após aprovação da home, escrever cada página interna em sequência:
 7. Bloco de editoriais relacionados
 8. Bloco final de navegação consistente (links para todas as outras páginas do guia)
 
-### Etapa 6 — Editoriais iniciais
+### Etapa 7 — Editoriais iniciais
 
 Criar 2-4 artigos complementares (800-1500 palavras):
 
@@ -115,7 +157,7 @@ Criar 2-4 artigos complementares (800-1500 palavras):
 3. Usar tipo de página `article` no sistema
 4. Incluir links de volta para a página do guia correspondente
 
-### Etapa 7 — Estilização
+### Etapa 8 — Estilização
 
 Aplicar tema visual do site usando campos do `SiteTheme`:
 
@@ -128,9 +170,9 @@ Aplicar tema visual do site usando campos do `SiteTheme`:
 
 A estilização é local ao site. Não alterar globals.css nem componentes do core.
 
-### Etapa 8 — Validação final
+### Etapa 9 — Validação final
 
-Aplicar o checklist de qualidade (seção 8 deste documento) em todas as páginas antes de publicar.
+Aplicar o checklist de qualidade (seção 9 deste documento) em todas as páginas antes de publicar.
 
 ---
 
@@ -467,12 +509,13 @@ Regra: nunca forçar uma menção de marca. Toda citação deve nascer da necess
 
 1. O operador fornece o tema/nicho e opcionalmente referências de tom
 2. O assistente pesquisa referências se não foram fornecidas
-3. O assistente apresenta a estrutura completa (mapa de páginas + metadados)
-4. O operador aprova a estrutura
-5. O assistente escreve a home
-6. O operador aprova o tom da home
-7. Se aprovado: as internas e editoriais seguem sem parar
-8. O operador revisa e corrige o resultado final
+3. O assistente mapeia players e produtos do mercado (equipamentos, empresas, financiamento, legislação)
+4. O assistente apresenta a estrutura completa (mapa de páginas + metadados + mapeamento de players)
+5. O operador aprova a estrutura
+6. O assistente escreve a home
+7. O operador aprova o tom da home
+8. Se aprovado: as internas e editoriais seguem sem parar
+9. O operador revisa e corrige o resultado final
 
 ---
 
