@@ -79,20 +79,20 @@ Se qualquer item acima estiver falso, a Fase 1B não deve ser considerada conclu
 - [x] Sites existentes continuam válidos sem alteração (campos opcionais)
 - [ ] Validator atualizado para os novos campos de tema
 - [ ] CSS variables injection no layout de site atualizado para campos expandidos
-- [ ] Documento `CONTENT_GUIDE.md` criado com:
-  - [ ] Regras de uso de blocos por tipo de página/nicho
-  - [ ] Instruções de SEO editorial
-  - [ ] Instruções de estilização por site
-  - [ ] Instruções de monetização (ads, afiliados, CTAs)
-  - [ ] Checklist de qualidade por site
+- [x] Documento `CONTENT_GUIDE.md` criado com:
+  - [x] Regras de uso de blocos por tipo de página/nicho
+  - [x] Instruções de SEO editorial
+  - [x] Instruções de estilização por site
+  - [x] Instruções de monetização (ads, afiliados, CTAs)
+  - [x] Checklist de qualidade por site
 - [x] Experimentação prática realizada em `meliponicultura-br` (insumo consolidado em `VSCode_DevTestRef.md`)
 - [ ] Regras formais validadas aplicando num dos sites iniciais
 - [ ] Rotina 2 é executável seguindo apenas o CONTENT_GUIDE.md
 
-Insumos disponíveis para redação do CONTENT_GUIDE.md:
-- `VSCode_DevTestRef.md` — preferências consolidadas da experimentação
-- Templates SEO carregados (metadados, estrutura de páginas, checklist operacional, template editorial)
-- Site `meliponicultura-br` como referência de implementação editorial
+Pendente para fechar a Fase 1C:
+- Implementar injeção de CSS variables expandidas no layout de site
+- Validar a Rotina 2 aplicando o CONTENT_GUIDE num site (teste real end-to-end)
+- Confirmar que o resultado é reproduzível sem conhecimento implícito
 
 Se qualquer item acima estiver falso, a Fase 1C não deve ser considerada concluída.
 
