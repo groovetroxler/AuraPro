@@ -76,13 +76,19 @@ const homePage: PageSchema = {
       subheading: 'Um guia direto para quem quer entender custos reais, economia possível e o que mudou na legislação — sem promessa de marketing.',
     },
     {
+      type: 'image',
+      src: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1200&q=80',
+      alt: 'Painéis solares instalados no telhado de uma residência sob céu azul',
+      caption: 'Sistema fotovoltaico residencial: painéis no telhado geram energia que reduz a conta de luz em até 90%.',
+    },
+    {
       type: 'articleContent',
       html: `
-<p>O Brasil tem mais de 3,7 milhões de sistemas solares instalados. A fonte fotovoltaica já é a segunda maior da matriz elétrica brasileira, com 64 GW de capacidade e mais de R$ 280 bilhões em investimentos acumulados desde 2012, segundo dados da ABSOLAR atualizados em janeiro de 2026.</p>
+<p>O Brasil tem mais de 3,7 milhões de sistemas solares instalados. A fonte fotovoltaica já é a segunda maior da matriz elétrica brasileira, com 64 GW de capacidade e mais de R$ 280 bilhões em investimentos acumulados desde 2012, segundo dados da <a href="https://www.absolar.org.br/infografico/" target="_blank" rel="noopener">ABSOLAR</a> atualizados em janeiro de 2026.</p>
 
 <p>Mas números grandes não respondem a pergunta que realmente importa: <strong>faz sentido para a sua casa, com a sua conta de luz, no cenário de hoje?</strong></p>
 
-<p>A resposta curta é: para a maioria das residências com conta acima de R$ 300/mês, sim. Um sistema bem dimensionado reduz a conta de luz entre 70% e 90%, se paga em 4 a 6 anos, e dura mais de 25. Mas existem armadilhas — desde empresas mal qualificadas até regras novas da Lei 14.300 que muita gente não conhece.</p>
+<p>A resposta curta é: para a maioria das residências com conta acima de R$ 300/mês, sim. Um sistema bem dimensionado reduz a conta de luz entre 70% e 90%, se paga em 4 a 6 anos, e dura mais de 25. Mas existem armadilhas — desde empresas mal qualificadas até regras novas da <a href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2022/lei/l14300.htm" target="_blank" rel="noopener">Lei 14.300/2022</a> que muita gente não conhece.</p>
 
 <p>Este guia explica tudo o que você precisa saber para tomar uma decisão informada. Sem enrolação, com números reais e com os cuidados que ninguém costuma mencionar.</p>
 
@@ -113,7 +119,7 @@ const homePage: PageSchema = {
 
 <p><strong>O que está a seu favor:</strong> as tarifas de energia subiram acima da inflação nos últimos anos, e a tendência não é de queda. Cada reajuste aumenta a economia que o sistema solar gera. Além disso, os preços dos equipamentos caíram significativamente na última década — um sistema que custava R$ 50 mil em 2015 hoje sai por menos da metade.</p>
 
-<p><strong>O que exige atenção:</strong> a Lei 14.300 de 2022 introduziu a cobrança progressiva do Fio B — uma tarifa pelo uso da rede de distribuição — para novos sistemas. Em 2026, a cobrança está em 60% do valor cheio. Isso não inviabiliza o investimento (a economia ainda fica entre 70% e 82% da conta), mas muda o cálculo. Quem instala agora garante as condições atuais, que são melhores do que serão em 2027.</p>
+<p><strong>O que exige atenção:</strong> a <a href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2022/lei/l14300.htm" target="_blank" rel="noopener">Lei 14.300/2022</a> introduziu a cobrança progressiva do Fio B — uma tarifa pelo uso da rede de distribuição — para novos sistemas. Em 2026, a cobrança está em 60% do valor cheio. Isso não inviabiliza o investimento (a economia ainda fica entre 70% e 82% da conta), mas muda o cálculo. Quem instala agora garante as condições atuais, que são melhores do que serão em 2027.</p>
 
 <p>A Selic continua alta, perto de 15% ao ano, o que encarece o financiamento. Mas mesmo financiado, o sistema costuma se pagar antes do fim das parcelas — a economia mensal na conta de luz cobre parte ou todo o valor da prestação.</p>
 
@@ -124,7 +130,17 @@ const homePage: PageSchema = {
 <p>Se você mora em apartamento, também existem opções — como a geração distribuída por assinatura (GD compartilhada). Escrevemos um editorial específico sobre isso: <a href="${pageHref(SLUG_EDITORIAL_APTO)}">Energia solar para quem mora em apartamento</a>.</p>
 
 <p>Se sua conta de luz é baixa (menos de R$ 150/mês), o sistema pode demorar mais para se pagar. Não é que não funcione — é que o retorno financeiro fica mais apertado. Nesse caso, vale calcular com cuidado antes de decidir.</p>
-
+      `,
+      publishedAt: PUBLISHED_AT,
+    },
+    {
+      type: 'adSlot',
+      slotId: 'solar-home-mid',
+      format: 'responsive',
+    },
+    {
+      type: 'articleContent',
+      html: `
 <h2>O que você precisa decidir (e em que ordem)</h2>
 
 <p>A maioria das pessoas começa perguntando "quanto custa?" — e essa é a pergunta errada para começar. O custo depende de várias coisas que vêm antes:</p>
@@ -164,7 +180,7 @@ const homePage: PageSchema = {
 
 <ul>
 <li><strong>Escolher pelo menor preço.</strong> O equipamento mais barato quase sempre tem garantia curta, eficiência menor ou inversor subdimensionado. A diferença de preço se paga em 2-3 anos de produção perdida.</li>
-<li><strong>Não verificar a empresa.</strong> Instalador sem homologação na ANEEL, sem CNPJ ativo ou sem portfólio verificável é risco alto. O mercado tem muita empresa oportunista.</li>
+<li><strong>Não verificar a empresa.</strong> Instalador sem homologação na <a href="https://www.aneel.gov.br/" target="_blank" rel="noopener">ANEEL</a>, sem CNPJ ativo ou sem portfólio verificável é risco alto. O mercado tem muita empresa oportunista.</li>
 <li><strong>Superdimensionar o sistema.</strong> Instalar mais painéis do que o necessário não gera economia extra — você acumula créditos que podem virar prejuízo com as novas regras do Fio B.</li>
 <li><strong>Ignorar sombreamento.</strong> Uma árvore, prédio vizinho ou caixa d'água mal posicionada pode reduzir a eficiência em até 50%. Nem toda empresa faz análise de sombra correta.</li>
 </ul>
@@ -178,11 +194,6 @@ const homePage: PageSchema = {
 <p>Se já decidiu instalar e quer evitar erros, comece por <a href="${pageHref(SLUG_INSTALADOR)}">Como escolher uma empresa de energia solar</a>.</p>
       `,
       publishedAt: PUBLISHED_AT,
-    },
-    {
-      type: 'adSlot',
-      slotId: 'solar-home-mid',
-      format: 'responsive',
     },
     {
       type: 'callout',
