@@ -146,6 +146,25 @@ O texto deve soar como **um amigo que entende do assunto e está te orientando**
 - Opinião clara: "faça isso", "evite aquilo"
 - Detalhes específicos que só quem conhece o assunto sabe
 - Sequências lógicas e passos práticos
+- **Marcas, empresas e instituições reais do setor** — citar por nome sempre que possível
+- **Links para fontes oficiais** (leis, órgãos reguladores, associações do setor)
+
+### Mencionar players reais do mercado (regra forte)
+
+O texto deve citar marcas, empresas, bancos, instituições e programas reais sempre que fizer sentido no contexto. Isso cumpre três funções ao mesmo tempo:
+
+1. **Credibilidade:** o leitor percebe que o conteúdo é específico, não genérico. "Inversor Growatt de 5 kW" é mais útil que "um bom inversor".
+2. **Utilidade prática:** o leitor sai da leitura sabendo nomes concretos para pesquisar, comparar e contatar.
+3. **Potencial de monetização:** menções naturais a fabricantes, integradores, bancos e programas de financiamento abrem possibilidade futura de parcerias e afiliados — sem que o texto precise mudar.
+
+Exemplos de menções que enriquecem o conteúdo:
+- Fabricantes de equipamentos (Canadian Solar, LONGi, Fronius, Growatt)
+- Bancos e linhas de crédito (BNB FNE Sol, BB Crédito Energia Renovável, BV Financeira)
+- Associações e órgãos (ABSOLAR, ANEEL, INMETRO)
+- Leis e regulamentações (Lei 14.300, RN 1.000/2021, Convênio CONFAZ ICMS)
+- Marketplaces e ferramentas (Portal Solar, Reclame Aqui)
+
+Regra: toda menção deve ser contextual e útil. Não listar marcas por listar — citar quando a informação ajuda o leitor a decidir, comparar ou agir.
 
 ### Anti-padrões obrigatórios (bloquear sempre)
 
@@ -202,14 +221,25 @@ Bom: `O que considerar ao escolher a espécie de abelha sem ferrão`
 - Pode ser mais leve, mas não completamente solto
 - Usar quando houver subdivisão real, não por estética
 
-### Elemento objetivo (obrigatório)
+### Elemento objetivo (obrigatório — usar com frequência)
 
-Toda página deve conter pelo menos um:
-- Tabela comparativa
+Tabelas e blocos comparativos são os elementos que mais enriquecem o conteúdo. Não são opcionais nem decorativos — são ferramentas de decisão para o leitor.
+
+**Toda página deve conter pelo menos um, idealmente 2-3:**
+- **Tabela comparativa** — preferida sempre que houver dados para comparar (custos, prazos, marcas, opções). Usar `comparisonTable` do framework.
 - Checklist
 - Lista de erros comuns
-- Comparação prós/contras
+- Comparação prós/contras (`prosCons`)
 - Resumo operacional
+- Dados de impacto (`stats`)
+
+**Quando usar tabelas (regra forte):**
+- Toda vez que o texto comparar 3+ itens lado a lado → tabela
+- Toda vez que o texto listar valores numéricos por categoria → tabela
+- Toda vez que o texto descrever opções com critérios diferentes → tabela
+- Se você está escrevendo um parágrafo que poderia ser uma tabela, transforme em tabela
+
+Tabelas transmitem autoridade, facilitam escaneamento e aumentam tempo na página. Elas são um dos elementos mais fortes que temos.
 
 ### Bloco de decisão rápida (quando aplicável)
 
@@ -318,6 +348,14 @@ Regra: link bom fecha o raciocínio. Link ruim parece menu técnico ou CTA artif
 ### Princípio
 
 Conteúdo primeiro, entendimento depois, monetização por consequência.
+
+### Menções a players do mercado como base de monetização
+
+As menções naturais a marcas, bancos, fabricantes e serviços ao longo do texto cumprem dupla função: utilidade imediata para o leitor e base para monetização futura. Quando o texto cita "BNB FNE Sol com taxa a partir de 0,6% a.m." ou "painéis Canadian Solar com garantia de 25 anos", ele está sendo útil E criando pontos naturais de conversão.
+
+Isso é diferente de propaganda — é informação concreta que o leitor precisa para decidir. A monetização vem como consequência natural: o mesmo banco, fabricante ou integrador pode se tornar parceiro ou anunciante no futuro, e o texto já está preparado para isso sem precisar de nenhuma alteração.
+
+Regra: nunca forçar uma menção de marca. Toda citação deve nascer da necessidade informativa do texto. Mas quando a necessidade existe (e geralmente existe), citar nomes reais em vez de descrições genéricas.
 
 ### Ads (AdSense)
 
