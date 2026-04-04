@@ -696,14 +696,272 @@ const pageInstalador: PageSchema = {
   id: 'solar-instalador', siteKey: SITE_KEY, type: 'article', slug: SLUG_INSTALADOR,
   title: 'Como escolher uma empresa instaladora', status: 'published',
   meta: { title: 'Como escolher uma empresa de energia solar sem cair em armadilha', description: 'O que verificar antes de contratar: homologação ANEEL, portfólio, garantia, perguntas essenciais e erros comuns.' },
-  blocks: [ breadcrumb('Escolher instalador', SLUG_INSTALADOR), { type: 'articleContent', html: '<h2>Como escolher uma empresa de energia solar</h2><p>Conteúdo completo em desenvolvimento.</p>', publishedAt: PUBLISHED_AT }, allGuideLinks(SLUG_INSTALADOR) ],
+  blocks: [
+    breadcrumb('Escolher instalador', SLUG_INSTALADOR),
+    {
+      type: 'articleContent',
+      html: `
+<p>De todos os passos deste guia, este é o que mais gente pula — e o que mais gera arrependimento. Um sistema solar com equipamentos de primeira linha mas instalado por uma empresa incompetente é pior do que um sistema mediano instalado por uma empresa séria. A instalação errada causa infiltração no telhado, perda de eficiência, problemas na homologação e, nos piores casos, risco de incêndio elétrico.</p>
+
+<p>O mercado solar brasileiro cresceu rápido, e junto vieram empresas oportunistas que vendem sistemas sem capacidade técnica para entregar. Aqui está o que verificar para não cair nisso.</p>
+
+<h2>Checklist mínimo antes de contratar</h2>
+
+<h3>1. A empresa tem CNPJ ativo e é registrada na ANEEL?</h3>
+
+<p>Consulte o CNPJ no site da <a href="https://www.gov.br/receitafederal/" target="_blank" rel="noopener">Receita Federal</a> e verifique se a atividade é compatível com instalação elétrica ou energia solar. No site da <a href="https://www.aneel.gov.br/" target="_blank" rel="noopener">ANEEL</a>, a empresa deve estar cadastrada como agente de geração distribuída ou ter engenheiro responsável com registro no CREA.</p>
+
+<h3>2. A empresa tem portfólio verificável?</h3>
+
+<p>Peça fotos de instalações anteriores — não fotos de banco de imagens, fotos reais com endereços ou referências. Melhor ainda: peça contato de clientes anteriores. Uma empresa com 50+ instalações feitas e clientes satisfeitos é muito mais segura do que uma que está começando.</p>
+
+<h3>3. O projeto é assinado por engenheiro?</h3>
+
+<p>A homologação na concessionária exige um projeto elétrico assinado por engenheiro com ART (Anotação de Responsabilidade Técnica). Se a empresa não inclui isso, ela não consegue homologar seu sistema — e sem homologação, você não tem compensação de energia.</p>
+
+<h3>4. A empresa oferece garantia de mão de obra?</h3>
+
+<p>Além da garantia dos equipamentos (que é do fabricante), a empresa deve oferecer garantia própria sobre a instalação — tipicamente 1 a 5 anos. Essa garantia cobre infiltrações, problemas de fixação, conexões malfeitas e qualquer defeito causado pela instalação.</p>
+
+<h3>5. A empresa cuida da homologação?</h3>
+
+<p>O processo de homologação (aprovar o sistema junto à concessionária, trocar o medidor, ativar a compensação) é burocrático e pode levar 30-90 dias. Uma boa empresa inclui todo esse processo no contrato. Se ela instala e "deixa por sua conta" a homologação, é sinal de problema.</p>
+
+<h2>10 perguntas para fazer antes de assinar</h2>
+
+<ol>
+<li>Quais marcas de painel e inversor vocês utilizam? (nomes específicos, não "primeira linha")</li>
+<li>O projeto é assinado por engenheiro com ART?</li>
+<li>Vocês fazem análise de sombreamento no local?</li>
+<li>A homologação na concessionária está incluída no contrato?</li>
+<li>Qual é a garantia de mão de obra e o que ela cobre?</li>
+<li>Quanto tempo leva do contrato à ativação do sistema?</li>
+<li>Vocês oferecem monitoramento remoto após a instalação?</li>
+<li>Posso falar com 3 clientes anteriores?</li>
+<li>O que acontece se houver defeito na instalação após 2 anos?</li>
+<li>Vocês têm seguro de responsabilidade civil durante a instalação?</li>
+</ol>
+
+<p>Se a empresa se recusa a responder alguma dessas perguntas ou dá respostas vagas, é bandeira vermelha.</p>
+      `,
+      publishedAt: PUBLISHED_AT,
+    },
+    {
+      type: 'adSlot',
+      slotId: 'solar-instalador-mid',
+      format: 'responsive',
+    },
+    {
+      type: 'articleContent',
+      html: `
+<h2>Sinais de alerta (red flags)</h2>
+
+<ul>
+<li><strong>Preço muito abaixo do mercado.</strong> Se um orçamento é 30%+ mais barato que os outros, ou está usando equipamento inferior, ou está cortando etapas na instalação.</li>
+<li><strong>Pressão para fechar rápido.</strong> "Esse preço só vale até sexta" é tática de vendas, não de engenharia. Uma empresa séria dá prazo razoável para decisão.</li>
+<li><strong>Sem visita técnica.</strong> Se a empresa faz orçamento sem visitar seu telhado (ou ao menos pedir fotos detalhadas e medidas), ela não sabe o que está vendendo.</li>
+<li><strong>Promessa de "economia de 95%".</strong> Com as regras atuais do Fio B, a economia realista fica entre 70% e 85%. Quem promete 95% está mentindo ou ignorando a Lei 14.300.</li>
+<li><strong>Sem contrato formal.</strong> Tudo deve estar por escrito: equipamentos, prazos, garantias, responsabilidades. Acordo verbal não protege ninguém.</li>
+</ul>
+
+<h2>Quantos orçamentos pedir</h2>
+
+<p>O ideal é ter ao menos 3 orçamentos de empresas diferentes. Compare não apenas o preço total, mas:</p>
+
+<ul>
+<li>Marcas e modelos dos equipamentos</li>
+<li>Potência total do sistema proposto</li>
+<li>Prazo de execução</li>
+<li>O que está incluído (homologação, medidor, seguro)</li>
+<li>Garantia de mão de obra</li>
+<li>Forma de pagamento</li>
+</ul>
+
+<p>Comparar orçamentos de energia solar não é como comparar preço de arroz no supermercado. Dois orçamentos com "5 kWp" podem ter painéis de eficiências completamente diferentes, inversores de marcas distintas e estruturas de qualidades opostas. O preço total sozinho não diz nada — o detalhamento diz tudo.</p>
+
+<h2>Onde encontrar empresas confiáveis</h2>
+
+<p>Algumas fontes para buscar integradores com bom histórico:</p>
+
+<ul>
+<li><strong>Portal Solar:</strong> marketplace com avaliações de clientes e empresas verificadas</li>
+<li><strong>Reclame Aqui:</strong> verifique a reputação da empresa e como ela trata reclamações</li>
+<li><strong>Indicação de vizinhos:</strong> se alguém no seu bairro já instalou e está satisfeito, essa é a melhor referência possível</li>
+<li><strong>Fabricantes de inversores:</strong> marcas como Fronius, Growatt e Goodwe têm lista de integradores credenciados em seus sites</li>
+</ul>
+
+<h2>Próximo passo: saber o que vai acontecer</h2>
+
+<p>Com o instalador escolhido, é hora de entender o processo completo — do contrato à ativação. Veja em <a href="${pageHref(SLUG_PASSO_A_PASSO)}">Passo a passo da instalação de energia solar</a>.</p>
+      `,
+      publishedAt: PUBLISHED_AT,
+    },
+    allGuideLinks(SLUG_INSTALADOR),
+    {
+      type: 'adSlot',
+      slotId: 'solar-instalador-bottom',
+      format: 'responsive',
+    },
+  ],
 }
 
 const pagePassoAPasso: PageSchema = {
   id: 'solar-passo-a-passo', siteKey: SITE_KEY, type: 'article', slug: SLUG_PASSO_A_PASSO,
   title: 'Passo a passo da instalação', status: 'published',
   meta: { title: 'Passo a passo da instalação de energia solar: do orçamento ao primeiro kWh', description: 'Cada etapa da instalação solar com prazos reais: análise de consumo, projeto, aprovação, instalação, vistoria e ativação.' },
-  blocks: [ breadcrumb('Passo a passo', SLUG_PASSO_A_PASSO), { type: 'articleContent', html: '<h2>Passo a passo da instalação</h2><p>Conteúdo completo em desenvolvimento.</p>', publishedAt: PUBLISHED_AT }, allGuideLinks(SLUG_PASSO_A_PASSO) ],
+  blocks: [
+    breadcrumb('Passo a passo', SLUG_PASSO_A_PASSO),
+    {
+      type: 'articleContent',
+      html: `
+<p>A instalação física dos painéis no telhado leva 1 a 3 dias. Mas o processo completo — do primeiro contato à ativação do sistema — leva de 30 a 90 dias, dependendo da concessionária da sua região. Saber o que acontece em cada etapa evita ansiedade e ajuda a cobrar os prazos certos.</p>
+
+<h2>Etapa 1: Análise de consumo e visita técnica (1-2 semanas)</h2>
+
+<p>Tudo começa com a análise das suas últimas 12 contas de energia. Esse histórico mostra seu consumo médio mensal e sazonal — algumas residências consomem mais no verão (ar-condicionado), outras no inverno (chuveiro elétrico). O sistema deve ser dimensionado pela média anual, não pelo mês de pico.</p>
+
+<p>A empresa faz uma visita técnica ao imóvel para avaliar:</p>
+
+<ul>
+<li>Área disponível no telhado (tipo de telha, orientação, inclinação)</li>
+<li>Sombreamento (árvores, prédios vizinhos, caixa d'água, antenas)</li>
+<li>Condição do quadro elétrico (pode precisar de upgrade)</li>
+<li>Distância entre telhado e quadro de energia</li>
+<li>Acesso para a instalação</li>
+</ul>
+
+<p>Com essas informações, a empresa elabora a proposta técnica e comercial.</p>
+
+<h2>Etapa 2: Proposta, contrato e pagamento (1 semana)</h2>
+
+<p>A proposta deve detalhar tudo: equipamentos com marca e modelo, potência do sistema, estimativa de geração mensal, prazo de execução, garantias e o que está incluído (projeto, homologação, medidor). Revise com atenção — é aqui que se define o que você está comprando.</p>
+
+<p>Após aceitar a proposta, assina-se o contrato e define-se a forma de pagamento (à vista, parcelado ou financiado).</p>
+
+<h2>Etapa 3: Projeto elétrico (1-2 semanas)</h2>
+
+<p>O engenheiro responsável elabora o projeto elétrico do sistema, incluindo diagrama unifilar, memorial descritivo e ART (Anotação de Responsabilidade Técnica). Esse projeto é obrigatório para a homologação na concessionária.</p>
+
+<p>O projeto define a disposição exata dos painéis no telhado, o trajeto dos cabos, o local do inversor e as proteções elétricas.</p>
+
+<h2>Etapa 4: Solicitação de acesso à concessionária (15-45 dias)</h2>
+
+<p>Com o projeto pronto, a empresa submete a solicitação de acesso à concessionária (parecer de acesso). Esse é geralmente o passo mais demorado, porque depende da análise e aprovação pela distribuidora de energia.</p>
+
+<p>Os prazos variam muito por concessionária:</p>
+      `,
+      publishedAt: PUBLISHED_AT,
+    },
+    {
+      type: 'comparisonTable',
+      headers: ['Concessionária', 'Prazo típico do parecer', 'Região'],
+      rows: [
+        { label: 'Enel SP', values: ['15-30 dias', 'São Paulo capital e Grande SP'] },
+        { label: 'CPFL', values: ['10-20 dias', 'Interior de SP'] },
+        { label: 'Cemig', values: ['15-30 dias', 'Minas Gerais'] },
+        { label: 'Coelba', values: ['20-40 dias', 'Bahia'] },
+        { label: 'Light', values: ['20-45 dias', 'Rio de Janeiro'] },
+        { label: 'CEEE/RGE', values: ['15-30 dias', 'Rio Grande do Sul'] },
+      ],
+    },
+    {
+      type: 'callout',
+      content: 'Dica: muitas empresas iniciam a instalação antes do parecer da concessionária (por conta e risco), para adiantar o processo. Verifique se essa prática é adotada e quais são as implicações caso o parecer exija alterações.',
+      calloutType: 'tip',
+    },
+    {
+      type: 'adSlot',
+      slotId: 'solar-passo-a-passo-mid',
+      format: 'responsive',
+    },
+    {
+      type: 'articleContent',
+      html: `
+<h2>Etapa 5: Instalação física (1-3 dias)</h2>
+
+<p>Com o parecer aprovado (ou em paralelo), a equipe técnica realiza a instalação:</p>
+
+<p><strong>Dia 1:</strong> montagem da estrutura de fixação no telhado e posicionamento dos painéis. Os painéis são fixados com grampos e trilhos de alumínio. A impermeabilização do telhado é preservada com borrachas e selantes apropriados.</p>
+
+<p><strong>Dia 2:</strong> conexão elétrica dos painéis (cabeamento, string box), instalação do inversor (geralmente na garagem ou área de serviço) e conexão ao quadro elétrico da residência.</p>
+
+<p><strong>Dia 3 (se necessário):</strong> testes de funcionamento, configuração do monitoramento Wi-Fi do inversor e limpeza do local.</p>
+
+<p>Durante a instalação, a casa normalmente continua com energia. A equipe pode precisar desligar a energia por 30-60 minutos no momento da conexão ao quadro.</p>
+
+<h2>Etapa 6: Vistoria da concessionária (5-15 dias)</h2>
+
+<p>Após a instalação, a empresa solicita a vistoria da concessionária. Um técnico visita o imóvel para verificar se a instalação está conforme o projeto aprovado e se atende às normas técnicas.</p>
+
+<p>Se estiver tudo certo, a concessionária aprova e agenda a troca do medidor.</p>
+
+<h2>Etapa 7: Troca do medidor e ativação (5-15 dias)</h2>
+
+<p>A concessionária substitui o medidor antigo pelo medidor bidirecional — esse novo medidor registra tanto a energia consumida da rede quanto a energia injetada pelos seus painéis.</p>
+
+<p>Com o medidor trocado, o sistema está oficialmente ativo. A partir desse momento:</p>
+
+<ul>
+<li>Seus painéis geram energia e alimentam a casa</li>
+<li>O excedente vai para a rede e gera créditos</li>
+<li>Sua próxima conta de luz já reflete a economia</li>
+<li>Você monitora tudo pelo app do inversor</li>
+</ul>
+
+<h2>Resumo do cronograma completo</h2>
+      `,
+      publishedAt: PUBLISHED_AT,
+    },
+    {
+      type: 'comparisonTable',
+      headers: ['Etapa', 'O que acontece', 'Prazo típico'],
+      rows: [
+        { label: '1', values: ['Análise + visita técnica', '1-2 semanas'] },
+        { label: '2', values: ['Proposta e contrato', '1 semana'] },
+        { label: '3', values: ['Projeto elétrico', '1-2 semanas'] },
+        { label: '4', values: ['Parecer da concessionária', '15-45 dias'] },
+        { label: '5', values: ['Instalação física', '1-3 dias'] },
+        { label: '6', values: ['Vistoria', '5-15 dias'] },
+        { label: '7', values: ['Troca de medidor + ativação', '5-15 dias'] },
+      ],
+    },
+    {
+      type: 'articleContent',
+      html: `
+<p><strong>Total estimado: 45 a 90 dias do contrato à ativação.</strong> A maior variação está no prazo da concessionária — algumas são mais ágeis que outras.</p>
+
+<h2>O que pode dar errado (e como evitar)</h2>
+
+<p><strong>Parecer negado pela concessionária.</strong> Acontece quando há limitação na rede local (inversão de fluxo). A solução geralmente envolve reduzir a potência do sistema ou aguardar melhoria na rede. O instalador deve prever isso na análise inicial.</p>
+
+<p><strong>Telhado com problemas estruturais.</strong> Telhas quebradas, madeiramento comprometido ou impermeabilização precária devem ser resolvidos antes da instalação, não depois. O custo dessa manutenção é seu, não do instalador.</p>
+
+<p><strong>Quadro elétrico inadequado.</strong> Casas mais antigas podem precisar de upgrade no quadro de distribuição para comportar a conexão do inversor. Isso deve estar previsto no orçamento.</p>
+
+<h2>Manutenção após a instalação</h2>
+
+<p>A boa notícia: energia solar tem manutenção mínima. O que fazer:</p>
+
+<ul>
+<li><strong>Limpeza dos painéis:</strong> a cada 6-12 meses, com água e pano macio. Nunca use produtos abrasivos ou jato de pressão.</li>
+<li><strong>Monitoramento via app:</strong> acompanhe a geração diária. Quedas bruscas de produção indicam problema (sujeira, defeito, sombreamento novo).</li>
+<li><strong>Revisão elétrica:</strong> a cada 2-3 anos, verificar conexões, cabos e proteções. Pode ser feito pelo próprio instalador.</li>
+<li><strong>Inversor:</strong> trocar quando parar de funcionar (vida útil de 10-15 anos). Custo de R$ 2.000-6.000 dependendo da potência.</li>
+</ul>
+
+<h2>Próximo passo: entender a legislação</h2>
+
+<p>Agora que você sabe como funciona o processo, o último passo é entender as regras do jogo: Lei 14.300, Fio B, isenção de ICMS e as linhas de financiamento disponíveis. Veja em <a href="${pageHref(SLUG_LEGISLACAO)}">Legislação, Fio B e financiamento</a>.</p>
+      `,
+      publishedAt: PUBLISHED_AT,
+    },
+    allGuideLinks(SLUG_PASSO_A_PASSO),
+    {
+      type: 'adSlot',
+      slotId: 'solar-passo-a-passo-bottom',
+      format: 'responsive',
+    },
+  ],
 }
 
 const pageLegislacao: PageSchema = {
