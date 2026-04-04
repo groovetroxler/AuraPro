@@ -252,6 +252,8 @@ const pageOQueE: PageSchema = {
 
 <p>A <a href="https://www.embrapa.br/en/agrobiologia/fazendinha-agroecologica/sistemas-agroflorestais" target="_blank" rel="noopener">EMBRAPA</a> documenta casos de SAFs no Brasil que produzem o equivalente a R$ 15.000-40.000/hectare/ano em produtos diversificados, com custo de manutenção decrescente ao longo do tempo. Monoculturas de grãos no mesmo tipo de solo e região geram R$ 3.000-8.000/hectare/ano com custos crescentes.</p>
 
+<p>A <strong>Cooperafloresta</strong>, cooperativa de agricultores agroflorestais do Vale do Ribeira (entre SP e PR), é uma das referências práticas mais importantes do país. Com quase duas décadas de experiência, seus agricultores familiares demonstram que SAFs diversificados geram renda, recuperam solo degradado e mantêm nascentes ativas — tudo ao mesmo tempo. O trabalho da Cooperafloresta é documentado no livro "Agrofloresta — Aprendendo a produzir com a natureza" (Walter Steenbock e Fabiane Vezzani), disponível gratuitamente para download.</p>
+
 <h2>O que a agrofloresta NÃO é</h2>
 
 <p><strong>Não é abandono.</strong> Deixar o mato crescer não é agrofloresta. SAF exige planejamento, plantio intencional e manejo constante nos primeiros anos.</p>
@@ -498,6 +500,8 @@ const pagePlanejar: PageSchema = {
 <li><strong><a href="https://www.embrapa.br/" target="_blank" rel="noopener">EMBRAPA</a>:</strong> publicações técnicas gratuitas (livro "Agrofloresta – Aprendendo a produzir com a natureza" é excelente para iniciantes).</li>
 <li><strong><a href="https://pretaterra.com/" target="_blank" rel="noopener">Pretaterra</a>:</strong> consultoria especializada em design agroflorestal. Projeta sistemas comerciais com análise de viabilidade econômica.</li>
 <li><strong><a href="https://agendagotsch.com/" target="_blank" rel="noopener">Agenda Götsch</a>:</strong> cursos e formações sobre agrofloresta sucessional, baseados no método Ernst Götsch.</li>
+<li><strong>Cooperafloresta:</strong> cooperativa de agricultores agroflorestais do Vale do Ribeira (SP/PR). Referência prática de SAF comunitário com quase duas décadas de experiência. Visitação e troca de experiências.</li>
+<li><strong><a href="https://www.wribrasil.org.br/" target="_blank" rel="noopener">WRI Brasil</a>:</strong> a ferramenta VERENA permite analisar o retorno financeiro de SAFs e reflorestamento com espécies nativas. Útil para quem precisa de análise econômica detalhada.</li>
 <li><strong>Grupos locais:</strong> redes de agroecologia e associações de produtores orgânicos existem em quase todos os estados. O contato com quem já faz é insubstituível.</li>
 </ul>
 
@@ -546,6 +550,8 @@ const pageEquipamentos: PageSchema = {
 <li><strong>Tesoura de poda:</strong> para poda de condução, colheita de frutas e manejo fino. Tramontina Supercort ou Felco (premium). R$ 40-250.</li>
 <li><strong>Serrote de poda:</strong> para galhos mais grossos (3-10 cm). Prefira modelos com lâmina curva e dentes alternados. R$ 30-100.</li>
 <li><strong>Podadora de altura (tesoura com extensão):</strong> para podar galhos altos sem escada. Essencial a partir do ano 3, quando as árvores crescem. R$ 100-300.</li>
+<li><strong>Motosserra leve:</strong> para poda drástica de árvores grandes e raleamento do sistema. A Stihl MS 170 (1,7 kW) é a mais usada em SAF — leve, confiável e suficiente para galhos de até 30 cm. Husqvarna 236 é alternativa equivalente. R$ 1.200-2.500. Essencial a partir do ano 3-4.</li>
+<li><strong>Perfurador de solo:</strong> para abrir covas em solo compactado sem esforço manual. Stihl BT 45 (manual, 1 pessoa) ou Branco BPT-52 (2 pessoas para covas maiores). R$ 800-2.000. Justifica-se a partir de 200+ covas.</li>
 <li><strong>Carrinho de mão:</strong> transporte de mudas, terra, biomassa. R$ 150-350.</li>
 <li><strong>Regador ou mangueira:</strong> irrigação das mudas nos primeiros meses. R$ 20-100.</li>
 </ul>
@@ -756,8 +762,21 @@ const pageManejo: PageSchema = {
 <li><strong>Calagem:</strong> calcário para corrigir pH ácido. Aplicar 30-60 dias antes do plantio. Quantidade definida pela análise de solo. R$ 200-500/tonelada.</li>
 <li><strong>Fosfato natural:</strong> fonte de fósforo de liberação lenta, ideal para SAF. Termofosfato Yoorin ou fosfato de rocha. Aplicar nas covas no plantio. R$ 80-150/saco 25 kg.</li>
 <li><strong>Composto orgânico:</strong> se disponível, aplicar nas covas e como cobertura. Esterco curtido de gado, cama de frango, composto de feira. R$ 100-300/m³.</li>
-<li><strong>Bokashi:</strong> fertilizante orgânico fermentado, rico em microrganismos benéficos. Pode ser feito em casa ou comprado pronto. R$ 30-80/kg.</li>
+<li><strong>Bokashi:</strong> fertilizante orgânico fermentado, rico em microrganismos benéficos. A <a href="https://www.embrapa.br/" target="_blank" rel="noopener">EMBRAPA</a> publica receitas para produção caseira (farelo de arroz + torta de mamona + farinha de osso + EM — microrganismos eficientes). Comprado pronto: R$ 30-80/kg. Caseiro: R$ 5-15/kg.</li>
 </ul>
+
+<h3>Controle biológico sem agrotóxico</h3>
+
+<p>Em SAF maduro, o equilíbrio ecológico controla pragas naturalmente. Mas nos primeiros anos, pode ser necessário reforçar com bioinsumos:</p>
+
+<ul>
+<li><strong>Trichoderma:</strong> fungo benéfico que protege raízes contra patógenos do solo. Aplicar nas covas no plantio. Marcas: Koppert (Trichodermil), Lallemand. R$ 40-80/dose para 1.000 m².</li>
+<li><strong>Beauveria bassiana:</strong> fungo que controla insetos-praga (broca, cigarrinha, mosca-branca). Aplicação foliar. Marcas: Koppert, Biotrop. R$ 30-60/dose.</li>
+<li><strong>Bacillus thuringiensis (Bt):</strong> bactéria que controla lagartas sem afetar outros insetos. Produto mais conhecido: Dipel (Sumitomo). R$ 40-70/100g.</li>
+<li><strong>Calda bordalesa:</strong> mistura de sulfato de cobre + cal, permitida em produção orgânica. Controla fungos em frutíferas. Ingredientes custam R$ 20-30 para preparar 20 litros.</li>
+</ul>
+
+<p>Esses bioinsumos são compatíveis com certificação orgânica e podem ser financiados pelo PRONAF como parte do custeio do SAF.</p>
 
 <p>A partir do ano 2-3, a ciclagem de nutrientes pelas folhas caídas, poda das adubadeiras e atividade microbiana do solo geralmente supre as necessidades do sistema. Se alguma espécie apresentar deficiência visível (folhas amareladas, crescimento lento), o diagnóstico deve ser pontual — não aplicação generalizada de adubo.</p>
 
@@ -846,7 +865,7 @@ const pageCusto: PageSchema = {
     },
     {
       type: 'callout',
-      content: 'Dado importante: segundo a EMBRAPA, SAFs no bioma Mata Atlântica que combinam café, banana, palmito e madeira alcançam receita líquida de R$ 12.000-25.000/ha/ano a partir do ano 5, com custo de manutenção decrescente.',
+      content: 'Dado importante: segundo a EMBRAPA, SAFs no bioma Mata Atlântica que combinam café, banana, palmito e madeira alcançam receita líquida de R$ 12.000-25.000/ha/ano a partir do ano 5, com custo de manutenção decrescente. Para análise financeira detalhada, a ferramenta <a href="https://www.wribrasil.org.br/" target="_blank" rel="noopener">VERENA do WRI Brasil</a> permite modelar retorno de SAFs com espécies nativas.',
       calloutType: 'info',
     },
     {
@@ -953,7 +972,7 @@ const pageFinanciamento: PageSchema = {
 
 <p>O <strong>CAR</strong> (Cadastro Ambiental Rural) é obrigatório para todas as propriedades rurais e é pré-requisito para acessar crédito rural. Pode ser feito gratuitamente no <a href="https://www.car.gov.br/" target="_blank" rel="noopener">SICAR</a>.</p>
 
-<p>O <strong>PRA</strong> (Programa de Regularização Ambiental) permite que proprietários com passivo ambiental (desmatamento em RL ou APP) regularizem a situação implantando SAF — ou seja, transformem uma obrigação legal em oportunidade de renda.</p>
+<p>O <strong>PRA</strong> (Programa de Regularização Ambiental) permite que proprietários com passivo ambiental (desmatamento em RL ou APP) regularizem a situação implantando SAF — ou seja, transformem uma obrigação legal em oportunidade de renda. Organizações como a <a href="https://iniciativaverde.org.br/" target="_blank" rel="noopener">Iniciativa Verde</a> desenvolvem projetos de SAF para compensação de carbono (Carbon Free) e podem auxiliar no desenho do sistema para fins de regularização ambiental.</p>
 
 <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=900&q=80" alt="Propriedade rural com áreas de cultivo diversificado e árvores em diferentes estágios" style="width:100%;border-radius:8px;margin:1em 0" />
 
@@ -1126,7 +1145,7 @@ const editorialEspecies: PageSchema = {
     {
       type: 'articleContent',
       html: `
-<p><strong>Onde buscar mudas:</strong> viveiros credenciados pelo MAPA (Ministério da Agricultura), EMATERs estaduais, viveiros de nativas da sua região. Evite comprar mudas de procedência desconhecida — a qualidade genética e fitossanitária da muda afeta anos de produção.</p>
+<p><strong>Onde buscar mudas:</strong> viveiros credenciados pelo MAPA (Ministério da Agricultura), EMATERs estaduais, viveiros de nativas da sua região. A EMBRAPA mantém coleções de germoplasma e pode indicar fontes de sementes com qualidade genética certificada. Evite comprar mudas de procedência desconhecida — a qualidade genética e fitossanitária da muda afeta anos de produção. Para frutíferas enxertadas (citros, abacate, manga), compre apenas de viveiros com registro no RENASEM (Registro Nacional de Sementes e Mudas).</p>
 
 <p>Para o planejamento completo de quais espécies usar e como combinar em consórcios, veja <a href="${pageHref(SLUG_PLANEJAR)}">Como planejar sua agrofloresta</a>.</p>
       `,
