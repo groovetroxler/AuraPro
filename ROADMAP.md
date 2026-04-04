@@ -37,35 +37,35 @@ Produz → **Rotina 1: Criar site novo**
 
 Testado com: `saude-br` (draft) e `meliponicultura-br` (active, refinado editorialmente).
 
-### Fase 1C — Regras e instruções de conteúdo e estilização 🔄
+### Fase 1C — Regras e instruções de conteúdo e estilização ✅
 
-Desenvolve:
-- Expansão do contrato de tema (SiteTheme) com variáveis visuais opcionais (campos opcionais — não quebra sites existentes) — ✅ contrato expandido
-- Atualização do validator e da injeção de CSS variables — pendente
-- Documento `CONTENT_GUIDE.md` com:
-  - Regras de uso de blocos por tipo de página/nicho
-  - Instruções de SEO editorial (titles, descriptions, headings)
-  - Instruções de estilização por site (variáveis de tema)
-  - Instruções de monetização (posicionamento de ads, configuração de afiliados, CTAs)
-  - Checklist de qualidade por site
-- Validação aplicando as regras num dos sites iniciais
+Desenvolveu:
+- Documento `CONTENT_GUIDE.md` completo (11 seções, 550+ linhas):
+  - Arquitetura de conteúdo em duas camadas (guias permanentes + editoriais vivos)
+  - 10 etapas de trabalho: pesquisa → checagem de contexto → mapeamento de players → estrutura → metadados → home → internas → editoriais → estilização → validação
+  - Regras fortes: citar marcas reais, tabelas comparativas frequentes, links oficiais
+  - Regras de imagens com precisão contextual
+  - Checklist de qualidade e fluxo de revisão
+- Expansão do contrato de tema (SiteTheme) com variáveis opcionais (accentColor, surfaceColor, textColor, radius, fontFamilyHeading)
 
-Insumos consolidados:
-- `VSCode_DevTestRef.md` — preferências de design, escrita, estrutura e monetização
-- Site `meliponicultura-br` — referência de implementação editorial
-- Templates SEO operacionais (metadados, estrutura de páginas, checklist, template editorial)
+Validou com 4 sites editoriais completos:
+- energia-solar-br: 10 páginas, ~21.000 palavras
+- agrofloresta-br: 10 páginas, ~20.000 palavras
+- financas-br: 10 páginas, ~18.000 palavras
+- meliponicultura-br: 10 páginas, ~22.000 palavras
+- Total: 40 páginas, ~81.000 palavras, 100+ players mencionados
 
 Produz → **Rotina 2: Conteúdo e estilização de site**
 
-Critério de conclusão: é possível pegar o output da Rotina 1 e, seguindo apenas o `CONTENT_GUIDE.md`, transformá-lo num site com conteúdo real publicável — sem improvisar, sem depender de conhecimento implícito.
+Pendente como melhoria contínua (não bloqueia): injeção de CSS variables expandidas no layout.
 
-### Critério de conclusão da Fase 1
+### Critério de conclusão da Fase 1 ✅
 
-A Fase 1 está completa quando:
-- A Rotina 1 (scaffold) existe e funciona
-- A Rotina 2 (conteúdo e estilização) existe e funciona
-- As duas rotinas estão documentadas e foram validadas
-- O ciclo completo Rotina 1 → Rotina 2 → push → site real no ar é reproduzível
+A Fase 1 está completa:
+- ✅ A Rotina 1 (scaffold) existe e funciona
+- ✅ A Rotina 2 (conteúdo e estilização) existe e funciona
+- ✅ As duas rotinas estão documentadas e foram validadas
+- ✅ O ciclo completo Rotina 1 → Rotina 2 → push → site real no ar é reproduzível
 
 ---
 

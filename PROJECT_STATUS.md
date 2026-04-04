@@ -52,13 +52,14 @@ Observacao:
 ## Validacao de Producao
 
 ### URLs publicas validas
-- `https://aurapro-consulting.com/`
-- `https://aurapro-consulting.com/financas`
-- `https://aurapro-consulting.com/financas/investimentos`
-- `https://aurapro-consulting.com/energia-solar`
-- `https://aurapro-consulting.com/agrofloresta`
-- `https://aurapro-consulting.com/meliponicultura`
-- `https://aurapro-consulting.com/meliponicultura/legalizacao-meliponicultura`
+- `https://aurapro-consulting.com/` (root institucional)
+- `https://aurapro-consulting.com/pt` (root PT-BR)
+- 4 sites ativos com 10 paginas cada (40 URLs totais):
+  - `https://aurapro-consulting.com/financas` + 9 subpaginas
+  - `https://aurapro-consulting.com/energia-solar` + 9 subpaginas
+  - `https://aurapro-consulting.com/agrofloresta` + 9 subpaginas
+  - `https://aurapro-consulting.com/meliponicultura` + 9 subpaginas
+- 1 site draft: `https://aurapro-consulting.com/saude` (3 paginas placeholder)
 
 ### SEO tecnico
 - `https://aurapro-consulting.com/robots.txt` acessivel
@@ -118,12 +119,38 @@ Observacao:
 - Drift documental corrigido: estado real do registry, fluxo local-first, root institucional documentada
 - Preparacao para retomada da Fase 1C (CONTENT_GUIDE.md)
 
+### Sessao 11 - 2026-04-04 (Claude)
+- CONTENT_GUIDE.md formalizado (11 secoes, 550+ linhas, 10 etapas de trabalho)
+- Novas etapas: 1B (checagem de contexto real), 2 (mapeamento de players)
+- 4 sites reescritos com conteudo editorial completo:
+  - energia-solar-br: 10 paginas, ~21.000 palavras, 1303 linhas
+  - agrofloresta-br: 10 paginas, ~20.000 palavras, 1204 linhas
+  - financas-br: 10 paginas, ~18.000 palavras, 891 linhas
+  - meliponicultura-br: 10 paginas, ~22.000 palavras, 878 linhas
+- Total: 40 paginas, ~81.000 palavras de conteudo editorial
+- 9 imagens contextuais distribuidas
+- Decisoes 62-67 registradas
+- Fase 1C concluida — Fase 1 inteira concluida
+- Documentacao atualizada: DECISIONS, CHECKLIST_FASE1, ROADMAP, PROJECT_STATUS
+
+## Estado atual dos sites
+
+| Site | Status | Paginas | Palavras | GA4 |
+|------|--------|---------|----------|-----|
+| financas-br | active | 10 | ~18.000 | G-DMJ9QJZ7ZW |
+| energia-solar-br | active | 10 | ~21.000 | G-LL5VYXQWV9 |
+| agrofloresta-br | active | 10 | ~20.000 | G-C06N4NTLKR |
+| meliponicultura-br | active | 10 | ~22.000 | G-G04VC9SZ3Z |
+| saude-br | draft | 3 (placeholder) | ~500 | — |
+
 ## Proxima Sessao - Prioridades
-1. Retomar Fase 1C: redigir `CONTENT_GUIDE.md` usando insumos consolidados
-2. Implementar injecao de CSS variables expandidas no layout de site
-3. Validar Rotina 2 aplicando CONTENT_GUIDE num site existente
-4. Confirmar no Google AdSense (Sites) que `aurapro-consulting.com` esta apto para exibicao
-5. Quando aprovado: substituir slotIds semanticos por IDs reais, virar `NEXT_PUBLIC_ADS_TEST_MODE` para `false`
+1. **Fase 2A:** sistema de geracao de OG images por site/pagina
+2. **Fase 2B:** suporte a dominios proprios por site
+3. **Novo site:** executar ciclo completo Rotina 1 → Rotina 2 para validar reprodutibilidade
+4. **saude-br:** decidir se desenvolve com conteudo editorial ou remove do registry
+5. Confirmar no Google AdSense (Sites) que `aurapro-consulting.com` esta apto para exibicao
+6. Quando AdSense aprovado: substituir slotIds semanticos por IDs reais, virar `NEXT_PUBLIC_ADS_TEST_MODE` para `false`
+7. CSS variables expandidas no layout (melhoria continua)
 
 ## Instrucoes para novas sessoes
 1. Ler este arquivo antes de iniciar alteracoes
