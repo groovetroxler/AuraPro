@@ -13,24 +13,37 @@ Entregar um framework funcional em produção, hospedado no Vercel, com três si
 - estrutura de anúncios e afiliados integrada;
 - operação mínima validada em ambiente publicado.
 
-## Sites iniciais
+## Sites iniciais (Fase 1A)
 
-Os três sites iniciais da Fase 1 são:
+Os três sites que formaram a fundação na Fase 1A:
 - `financas-br`
 - `energia-solar-br`
 - `agrofloresta-br`
 
-Nenhum deles é o site principal. Todos são instâncias pares dentro do framework.
+## Estado atual do registry
+
+| siteKey | routePath | status | Observação |
+|---------|-----------|--------|------------|
+| `financas-br` | `financas` | active | Site inicial Fase 1A |
+| `energia-solar-br` | `energia-solar` | active | Site inicial Fase 1A |
+| `agrofloresta-br` | `agrofloresta` | active | Site inicial Fase 1A |
+| `meliponicultura-br` | `meliponicultura` | active | Criado via scaffold (Fase 1B), refinado editorialmente |
+| `saude-br` | `saude` | draft | Criado via scaffold (Fase 1B), aguarda Rotina 2 |
+
+Além dos sites, existe uma **root institucional bilíngue** (`/` em inglês, `/pt` em português) que opera como entidade separada do registry.
+
+Nenhum site é tratado como fundação principal. Todos são instâncias pares dentro do framework.
 
 ## Critério real de conclusão
 
-A Fase 1 só fecha quando o sistema estiver:
-- publicado no Vercel;
-- acessível publicamente;
-- com os 3 sites ativos por prefixo;
-- com `baseUrl`, canonical, sitemap e robots válidos em produção;
-- com pageview chegando no GA4 por site;
-- com slots de anúncios renderizando em modo real ou modo de teste operacionalmente verificável.
+A Fase 1 só fecha quando:
+- o framework estiver publicado no Vercel e acessível publicamente;
+- a Rotina 1 (scaffold de criação de site) existir e funcionar;
+- a Rotina 2 (conteúdo e estilização) existir e funcionar;
+- o ciclo completo Rotina 1 → Rotina 2 → push → site real no ar for reproduzível;
+- `baseUrl`, canonical, sitemap e robots estiverem válidos em produção;
+- pageview chegando no GA4 por site;
+- slots de anúncios renderizando em modo real ou modo de teste operacionalmente verificável.
 
 Sem publicação, monitoramento e monetização operacional, a Fase 1 não está concluída.
 
@@ -45,6 +58,9 @@ sites/
   financas-br/
   energia-solar-br/
   agrofloresta-br/
+  meliponicultura-br/
+  saude-br/
+scripts/
 ```
 
 ## Documentos-base do projeto
@@ -88,7 +104,11 @@ A Fase 1 precisa conter, além do código:
 - validação de URLs públicas;
 - validação de sitemap, robots e metadata em produção.
 
-## Próximo degrau após a Fase 1A
+## Estado das fases
 
-A Fase 1B implementa e valida o scaffold de criação automática de novos sites.
-As instruções operacionais estão em `SITE_CREATION.md`.
+- **Fase 1A** — Fundação técnica: ✅ concluída
+- **Fase 1B** — Scaffold de criação de site: ✅ concluída
+- **Fase 1C** — Regras de conteúdo e estilização: 🔄 em desenvolvimento
+
+As instruções da Rotina 1 (criação de site) estão em `SITE_CREATION.md`.
+As instruções da Rotina 2 (conteúdo e estilização) serão definidas em `CONTENT_GUIDE.md` (Fase 1C).

@@ -23,15 +23,21 @@ Criar uma base técnica estável, limpa, replicável, publicável e operacional 
 - duplicação de configuração;
 - drift entre intenção arquitetural, documentação, implementação e operação publicada.
 
-## Casos iniciais
+## Casos iniciais e estado atual
 
-Os 3 sites iniciais do framework são:
+Os 3 sites iniciais do framework (Fase 1A):
 - `financas-br`
 - `energia-solar-br`
 - `agrofloresta-br`
 
-Nenhum deles é “site principal”.
+Sites criados posteriormente via scaffold (Fase 1B):
+- `meliponicultura-br` (active — refinado editorialmente)
+- `saude-br` (draft — aguarda Rotina 2)
+
+Nenhum site é “site principal”.
 Todos são pacotes pares dentro do framework.
+
+A rota raiz (`/` e `/pt`) opera como página institucional bilíngue, separada do registry de sites.
 
 ## Princípios obrigatórios
 

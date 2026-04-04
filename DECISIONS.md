@@ -91,3 +91,15 @@
 
 51. A rota raiz (`app/page.tsx`) deixa de funcionar como diretório técnico dos verticais e passa a ser uma página institucional mínima de consultoria (`Aura Pro Consulting`).
 52. Os sites do framework não devem exibir backlink para a root por padrão. O campo `ui.showAllSitesLink` deve ficar `false`, salvo quando um brief futuro pedir ligação explícita entre root e vertical.
+
+## Decisões operacionais — Sessões 7-9 (2026-03-29 a 2026-03-30, VSCode/Codex)
+
+53. **Root institucional bilíngue.** A rota raiz serve duas versões: `/` (inglês) e `/pt` (português), com LanguageSwitcher, metadata própria por idioma, alternates canônicos e JSON-LD WebPage. A root é entidade separada do registry de sites.
+54. **GA4 da root.** A root institucional possui GA4 próprio (`G-P1QS6WD2KM`), hardcoded no componente `RootLanding.tsx`. Isso é intencional: a root não é um "site" do framework e não passa pelo registry.
+55. **Domínio canônico.** O domínio canônico de produção é `aurapro-consulting.com`. O domínio legado `aura-pro-eosin.vercel.app` redireciona com 301. A constante `CANONICAL_PRODUCTION_BASE_URL` em `config/env.ts` é a fonte única desta informação.
+56. **Governança de redirects.** Redirects são gerenciados 100% no painel do Vercel (não versionados no repositório). Isso inclui o redirect legado do domínio e o redirect `/apicultura` → `/meliponicultura`.
+57. **Scaffold opera em modo local-first.** O script `create-site.ts` gera arquivos e atualiza o registry localmente. Commit e push são responsabilidade manual do operador. O scaffold não usa `_credentials.env` nem credenciais herdadas de outro ambiente.
+58. **Fase 1B concluída.** O scaffold foi testado com sucesso criando `saude-br` e `apicultura-br` (depois renomeado para `meliponicultura-br`). A Rotina 1 está operacional.
+59. **`meliponicultura-br` como caso de validação editorial.** O site `meliponicultura-br` recebeu refinamento editorial extenso durante testes da Rotina 2 (Fase 1C experimental). Ele serve como referência de qualidade e como insumo para o `CONTENT_GUIDE.md`, mas as regras formais da Rotina 2 ainda não estão consolidadas.
+60. **SiteTheme expandido com campos opcionais.** Os campos `accentColor`, `surfaceColor`, `textColor`, `radius` e `fontFamilyHeading` foram adicionados ao contrato como opcionais. A injeção desses campos como CSS variables no layout de site é parte pendente da Fase 1C.
+61. **Documento `VSCode_DevTestRef.md` é auxiliar e não normativo.** Ele registra a experimentação da Rotina 2, preferências consolidadas e erros a evitar. Não substitui o `CONTENT_GUIDE.md` nem os documentos-base. Serve como insumo para a redação do `CONTENT_GUIDE.md`.

@@ -63,8 +63,16 @@ sites/
   financas-br/
   energia-solar-br/
   agrofloresta-br/
+  meliponicultura-br/
+  saude-br/
 scripts/   # scaffold de novo site (ver SITE_CREATION.md)
 ```
+
+## Root institucional
+
+A rota raiz (`/` e `/pt`) funciona como página institucional bilíngue da Aura Pro Consulting.
+Ela opera como entidade separada do registry de sites: não é um "site" do framework.
+Possui GA4 próprio, SEO próprio e não depende do sistema de blocos/renderer.
 
 ## Registry
 

@@ -111,11 +111,19 @@ Observacao:
 - Validado em producao: `ads.txt` com `200` e script AdSense com client correto em pagina ativa
 - Pendente externo: confirmacao final do status do site em Google AdSense > Sites
 
+### Sessao 10 - 2026-04-04 (Claude)
+- Diagnostico completo: git history, codigo, documentacao, arquivos de experimentacao do Codex
+- Atualizado: README, PROJECT_SCOPE, ARCHITECTURE, DECISIONS (#53-61), CHECKLIST_FASE1, SITE_CREATION, ROADMAP, PROJECT_STATUS
+- Fase 1B marcada como concluida; Fase 1C parcialmente avancada (contrato expandido, experimentacao feita)
+- Drift documental corrigido: estado real do registry, fluxo local-first, root institucional documentada
+- Preparacao para retomada da Fase 1C (CONTENT_GUIDE.md)
+
 ## Proxima Sessao - Prioridades
-1. Confirmar no Google AdSense (Sites) que `aurapro-consulting.com` esta apto para exibicao
-2. Quando a conta/site estiverem aprovados, decidir virada de `NEXT_PUBLIC_ADS_TEST_MODE` para `false`
-3. Substituir slotIds semanticos por IDs numericos reais do AdSense no ciclo de ativacao de ads reais
-4. Seguir com refinamentos de Rotina 2 nos sites ativos
+1. Retomar Fase 1C: redigir `CONTENT_GUIDE.md` usando insumos consolidados
+2. Implementar injecao de CSS variables expandidas no layout de site
+3. Validar Rotina 2 aplicando CONTENT_GUIDE num site existente
+4. Confirmar no Google AdSense (Sites) que `aurapro-consulting.com` esta apto para exibicao
+5. Quando aprovado: substituir slotIds semanticos por IDs reais, virar `NEXT_PUBLIC_ADS_TEST_MODE` para `false`
 
 ## Instrucoes para novas sessoes
 1. Ler este arquivo antes de iniciar alteracoes

@@ -53,21 +53,21 @@ Se qualquer item acima estiver falso, a Fase 1A não deve ser considerada conclu
 
 ---
 
-## Checklist da Fase 1B — Scaffold de criação de site
+## Checklist da Fase 1B — Scaffold de criação de site ✅
 
-- [ ] Script `scripts/create-site.ts` existe e executa sem erro
-- [ ] Coleta inputs obrigatórios: siteKey, publicName, routePath, primaryColor
-- [ ] Valida que siteKey não existe no registry
-- [ ] Valida que routePath não existe no registry
-- [ ] Valida inputs não vazios e primaryColor hex válido
-- [ ] Gera `sites/<siteKey>/index.ts` com config válida e páginas placeholder
-- [ ] Atualiza `sites/registry.ts` com import e entrada no ALL_ENTRIES
-- [ ] Validação de contrato passa no registry completo após geração
-- [ ] Build passa sem erro após geração
-- [ ] Commit automático com mensagem descritiva
-- [ ] Push automático para GitHub
-- [ ] Site acessível na URL pública via auto-deploy do Vercel
-- [ ] Testado com criação de um site real
+- [x] Script `scripts/create-site.ts` existe e executa sem erro
+- [x] Coleta inputs obrigatórios: siteKey, publicName, routePath, primaryColor
+- [x] Valida que siteKey não existe no registry
+- [x] Valida que routePath não existe no registry
+- [x] Valida inputs não vazios e primaryColor hex válido
+- [x] Gera `sites/<siteKey>/index.ts` com config válida e páginas placeholder
+- [x] Atualiza `sites/registry.ts` com import e entrada no ALL_ENTRIES
+- [x] Validação de contrato passa no registry completo após geração
+- [x] Build passa sem erro após geração
+- [x] Testado com criação de sites reais (`saude-br`, `apicultura-br`/`meliponicultura-br`)
+- [x] Fluxo local-first validado: commit e push manuais pelo operador (decisão #57)
+
+Nota: os itens originais "commit automático" e "push automático" foram substituídos pelo fluxo local-first, conforme decisão #57.
 
 Se qualquer item acima estiver falso, a Fase 1B não deve ser considerada concluída.
 
@@ -75,18 +75,24 @@ Se qualquer item acima estiver falso, a Fase 1B não deve ser considerada conclu
 
 ## Checklist da Fase 1C — Regras de conteúdo e estilização
 
-- [ ] Contrato `SiteTheme` expandido com variáveis visuais opcionais
-- [ ] Sites existentes continuam válidos sem alteração (campos opcionais)
+- [x] Contrato `SiteTheme` expandido com variáveis visuais opcionais
+- [x] Sites existentes continuam válidos sem alteração (campos opcionais)
 - [ ] Validator atualizado para os novos campos de tema
-- [ ] CSS variables injection no layout de site atualizado
+- [ ] CSS variables injection no layout de site atualizado para campos expandidos
 - [ ] Documento `CONTENT_GUIDE.md` criado com:
   - [ ] Regras de uso de blocos por tipo de página/nicho
   - [ ] Instruções de SEO editorial
   - [ ] Instruções de estilização por site
   - [ ] Instruções de monetização (ads, afiliados, CTAs)
   - [ ] Checklist de qualidade por site
-- [ ] Regras validadas aplicando num dos sites iniciais
+- [x] Experimentação prática realizada em `meliponicultura-br` (insumo consolidado em `VSCode_DevTestRef.md`)
+- [ ] Regras formais validadas aplicando num dos sites iniciais
 - [ ] Rotina 2 é executável seguindo apenas o CONTENT_GUIDE.md
+
+Insumos disponíveis para redação do CONTENT_GUIDE.md:
+- `VSCode_DevTestRef.md` — preferências consolidadas da experimentação
+- Templates SEO carregados (metadados, estrutura de páginas, checklist operacional, template editorial)
+- Site `meliponicultura-br` como referência de implementação editorial
 
 Se qualquer item acima estiver falso, a Fase 1C não deve ser considerada concluída.
 
@@ -131,9 +137,32 @@ Se qualquer item acima estiver falso, a Fase 1C não deve ser considerada conclu
 - Decisões 45-50 registradas
 - Documentação atualizada: ROADMAP, PROJECT_SCOPE, ARCHITECTURE, DECISIONS, CHECKLIST
 
+### Sessão 6 — 2026-03-28 (Claude + VSCode/Codex)
+- Fase 1B implementada: scaffold `scripts/create-site.ts`
+- `saude-br` criado via scaffold
+- `apicultura-br` criado via scaffold
+- Decisões 51-52 registradas
+
+### Sessões 7-9 — 2026-03-28 a 2026-03-30 (VSCode/Codex)
+- SiteTheme expandido com campos opcionais (Fase 1C parcial)
+- `apicultura-br` refinado editorialmente → renomeado para `meliponicultura-br`
+- Redirect 301 `/apicultura` → `/meliponicultura`
+- Root institucional bilíngue (EN/PT) com GA4 próprio
+- Domínio canônico fixado: `aurapro-consulting.com`
+- Governança de redirects migrada para Vercel
+- `VSCode_DevTestRef.md` criado como registro da experimentação
+- Validações de AdSense em produção
+- Decisões 53-61 registradas retroativamente
+
+### Sessão 10 — 2026-04-04 (Claude)
+- Diagnóstico completo: git, código, documentação, arquivos de experimentação
+- Atualização de todos os documentos-base para refletir estado real
+- Preparação para retomada da Fase 1C
+
 ### Pendente
-- **Fase 1B:** implementar scaffold de criação de site
-- **Fase 1C:** regras de conteúdo e estilização + expansão do contrato de tema
+- **Fase 1C:** `CONTENT_GUIDE.md` + injeção de CSS variables expandidas + validação da Rotina 2
 - AdSense: aguardando aprovação do Google (script já carregando)
 - Quando aprovado: criar unidades de anúncio no painel, substituir slotIds placeholder por IDs reais, mudar NEXT_PUBLIC_ADS_TEST_MODE para false no Vercel
-- OG images por site (9 warnings pendentes — Fase 2A)
+- OG images por site (Fase 2A)
+- Correção de `<html lang>` para root bilíngue (melhoria contínua)
+- Inclusão de `/pt` no sitemap (melhoria contínua)

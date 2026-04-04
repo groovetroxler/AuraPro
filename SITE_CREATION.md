@@ -1,7 +1,6 @@
 # SITE_CREATION — Instruções para criação de novo site
 
-> **Status:** em validação — este documento pode ser alterado até a conclusão da Fase 1B.
-> Após validação, torna-se instrução operacional permanente do framework.
+> **Status:** validado — Fase 1B concluída. Este documento é a instrução operacional permanente da Rotina 1.
 
 ## Propósito
 
@@ -10,8 +9,7 @@ Este documento define a sequência completa para criar, validar e publicar um no
 ## Pré-requisitos
 
 - Fase 1A concluída e estável.
-- Repositório com auto-deploy via GitHub → Vercel.
-- Arquivo `_credentials.env` na raiz local com token Git válido.
+- Repositório clonado localmente.
 - Node.js e dependências do projeto instalados.
 
 ## Comando
@@ -79,10 +77,17 @@ O scaffold preenche os seguintes valores sem exigir input:
 4. Atualiza `sites/registry.ts` com import e entrada
 5. Executa validação de contrato no registry completo
 6. Executa build para confirmar que não há erros
-7. Commit automático com mensagem descritiva
-8. Push automático para o GitHub (usando token do `_credentials.env`)
-9. Vercel faz auto-deploy
-10. Site acessível em `<NEXT_PUBLIC_BASE_URL>/<routePath>`
+7. Exibe resumo e próximos passos
+
+## Pós-scaffold — sequência manual do operador
+
+Após o scaffold gerar os arquivos:
+
+1. Revisar o diff e validar o conteúdo placeholder
+2. Commitar com mensagem descritiva
+3. Fazer push para a branch desejada
+4. Vercel faz auto-deploy
+5. Site acessível em `<domínio canônico>/<routePath>`
 
 ## O que o scaffold NÃO faz
 
@@ -92,14 +97,14 @@ O scaffold preenche os seguintes valores sem exigir input:
 - Não cria OG images
 - Não configura programas de afiliados
 
-## Pós-criação — sequência manual
+## Pós-publicação — configuração adicional
 
-Após o scaffold publicar o site:
+Após o site estar publicado e acessível:
 
 1. Criar propriedade no Google Analytics (GA4)
 2. Inserir `ga4MeasurementId` no config do site
 3. Ativar `analytics.enabled: true`
-4. Substituir conteúdo placeholder por conteúdo real
+4. Aplicar Rotina 2 (conteúdo e estilização) seguindo `CONTENT_GUIDE.md`
 5. Push — auto-deploy atualiza tudo
 
 ## Validações de segurança

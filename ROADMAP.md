@@ -24,24 +24,24 @@ Entregou: 3 sites iniciais publicados com placeholders (financas-br, energia-sol
 
 Não produz rotina diretamente — é a fundação sobre a qual as rotinas operam.
 
-### Fase 1B — Regras e ferramenta de criação de site (scaffold)
+### Fase 1B — Regras e ferramenta de criação de site (scaffold) ✅
 
-Desenvolve:
+Desenvolveu:
 - Script `scripts/create-site.ts`
 - Regras operacionais em `SITE_CREATION.md`
 - Validações de segurança (siteKey/routePath únicos, inputs válidos)
 - Atualização automática do registry
-- Commit + push automático (publicação via auto-deploy)
+- Fluxo local-first: commit e push manuais pelo operador (decisão #57)
 
 Produz → **Rotina 1: Criar site novo**
 
-Critério de conclusão: é possível executar o comando e obter um site novo que passa na validação de contrato, aparece no registry, faz build sem erro, é publicado automaticamente via auto-deploy, e fica acessível na URL pública.
+Testado com: `saude-br` (draft) e `meliponicultura-br` (active, refinado editorialmente).
 
-### Fase 1C — Regras e instruções de conteúdo e estilização
+### Fase 1C — Regras e instruções de conteúdo e estilização 🔄
 
 Desenvolve:
-- Expansão do contrato de tema (SiteTheme) com variáveis visuais opcionais (campos opcionais — não quebra sites existentes)
-- Atualização do validator e da injeção de CSS variables
+- Expansão do contrato de tema (SiteTheme) com variáveis visuais opcionais (campos opcionais — não quebra sites existentes) — ✅ contrato expandido
+- Atualização do validator e da injeção de CSS variables — pendente
 - Documento `CONTENT_GUIDE.md` com:
   - Regras de uso de blocos por tipo de página/nicho
   - Instruções de SEO editorial (titles, descriptions, headings)
@@ -49,6 +49,11 @@ Desenvolve:
   - Instruções de monetização (posicionamento de ads, configuração de afiliados, CTAs)
   - Checklist de qualidade por site
 - Validação aplicando as regras num dos sites iniciais
+
+Insumos consolidados:
+- `VSCode_DevTestRef.md` — preferências de design, escrita, estrutura e monetização
+- Site `meliponicultura-br` — referência de implementação editorial
+- Templates SEO operacionais (metadados, estrutura de páginas, checklist, template editorial)
 
 Produz → **Rotina 2: Conteúdo e estilização de site**
 
@@ -120,3 +125,7 @@ Não são fases nem rotinas. São ajustes feitos quando necessário:
 - Expandir catálogo de blocos
 - Ajustes de responsividade ou acessibilidade no core
 - Ativação de AdSense em modo real (quando aprovado pelo Google)
+- Corrigir `<html lang>` para root bilíngue (EN vs PT-BR)
+- Incluir rota `/pt` no sitemap
+- Definir `defaultOgImage` real por site (ou remover expectativa de fallback)
+- Sanitização de HTML em blocos `richText` e `articleContent` (antes de automação de conteúdo)
