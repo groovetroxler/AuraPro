@@ -82,8 +82,8 @@ const homePage: PageSchema = {
     },
     {
       type: 'image',
-      src: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200&q=80',
-      alt: 'Sistema agroflorestal com diversidade de espécies em diferentes estratos',
+      src: 'https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?w=1200&q=80',
+      alt: 'Plantação diversificada com bananeiras e outras espécies em sistema agroflorestal tropical',
       caption: 'Agrofloresta combina árvores, frutíferas, hortaliças e adubação verde no mesmo espaço — imitando a lógica da floresta.',
     },
     {
