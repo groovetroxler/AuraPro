@@ -84,7 +84,7 @@ const homePage: PageSchema = {
     {
       type: 'articleContent',
       html: `
-<p>O Brasil tem mais de 3,7 milhões de sistemas solares instalados. A fonte fotovoltaica já é a segunda maior da matriz elétrica brasileira, com 64 GW de capacidade e mais de R$ 280 bilhões em investimentos acumulados desde 2012, segundo dados da <a href="https://www.absolar.org.br/infografico/" target="_blank" rel="noopener">ABSOLAR</a> atualizados em janeiro de 2026.</p>
+<p>O Brasil tem mais de 3,7 milhões de sistemas solares instalados. A fonte fotovoltaica já é a segunda maior da matriz elétrica brasileira, com 64 GW de capacidade e mais de R$ 280 bilhões em investimentos acumulados desde 2012, segundo dados da <a href="https://www.absolar.org.br/" target="_blank" rel="noopener">ABSOLAR</a> atualizados em janeiro de 2026.</p>
 
 <p>Mas números grandes não respondem a pergunta que realmente importa: <strong>faz sentido para a sua casa, com a sua conta de luz, no cenário de hoje?</strong></p>
 
