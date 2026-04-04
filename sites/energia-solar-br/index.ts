@@ -968,7 +968,139 @@ const pageLegislacao: PageSchema = {
   id: 'solar-legislacao', siteKey: SITE_KEY, type: 'article', slug: SLUG_LEGISLACAO,
   title: 'Legislação, Fio B e financiamento', status: 'published',
   meta: { title: 'Lei 14.300, Fio B e financiamento solar: o que muda para quem instala agora', description: 'Marco legal da energia solar, regras de compensação, cobrança do Fio B, isenção de ICMS e linhas de crédito em 2026.' },
-  blocks: [ breadcrumb('Legislação e financiamento', SLUG_LEGISLACAO), { type: 'articleContent', html: '<h2>Legislação, Fio B e financiamento</h2><p>Conteúdo completo em desenvolvimento.</p>', publishedAt: PUBLISHED_AT }, allGuideLinks(SLUG_LEGISLACAO) ],
+  blocks: [
+    breadcrumb('Legislação e financiamento', SLUG_LEGISLACAO),
+    {
+      type: 'articleContent',
+      html: `
+<p>A legislação de energia solar no Brasil mudou significativamente nos últimos anos. Se você pesquisou sobre o assunto antes de 2023, boa parte do que leu já está desatualizado. As regras atuais — especialmente a <a href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2022/lei/l14300.htm" target="_blank" rel="noopener">Lei 14.300/2022</a> — afetam diretamente o retorno do seu investimento. E as opções de financiamento disponíveis podem tornar o sistema acessível mesmo sem capital inicial.</p>
+
+<h2>A Lei 14.300/2022: o Marco Legal da Geração Distribuída</h2>
+
+<p>A Lei 14.300, sancionada em janeiro de 2022, é o marco regulatório que define as regras do jogo para energia solar no Brasil. Ela regulamenta a geração distribuída (GD) — ou seja, sistemas em que o consumidor gera sua própria energia e a injeta na rede.</p>
+
+<p>Os pontos principais da lei:</p>
+
+<p><strong>Compensação de energia mantida:</strong> o sistema de créditos continua funcionando. Quem gera mais do que consome envia o excedente para a rede e recebe créditos válidos por 60 meses.</p>
+
+<p><strong>Cobrança do Fio B introduzida:</strong> essa é a mudança mais importante. Antes da lei, quem injetava energia na rede pagava zero pelo uso da infraestrutura de distribuição. A Lei 14.300 introduziu a cobrança gradual do TUSD Fio B — a tarifa que remunera o uso dos fios de distribuição.</p>
+
+<p><strong>Direito adquirido para sistemas antigos:</strong> quem instalou e protocolou o pedido de acesso antes de 7 de janeiro de 2023 mantém as regras antigas até 2045 — sem cobrança de Fio B.</p>
+
+<h2>Fio B: a cobrança que mudou a conta</h2>
+
+<p>O Fio B (TUSD Fio B) é a tarifa que você paga pelo uso da rede de distribuição. Antes da Lei 14.300, essa tarifa era 100% compensada para quem tinha energia solar. Agora, novos sistemas pagam uma porcentagem crescente:</p>
+      `,
+      publishedAt: PUBLISHED_AT,
+    },
+    {
+      type: 'comparisonTable',
+      headers: ['Ano', 'Percentual do Fio B cobrado', 'Economia estimada na conta'],
+      rows: [
+        { label: '2023', values: ['15%', '88-92%'] },
+        { label: '2024', values: ['30%', '85-90%'] },
+        { label: '2025', values: ['45%', '80-86%'] },
+        { label: '2026', values: ['60%', '74-82%'] },
+        { label: '2027', values: ['75%', '68-78%'] },
+        { label: '2028', values: ['90%', '62-74%'] },
+        { label: '2029+', values: ['100%', '58-70%'] },
+      ],
+    },
+    {
+      type: 'callout',
+      content: 'Ponto-chave: quem instala em 2026 entra na progressão a partir de 60%. As condições de hoje são melhores do que serão amanhã. Cada ano de espera significa começar com um Fio B mais alto.',
+      calloutType: 'warning',
+    },
+    {
+      type: 'adSlot',
+      slotId: 'solar-legislacao-mid',
+      format: 'responsive',
+    },
+    {
+      type: 'articleContent',
+      html: `
+<p><strong>O que o Fio B significa na prática:</strong> em 2026, com 60% do Fio B cobrado, cada kWh que você injeta na rede e depois recupera como crédito vale menos do que valia antes de 2023. Mas o autoconsumo (energia usada diretamente dos painéis, sem passar pela rede) não é afetado. Por isso, maximizar o autoconsumo é mais importante agora do que nunca.</p>
+
+<p>Mesmo com o Fio B em 100% (a partir de 2029), a energia solar residencial continua valendo a pena na maioria dos cenários. A economia cai de ~90% para ~60-70% — ainda muito expressiva quando comparada a pagar a conta cheia.</p>
+
+<h2>ICMS e energia solar</h2>
+
+<p>O <a href="https://www.confaz.fazenda.gov.br/" target="_blank" rel="noopener">Convênio CONFAZ ICMS 16/2015</a> autorizou os estados a isentar de ICMS a energia injetada na rede por sistemas de geração distribuída. Na prática, a maioria dos estados brasileiros adere a essa isenção, o que significa que a energia que você injeta na rede e depois compensa não paga ICMS.</p>
+
+<p>Exceções existem — alguns estados cobram ICMS sobre a energia compensada. Verifique a regra do seu estado antes de calcular a economia. A empresa instaladora deve saber informar isso.</p>
+
+<h2>Regulamentação da ANEEL</h2>
+
+<p>A <a href="https://www.aneel.gov.br/" target="_blank" rel="noopener">ANEEL</a> (Agência Nacional de Energia Elétrica) regulamenta a geração distribuída por meio da Resolução Normativa 1.000/2021. Essa resolução define:</p>
+
+<ul>
+<li>Regras técnicas para conexão de sistemas à rede</li>
+<li>Prazos que a concessionária deve cumprir para parecer de acesso, vistoria e troca de medidor</li>
+<li>Direitos do consumidor-gerador (incluindo o direito de usar créditos em outros imóveis no mesmo CPF/CNPJ)</li>
+<li>Limites de potência para micro e minigeração (até 75 kW para micro, até 5 MW para mini)</li>
+</ul>
+
+<h2>Linhas de financiamento para energia solar em 2026</h2>
+
+<p>Se você não tem o capital para pagar à vista, existem linhas de crédito específicas para energia solar com taxas mais competitivas que o crédito pessoal convencional:</p>
+      `,
+      publishedAt: PUBLISHED_AT,
+    },
+    {
+      type: 'comparisonTable',
+      headers: ['Banco/Programa', 'Prazo máximo', 'Taxa aproximada', 'Observação'],
+      rows: [
+        { label: 'BNB - FNE Sol', values: ['12 anos', 'A partir de 0,6% a.m.', 'Melhor taxa do mercado; só região Nordeste'] },
+        { label: 'Banco do Brasil', values: ['7 anos', 'A partir de 1,0% a.m.', 'Linha BB Crédito Energia Renovável'] },
+        { label: 'Santander', values: ['5 anos', 'A partir de 1,2% a.m.', 'Aceita financiar equipamento + instalação'] },
+        { label: 'BV Financeira', values: ['6 anos', 'A partir de 1,1% a.m.', 'Especializada em solar; processo ágil'] },
+        { label: 'Sicredi/Sicoob', values: ['8 anos', 'Varia por cooperativa', 'Boas condições para associados'] },
+        { label: 'Sol Agora', values: ['6 anos', 'A partir de 1,3% a.m.', 'Fintech especializada em solar'] },
+      ],
+    },
+    {
+      type: 'articleContent',
+      html: `
+<p><strong>A lógica do financiamento solar:</strong> se a parcela mensal é menor que a economia na conta de luz, o sistema se paga sozinho. Exemplo: sistema de R$ 22.000 financiado em 60 meses = parcela de ~R$ 550/mês. Se a economia na conta é R$ 415/mês, você paga R$ 135/mês de diferença nos primeiros 5 anos e depois tem economia total por 20+ anos. Se a economia é R$ 500/mês, o sistema já é positivo desde o primeiro mês.</p>
+
+<p>Atenção ao CET (Custo Efetivo Total): as taxas anunciadas são nominais. O CET inclui seguros, TAC e IOF, e pode ser significativamente maior. Compare sempre o CET, não a taxa nominal.</p>
+
+<h2>Geração compartilhada e consórcio</h2>
+
+<p>A Lei 14.300 também regulamenta modelos de energia solar sem instalação no seu telhado:</p>
+
+<p><strong>Autoconsumo remoto:</strong> você instala um sistema em outro imóvel seu (sítio, lote vazio) e usa os créditos na sua casa. Útil para quem tem telhado inadequado mas outro imóvel com boa inclinação.</p>
+
+<p><strong>Geração compartilhada:</strong> um grupo de consumidores (condomínio, cooperativa) investe em uma usina solar e divide os créditos proporcionalmente. Cada participante recebe desconto na conta de luz sem instalar nada no próprio telhado.</p>
+
+<p><strong>Assinatura solar:</strong> você não investe nada — apenas assina um contrato com uma empresa que opera uma usina solar e recebe desconto na conta (geralmente 10-20%). É a opção de menor risco e menor retorno, mas acessível para quem mora em apartamento. Veja mais em <a href="${pageHref(SLUG_EDITORIAL_APTO)}">Energia solar para quem mora em apartamento</a>.</p>
+
+<h2>Resumo: o que muda para quem instala em 2026</h2>
+
+<ul>
+<li>Fio B em 60% — economia de 74-82% na conta (ainda muito expressiva)</li>
+<li>Quem instala agora garante essa faixa; esperar piora as condições</li>
+<li>ICMS isento na maioria dos estados</li>
+<li>Créditos válidos por 60 meses, transferíveis entre imóveis</li>
+<li>Financiamento disponível com parcela que pode ser menor que a economia</li>
+<li>Maximizar autoconsumo é a melhor estratégia para otimizar o retorno</li>
+</ul>
+
+<h2>Conclusão do guia</h2>
+
+<p>Você percorreu todo o guia: entendeu <a href="${pageHref(SLUG_COMO_FUNCIONA)}">como o sistema funciona</a>, viu <a href="${pageHref(SLUG_CUSTO)}">quanto custa e quanto economiza</a>, aprendeu <a href="${pageHref(SLUG_EQUIPAMENTOS)}">a escolher equipamentos</a> e <a href="${pageHref(SLUG_INSTALADOR)}">o instalador certo</a>, sabe <a href="${pageHref(SLUG_PASSO_A_PASSO)}">o que vai acontecer na instalação</a> e agora conhece as regras do jogo.</p>
+
+<p>O próximo passo é prático: pegue suas últimas 12 contas de luz, peça ao menos 3 orçamentos de empresas verificadas e compare os detalhes — não só o preço. Com esse guia na mão, você tem as ferramentas para tomar uma decisão informada.</p>
+      `,
+      publishedAt: PUBLISHED_AT,
+    },
+    allGuideLinks(SLUG_LEGISLACAO),
+    {
+      type: 'adSlot',
+      slotId: 'solar-legislacao-bottom',
+      format: 'responsive',
+    },
+  ],
 }
 
 // EDITORIAIS (stubs)
@@ -977,21 +1109,142 @@ const editorialErros: PageSchema = {
   id: 'solar-editorial-erros', siteKey: SITE_KEY, type: 'article', slug: SLUG_EDITORIAL_ERROS,
   title: '7 erros que mais custam caro na instalação de energia solar', status: 'published',
   meta: { title: '7 erros que mais custam caro na instalação de energia solar', description: 'Erros comuns ao instalar energia solar: escolher pelo preço, ignorar sombreamento, superdimensionar e contratar empresa sem verificar.' },
-  blocks: [ breadcrumb('Erros comuns', SLUG_EDITORIAL_ERROS), { type: 'articleContent', html: '<h2>7 erros que mais custam caro</h2><p>Conteúdo completo em desenvolvimento.</p>', publishedAt: PUBLISHED_AT }, allGuideLinks(SLUG_EDITORIAL_ERROS) ],
+  blocks: [
+    breadcrumb('Erros comuns', SLUG_EDITORIAL_ERROS),
+    {
+      type: 'articleContent',
+      html: `
+<p>Depois de acompanhar centenas de instalações e conversar com técnicos do setor, estes são os erros que mais vemos — e que mais custam caro a longo prazo. Todos são evitáveis.</p>
+
+<h2>1. Escolher pelo menor preço</h2>
+
+<p>A diferença entre o orçamento mais barato e o mais caro para o mesmo sistema pode chegar a 40%. Parece economia, mas geralmente esconde painéis de marca desconhecida com eficiência 3-5% menor, inversor sem representação no Brasil e estrutura de fixação que corrói em poucos anos. A conta chega depois: menos geração por 25 anos, garantia inacessível e manutenção cara.</p>
+
+<h2>2. Não verificar a empresa instaladora</h2>
+
+<p>O mercado solar cresceu rápido e atraiu empresas sem estrutura técnica. Antes de assinar, verifique: CNPJ ativo, registros no CREA, portfólio com fotos reais, referências de clientes e se a empresa inclui homologação no contrato. Detalhes em <a href="${pageHref(SLUG_INSTALADOR)}">como escolher o instalador</a>.</p>
+
+<h2>3. Superdimensionar o sistema</h2>
+
+<p>Instalar mais painéis do que o necessário parece boa ideia ("sobra crédito"). Mas com o Fio B progressivo da <a href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2022/lei/l14300.htm" target="_blank" rel="noopener">Lei 14.300</a>, cada kWh injetado na rede vale menos do que o kWh consumido direto. Crédito acumulado que não é usado vira dinheiro jogado fora. O dimensionamento correto parte das suas últimas 12 contas, não de uma estimativa otimista.</p>
+
+<h2>4. Ignorar sombreamento</h2>
+
+<p>Uma árvore que faz sombra parcial em 3 painéis pode reduzir a geração do sistema inteiro em 20-30% (com inversor string). Nem toda empresa faz análise de sombra adequada — algumas usam só imagem de satélite, sem visita técnica no horário certo. Peça simulação de sombra em pelo menos dois horários (manhã e tarde).</p>
+
+<h2>5. Não ler o contrato com atenção</h2>
+
+<p>O contrato deve especificar: marcas e modelos exatos dos equipamentos, potência do sistema, prazo de execução, garantia de mão de obra, responsabilidade pela homologação e condições de pagamento. "Sistema de 5 kWp de primeira linha" sem detalhes é contrato vazio.</p>
+
+<h2>6. Esperar o "momento perfeito" para instalar</h2>
+
+<p>A cada ano, o Fio B aumenta 15 pontos percentuais. Quem instalou em 2023 começou com 15% de Fio B. Quem instala em 2026 começa com 60%. Quem esperar 2028 começa com 90%. O equipamento pode ficar mais barato, mas as condições regulatórias ficam piores. O melhor momento foi ontem; o segundo melhor é hoje.</p>
+
+<h2>7. Não monitorar a geração após a instalação</h2>
+
+<p>Todo inversor moderno tem app de monitoramento. Muita gente instala e nunca mais olha. Resultado: um painel defeituoso, uma conexão solta ou sujeira acumulada reduz a geração por meses sem ninguém perceber. Reserve 2 minutos por semana para checar o app — quedas bruscas na geração indicam problema que precisa de atenção.</p>
+
+<p>Se quiser evitar todos esses erros de forma estruturada, volte ao <a href="${pageHref('home')}">guia completo</a> e siga cada etapa na ordem.</p>
+      `,
+      publishedAt: PUBLISHED_AT,
+    },
+    allGuideLinks(SLUG_EDITORIAL_ERROS),
+  ],
 }
 
 const editorialMercado: PageSchema = {
   id: 'solar-editorial-mercado', siteKey: SITE_KEY, type: 'article', slug: SLUG_EDITORIAL_MERCADO,
   title: 'Energia solar em 2026: o que mudou e o que esperar', status: 'published',
   meta: { title: 'Energia solar em 2026: o que mudou e o que esperar', description: 'Cenário do mercado solar brasileiro em 2026: dados ABSOLAR, impacto do Fio B, projeções de investimento e o que muda para o consumidor.' },
-  blocks: [ breadcrumb('Mercado 2026', SLUG_EDITORIAL_MERCADO), { type: 'articleContent', html: '<h2>Energia solar em 2026</h2><p>Conteúdo completo em desenvolvimento.</p>', publishedAt: PUBLISHED_AT }, allGuideLinks(SLUG_EDITORIAL_MERCADO) ],
+  blocks: [
+    breadcrumb('Mercado 2026', SLUG_EDITORIAL_MERCADO),
+    {
+      type: 'articleContent',
+      html: `
+<p>O mercado solar brasileiro vive um momento paradoxal em 2026: a tecnologia nunca foi tão acessível e eficiente, mas o ritmo de crescimento está desacelerando. Segundo a <a href="https://www.absolar.org.br/" target="_blank" rel="noopener">ABSOLAR</a>, o setor deve adicionar 10,6 GW de nova capacidade em 2026 — queda de 7% em relação a 2025, que já havia caído 24% frente ao recorde de 2024 (15 GW).</p>
+
+<p>Para quem está considerando instalar energia solar em casa, os dados de mercado importam menos que o cenário individual. Mas entender o contexto ajuda a negociar melhor e a tomar decisões com mais segurança.</p>
+
+<h2>Os números do setor em 2026</h2>
+
+<p>O Brasil acumula 64 GW de capacidade solar instalada, sendo a segunda maior fonte da matriz elétrica (24,5%). O setor já trouxe mais de R$ 280 bilhões em investimentos e gerou 1,9 milhão de empregos desde 2012. Em 2026, a projeção é de R$ 31,8 bilhões em novos investimentos e 319 mil empregos.</p>
+
+<h2>Por que o crescimento desacelerou</h2>
+
+<p><strong>Nas grandes usinas:</strong> o principal problema são os cortes de geração (curtailment) impostos pelo operador do sistema. Geradores solares são obrigados a reduzir a produção em horários de alta geração e baixa demanda — e não são compensados pelo prejuízo. Isso afasta investidores.</p>
+
+<p><strong>Nos sistemas residenciais:</strong> obstáculos de conexão estão aumentando. Algumas concessionárias alegam limitação da rede local (inversão de fluxo) e negam pedidos de acesso. Além disso, juros altos (~15% a.a.), dólar volátil e impostos de importação sobre equipamentos encarecem o investimento.</p>
+
+<h2>O que isso significa para o consumidor residencial</h2>
+
+<p><strong>Preço dos equipamentos:</strong> a tendência de queda continua, mas em ritmo menor. O custo por Wp instalado está em ~R$ 2,30 — metade do que era em 2020. Novas reduções virão da melhoria de eficiência dos painéis, não de quedas drásticas de preço.</p>
+
+<p><strong>Fio B em 60%:</strong> quem instala em 2026 garante a entrada na progressão atual. A economia na conta ainda é de 74-82%. Cada ano de espera piora as condições regulatórias.</p>
+
+<p><strong>Tarifas de energia:</strong> continuam subindo acima da inflação. A ANEEL já aprovou reajustes médios de 8-12% para 2026 em várias concessionárias. Cada reajuste aumenta a economia que o sistema solar proporciona — e melhora o payback.</p>
+
+<p><strong>Financiamento:</strong> com a Selic alta, as taxas de crédito solar também subiram. Mas linhas específicas (BNB, BV Financeira, cooperativas de crédito) ainda oferecem condições mais favoráveis que o crédito pessoal. Detalhes em <a href="${pageHref(SLUG_LEGISLACAO)}">Legislação e financiamento</a>.</p>
+
+<h2>Conclusão prática</h2>
+
+<p>2026 não é o ano mais fácil para o setor solar como um todo — mas para o consumidor residencial que paga conta alta de luz, continua sendo um dos melhores investimentos disponíveis. O cenário regulatório piora com o tempo (Fio B cresce), e as tarifas de energia sobem. Esperar não melhora a equação.</p>
+      `,
+      publishedAt: PUBLISHED_AT,
+    },
+    allGuideLinks(SLUG_EDITORIAL_MERCADO),
+  ],
 }
 
 const editorialApartamento: PageSchema = {
   id: 'solar-editorial-apto', siteKey: SITE_KEY, type: 'article', slug: SLUG_EDITORIAL_APTO,
   title: 'Energia solar para quem mora em apartamento', status: 'published',
   meta: { title: 'Mora em apartamento? Como usar energia solar mesmo sem telhado', description: 'Opções de energia solar para apartamento: GD compartilhada, assinatura solar e cooperativas — como funcionam e quanto economizam.' },
-  blocks: [ breadcrumb('Solar em apartamento', SLUG_EDITORIAL_APTO), { type: 'articleContent', html: '<h2>Energia solar em apartamento</h2><p>Conteúdo completo em desenvolvimento.</p>', publishedAt: PUBLISHED_AT }, allGuideLinks(SLUG_EDITORIAL_APTO) ],
+  blocks: [
+    breadcrumb('Solar em apartamento', SLUG_EDITORIAL_APTO),
+    {
+      type: 'articleContent',
+      html: `
+<p>A maioria dos guias de energia solar foca em quem tem telhado próprio. Mas e se você mora em apartamento? Você não pode instalar painéis no teto do prédio (sem aprovação do condomínio) e provavelmente não tem outro imóvel com telhado disponível. Isso significa que energia solar está fora do seu alcance?</p>
+
+<p>Não. Existem três caminhos para aproveitar energia solar morando em apartamento — cada um com nível diferente de investimento, economia e complexidade.</p>
+
+<h2>1. Assinatura solar (GD por assinatura)</h2>
+
+<p>É a opção mais simples. Você assina um contrato com uma empresa que opera uma usina solar e recebe um desconto na sua conta de luz — geralmente entre 10% e 20%. Não há investimento inicial, não há instalação, não há manutenção. Você só troca uma parte da sua energia convencional por créditos solares.</p>
+
+<p><strong>Como funciona:</strong> a empresa gera energia solar em uma usina e injeta na rede da mesma concessionária que atende seu apartamento. Parte dos créditos gerados é transferida para sua unidade consumidora, reduzindo o valor da sua conta.</p>
+
+<p><strong>Vantagem:</strong> zero de investimento, zero de risco, começa a economizar imediatamente.</p>
+<p><strong>Limitação:</strong> a economia é modesta (10-20%), e você fica vinculado a um contrato que pode ter multa de rescisão.</p>
+
+<p>Empresas que operam nesse modelo no Brasil incluem a <strong>Sunne</strong>, <strong>Sou Energy</strong> e <strong>Portal Solar Marketplace</strong>, entre outras. Verifique se a empresa opera na sua concessionária.</p>
+
+<h2>2. Geração compartilhada (cooperativa ou consórcio)</h2>
+
+<p>Nesse modelo, você se junta a outros consumidores para investir em uma usina solar compartilhada. Os créditos gerados são divididos proporcionalmente entre os participantes. A economia é maior do que na assinatura (30-60%), mas há investimento inicial.</p>
+
+<p><strong>Como funciona:</strong> uma cooperativa ou consórcio constrói uma usina solar e distribui os créditos entre os membros. Cada membro tem uma cota proporcional ao seu investimento e recebe créditos mensais na conta de luz.</p>
+
+<p><strong>Vantagem:</strong> economia significativa sem precisar de telhado próprio.</p>
+<p><strong>Limitação:</strong> exige investimento (menor que um sistema individual), depende da gestão da cooperativa e está sujeito às regras do Fio B.</p>
+
+<h2>3. Autoconsumo remoto</h2>
+
+<p>Se você tem outro imóvel com telhado disponível (casa de praia, sítio, terreno), pode instalar um sistema solar lá e transferir os créditos para o seu apartamento. A <a href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2022/lei/l14300.htm" target="_blank" rel="noopener">Lei 14.300</a> permite essa transferência entre unidades consumidoras do mesmo CPF, dentro da mesma concessionária.</p>
+
+<p><strong>Vantagem:</strong> economia equivalente à de um sistema convencional (70-82%).</p>
+<p><strong>Limitação:</strong> os dois imóveis precisam estar na mesma área de concessão. E você precisa ter esse segundo imóvel.</p>
+
+<h2>Energia solar no condomínio</h2>
+
+<p>Outra possibilidade é instalar painéis solares nas áreas comuns do prédio (telhado, garagem coberta) para reduzir o consumo condominial — elevadores, iluminação, bombas, portaria. Isso requer aprovação em assembleia e investimento do condomínio, mas pode reduzir significativamente a taxa condominial no longo prazo.</p>
+
+<p>Se você quer entender o sistema solar em mais profundidade — incluindo como funciona, quanto custa e como escolher — o <a href="${pageHref('home')}">guia completo de energia solar</a> cobre tudo em detalhes.</p>
+      `,
+      publishedAt: PUBLISHED_AT,
+    },
+    allGuideLinks(SLUG_EDITORIAL_APTO),
+  ],
 }
 
 // EXPORT
