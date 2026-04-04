@@ -59,6 +59,25 @@ Antes de escrever qualquer coisa:
 - O tom é informativo sem ser acadêmico?
 - O site tem boa estrutura de navegação e conteúdo?
 
+### Etapa 1B — Checagem de contexto real
+
+Após pesquisar referências, verificar se o assistente realmente entende o assunto a ponto de não cometer erros factuais ou visuais grosseiros. Essa etapa existe para evitar gafes como colocar uma foto de colher de jardinagem num site sobre trabalho rural pesado.
+
+**O que verificar:**
+
+1. **Como a atividade realmente se parece:** quais são as cenas reais do dia a dia? Que ferramentas as pessoas usam? Como é o ambiente físico? O que um praticante veria como absurdo se aparecesse no site?
+2. **Qual é o vocabulário real:** quais termos os praticantes usam (e não usam)? Existem jargões que o leitor espera ver? Existem termos que soariam estranhos ou genéricos demais?
+3. **Qual é a escala real:** estamos falando de quintal, sítio, fazenda? Que tamanhos são comuns? Que investimentos são realistas?
+4. **Quais são os erros típicos de quem não conhece o assunto:** o que um texto superficial erraria? Que simplificações seriam percebidas como falta de conhecimento?
+
+**Como fazer:**
+- Ler relatos de praticantes reais (fóruns, vídeos, cooperativas)
+- Verificar imagens reais da atividade (não bancos de imagem genéricos)
+- Comparar o vocabulário do texto com o vocabulário das referências
+- Listar 5-10 detalhes específicos que só quem entende do assunto saberia
+
+**Resultado esperado:** o assistente deve conseguir descrever a atividade com precisão visual e prática antes de escrever uma linha de conteúdo ou escolher uma imagem. Se não consegue, precisa pesquisar mais.
+
 ### Etapa 2 — Mapeamento de players e produtos do mercado
 
 Antes de definir a estrutura do site, pesquisar e mapear o ecossistema comercial do nicho. Essa etapa descobre os produtos, equipamentos, empresas, serviços e instituições que se relacionam com o tema — e que vão dar concretude, credibilidade e potencial de monetização ao conteúdo.
@@ -487,21 +506,43 @@ Regra: nunca forçar uma menção de marca. Toda citação deve nascer da necess
 ### Quando usar
 
 - Imagens reais são essenciais para credibilidade
-- Toda página do guia deve ter pelo menos 1-2 imagens relevantes
-- Editoriais podem ter ou não, dependendo do conteúdo
+- Toda página do guia deve ter pelo menos 2-3 imagens distribuídas ao longo do texto
+- Imagens devem estar posicionadas no ponto da narrativa que ilustram (não agrupadas no topo)
+- Editoriais podem ter 1-2 imagens
+
+### Regra de precisão contextual (regra forte)
+
+A imagem deve representar com precisão a realidade do assunto. Uma foto genérica de banco de imagens que não corresponde à atividade real prejudica a credibilidade mais do que ajuda. Antes de selecionar uma imagem, verificar:
+
+- A ferramenta/equipamento mostrado é realmente usado nessa atividade?
+- A escala da cena é compatível com o que o texto descreve?
+- Um praticante real olharia para essa imagem e a reconheceria como legítima?
+- A imagem mostra o contexto certo (rural vs urbano, tropical vs temperado, profissional vs hobby)?
+
+Se não houver imagem adequada disponível, é melhor não colocar imagem do que colocar uma que não faz sentido.
+
+### O que cada imagem deve mostrar (por contexto)
+
+- **Produção/plantio:** canteiros diversificados, múltiplas espécies crescendo juntas, diferentes estratos visíveis
+- **Equipamentos:** ferramentas reais em uso ou em contexto de trabalho, não isoladas em fundo branco
+- **Colheita/resultado:** diversidade de produtos, mesa de feira, cestas coloridas
+- **Paisagem/layout:** vista do terreno mostrando organização das linhas, estrutura do sistema
+- **Processo/manejo:** pessoas trabalhando com as ferramentas corretas, em escala realista
+- **Instalação (solar):** técnicos no telhado, painéis sendo montados, equipamentos reais
 
 ### Fontes aceitas
 
-- Imagens fornecidas pelo operador
-- Bancos livres (Unsplash, Pexels, Pixabay)
+- Imagens fornecidas pelo operador (preferidas — garantem precisão)
+- Bancos livres (Unsplash, Pexels, Pixabay) — verificar se a cena corresponde ao contexto
 - Imagens dos produtos de afiliado (quando disponíveis)
 - Diagramas ou infográficos gerados
 
-### Regras
+### Regras técnicas
 
-- Alt text descritivo e relevante (não genérico)
+- Alt text descritivo e contextual (não genérico como "imagem de fazenda")
 - Imagem deve apoiar o texto, não substituí-lo
 - Não depender da imagem para sustentar toda a identidade da página
+- Usar largura responsiva e bordas arredondadas para consistência visual
 
 ---
 
@@ -509,13 +550,14 @@ Regra: nunca forçar uma menção de marca. Toda citação deve nascer da necess
 
 1. O operador fornece o tema/nicho e opcionalmente referências de tom
 2. O assistente pesquisa referências se não foram fornecidas
-3. O assistente mapeia players e produtos do mercado (equipamentos, empresas, financiamento, legislação)
-4. O assistente apresenta a estrutura completa (mapa de páginas + metadados + mapeamento de players)
-5. O operador aprova a estrutura
-6. O assistente escreve a home
-7. O operador aprova o tom da home
-8. Se aprovado: as internas e editoriais seguem sem parar
-9. O operador revisa e corrige o resultado final
+3. O assistente faz checagem de contexto real (verifica que entende a atividade visualmente e praticamente)
+4. O assistente mapeia players e produtos do mercado (equipamentos, empresas, financiamento, legislação)
+5. O assistente apresenta a estrutura completa (mapa de páginas + metadados + mapeamento de players)
+6. O operador aprova a estrutura
+7. O assistente escreve a home
+8. O operador aprova o tom da home
+9. Se aprovado: as internas e editoriais seguem sem parar
+10. O operador revisa e corrige o resultado final
 
 ---
 
