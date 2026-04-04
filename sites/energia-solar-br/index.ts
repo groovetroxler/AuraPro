@@ -551,7 +551,145 @@ const pageEquipamentos: PageSchema = {
   id: 'solar-equipamentos', siteKey: SITE_KEY, type: 'article', slug: SLUG_EQUIPAMENTOS,
   title: 'Como escolher painel e inversor', status: 'published',
   meta: { title: 'Como escolher painel solar e inversor: o que importa de verdade', description: 'Critérios técnicos para escolher painel e inversor solar: eficiência, garantia, certificação INMETRO, marcas e dimensionamento.' },
-  blocks: [ breadcrumb('Equipamentos', SLUG_EQUIPAMENTOS), { type: 'articleContent', html: '<h2>Como escolher painel solar e inversor</h2><p>Conteúdo completo em desenvolvimento.</p>', publishedAt: PUBLISHED_AT }, allGuideLinks(SLUG_EQUIPAMENTOS) ],
+  blocks: [
+    breadcrumb('Equipamentos', SLUG_EQUIPAMENTOS),
+    {
+      type: 'articleContent',
+      html: `
+<p>O equipamento é o coração do sistema e onde a diferença entre um investimento bom e um ruim se define. A tentação de economizar aqui é grande — e perigosa. Um painel 15% mais barato pode render 10% menos por 25 anos. Um inversor genérico pode parar de funcionar em 5 anos em vez de 12. E uma garantia que não tem representante no Brasil é o mesmo que não ter garantia.</p>
+
+<p>Neste guia, vamos separar o que realmente importa do que é marketing.</p>
+
+<h2>Painéis solares: o que olhar antes de comprar</h2>
+
+<h3>Potência (Wp)</h3>
+
+<p>A potência de um painel é medida em watts-pico (Wp) — a capacidade máxima de geração em condições ideais de teste (irradiação de 1.000 W/m², temperatura de 25°C). Painéis residenciais em 2026 têm entre 400 Wp e 600 Wp. Quanto maior a potência por painel, menos painéis você precisa para o mesmo sistema — o que pode ser vantagem em telhados menores.</p>
+
+<h3>Eficiência</h3>
+
+<p>Eficiência é a porcentagem de luz solar que o painel converte em eletricidade. Painéis comerciais atuais ficam entre 20% e 22,5%. A diferença de 2 pontos percentuais pode parecer pequena, mas ao longo de 25 anos representa milhares de kWh a mais.</p>
+
+<p>Na prática, a eficiência importa mais quando o espaço no telhado é limitado. Se você tem telhado de sobra, painéis ligeiramente menos eficientes (mas mais baratos) podem fazer sentido. Se o telhado é pequeno, cada ponto de eficiência conta.</p>
+
+<h3>Garantia</h3>
+
+<p>Existem duas garantias distintas para painéis:</p>
+
+<ul>
+<li><strong>Garantia de produto:</strong> cobre defeitos de fabricação. Painéis bons oferecem 12-15 anos. Painéis baratos oferecem 5-10 anos.</li>
+<li><strong>Garantia de desempenho:</strong> garante que o painel manterá determinada porcentagem da potência original. O padrão bom é 87,4% após 25 anos (degradação de ~0,5%/ano). Painéis de primeira linha já oferecem 88-90% após 30 anos.</li>
+</ul>
+
+<p>A garantia só vale se o fabricante tiver representação no Brasil. Verifique: a marca tem CNPJ no país? Tem estoque de reposição? Tem assistência técnica acessível? Se a resposta for não, a garantia existe no papel, mas não na prática.</p>
+
+<h3>Certificação</h3>
+
+<p>Todo painel vendido no Brasil precisa ter certificação do <a href="https://www.inmetro.gov.br/" target="_blank" rel="noopener">INMETRO</a>. Sem essa certificação, o painel não pode ser homologado pela concessionária — e sem homologação, você não entra no sistema de compensação de energia. É obrigatório, não opcional.</p>
+
+<h3>Principais marcas no Brasil em 2026</h3>
+
+<p>As marcas mais presentes no mercado residencial brasileiro, com representação local e bom histórico:</p>
+
+<ul>
+<li><strong>Canadian Solar:</strong> uma das maiores do mundo. Boa relação custo-benefício, garantia sólida, ampla rede de distribuição no Brasil.</li>
+<li><strong>JA Solar:</strong> chinesa com forte presença global. Competitiva em preço, boa eficiência.</li>
+<li><strong>Trina Solar:</strong> referência em inovação. Lançou painéis com tecnologia N-type de alta eficiência.</li>
+<li><strong>LONGi:</strong> maior fabricante de silício monocristalino do mundo. Painéis Hi-MO de alto desempenho.</li>
+<li><strong>BYD:</strong> conhecida por baterias e carros elétricos, também fabrica painéis com boa reputação.</li>
+</ul>
+
+<p>Existem dezenas de outras marcas no mercado. O critério mínimo é: certificação INMETRO, garantia de produto ≥12 anos, garantia de desempenho ≥25 anos, e representação técnica no Brasil.</p>
+
+<h2>Inversores: o componente que mais diferencia um sistema bom de um ruim</h2>
+
+<p>Se o painel é o músculo, o inversor é o cérebro. Um inversor ruim limita a geração, falha mais cedo e não permite monitoramento adequado. A diferença de preço entre um inversor bom e um medíocre costuma ser R$ 1.000-2.000 — valor que se paga em menos de um ano de geração extra.</p>
+
+<h3>Inversor string vs. microinversor</h3>
+      `,
+      publishedAt: PUBLISHED_AT,
+    },
+    {
+      type: 'comparisonTable',
+      headers: ['Critério', 'Inversor string', 'Microinversor'],
+      rows: [
+        { label: 'Custo', values: ['Menor', 'Maior (30-50% a mais)'] },
+        { label: 'Instalação', values: ['1 aparelho central', '1 por painel ou par'] },
+        { label: 'Sombreamento parcial', values: ['Afeta toda a série', 'Afeta só o painel sombreado'] },
+        { label: 'Monitoramento', values: ['Geração total do sistema', 'Geração por painel individual'] },
+        { label: 'Expansão futura', values: ['Limitada pela potência do inversor', 'Adiciona painéis facilmente'] },
+        { label: 'Vida útil', values: ['10-15 anos', '15-25 anos'] },
+        { label: 'Indicado para', values: ['Telhados sem sombra', 'Telhados com sombra parcial'] },
+      ],
+    },
+    {
+      type: 'adSlot',
+      slotId: 'solar-equipamentos-mid',
+      format: 'responsive',
+    },
+    {
+      type: 'articleContent',
+      html: `
+<h3>Principais marcas de inversor no Brasil</h3>
+
+<ul>
+<li><strong>Fronius (Áustria):</strong> referência premium. Excelente monitoramento, alta eficiência, garantia de 10 anos extensível. Mais caro, mas reconhecido como o melhor do mercado.</li>
+<li><strong>SMA (Alemanha):</strong> tradição e confiabilidade. Forte no segmento de usinas, presente também no residencial.</li>
+<li><strong>Growatt (China):</strong> melhor custo-benefício do mercado. Monitoramento via app, garantia de 10 anos, suporte no Brasil. Domina o mercado residencial.</li>
+<li><strong>Goodwe (China):</strong> concorrente direto do Growatt, com boa presença no Brasil e garantia competitiva.</li>
+<li><strong>Enphase (EUA):</strong> líder global em microinversores. Preço premium, mas excelente para telhados complexos.</li>
+<li><strong>Deye (China):</strong> forte em inversores híbridos (com bateria). Boa opção para quem quer backup.</li>
+</ul>
+
+<h3>Como dimensionar o inversor</h3>
+
+<p>O inversor precisa ter potência compatível com os painéis. A regra geral é que a potência do inversor pode ser entre 75% e 100% da potência total dos painéis. Exemplo: para 10 painéis de 550 Wp (total: 5,5 kWp), o inversor pode ser de 4,0 a 5,5 kW.</p>
+
+<p>Subdimensionar demais (inversor muito pequeno) limita a geração nos horários de pico. Superdimensionar (inversor muito grande) desperdiça dinheiro. Um bom integrador calcula isso considerando a irradiação da sua região e a orientação do telhado.</p>
+
+<h2>Estrutura de fixação: o que ninguém te conta</h2>
+
+<p>A estrutura de fixação é o componente mais ignorado — e que mais causa problema quando malfeito. Ela precisa:</p>
+
+<ul>
+<li>Suportar o peso dos painéis (20-25 kg cada) por 25+ anos</li>
+<li>Resistir a ventos fortes sem soltar</li>
+<li>Não comprometer a impermeabilização do telhado</li>
+<li>Ser de alumínio anodizado ou aço inoxidável (não corroer)</li>
+</ul>
+
+<p>Estruturas baratas de aço galvanizado podem corroer em 5-8 anos, especialmente em regiões litorâneas. A economia de R$ 500-1.000 na estrutura pode virar um custo de R$ 5.000+ para refazer a fixação e tratar infiltrações no telhado.</p>
+
+<h2>O que pedir no orçamento</h2>
+
+<p>Quando receber uma proposta, verifique se inclui:</p>
+
+<ul>
+<li>Marca e modelo exato dos painéis (não apenas "painéis de 550 Wp")</li>
+<li>Marca e modelo do inversor</li>
+<li>Material da estrutura de fixação</li>
+<li>Tipo e seção dos cabos</li>
+<li>Projeto elétrico assinado por engenheiro</li>
+<li>Homologação na concessionária incluída</li>
+<li>Garantia de mão de obra (além da garantia do fabricante)</li>
+<li>Seguro durante a instalação</li>
+</ul>
+
+<p>Se a proposta diz apenas "sistema de 5 kWp" sem especificar marcas e modelos, peça detalhamento. Propostas genéricas escondem equipamentos de qualidade duvidosa.</p>
+
+<h2>Próximo passo: escolher quem vai instalar</h2>
+
+<p>Equipamento bom nas mãos de um instalador ruim vira problema. A escolha da empresa é tão importante quanto a escolha do equipamento — e é onde mais gente erra. Veja em <a href="${pageHref(SLUG_INSTALADOR)}">Como escolher uma empresa de energia solar</a>.</p>
+      `,
+      publishedAt: PUBLISHED_AT,
+    },
+    allGuideLinks(SLUG_EQUIPAMENTOS),
+    {
+      type: 'adSlot',
+      slotId: 'solar-equipamentos-bottom',
+      format: 'responsive',
+    },
+  ],
 }
 
 const pageInstalador: PageSchema = {
