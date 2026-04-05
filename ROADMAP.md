@@ -77,10 +77,11 @@ Rotinas são processos executados repetidamente. Cada rotina tem seu guia operac
 |--------|--------|------|-----------------|
 | **Rotina 1:** Criar site | Fase 1B | `SITE_CREATION.md` | Cada site novo |
 | **Rotina 2:** Conteúdo e estilização | Fase 1C | `CONTENT_GUIDE.md` | Cada site novo, após Rotina 1 |
-| **Rotina 3:** OG images | Fase 2A | (a definir) | Cada site novo, após Rotina 2 |
-| **Rotina 4:** Domínio próprio | Fase 2B | (a definir) | Quando um site justificar domínio dedicado |
+| **Rotina 3:** Domínio próprio | Fase 2B | (a definir) | Quando um site justificar domínio dedicado |
 
-Ciclo de produção de um site novo: **Rotina 1 → Rotina 2 → (Rotina 3) → push → site real no ar.**
+OG images (Fase 2A) não produzem rotina — o sistema é automático no build. Novos sites já nascem com OG images.
+
+Ciclo de produção de um site novo: **Rotina 1 → Rotina 2 → push → site real no ar (com OG images automáticas).**
 
 ---
 
@@ -88,11 +89,11 @@ Ciclo de produção de um site novo: **Rotina 1 → Rotina 2 → (Rotina 3) → 
 
 Cada subfase desenvolve uma capacidade nova e pode produzir uma rotina.
 
-### Fase 2A — Sistema de geração de OG images
+### Fase 2A — Sistema de geração de OG images ✅
 
-Desenvolve: script ou sistema para gerar OG images por site e por página.
+Desenvolveu: sistema automático de geração de OG images via `next/og` (Satori). Componente compartilhado `core/og/generateOgImage.tsx` com design baseado no tema de cada site (primaryColor, surfaceColor, brandName). Route handlers em `app/[site]/opengraph-image.tsx` e `app/[site]/[slug]/opengraph-image.tsx` geram PNG 1200x630 para todas as páginas no build. Zero configuração manual por site.
 
-Produz → **Rotina 3: Gerar OG images**
+Não produz rotina separada — integra automaticamente no pipeline de build. Novos sites criados via Rotina 1 já terão OG images sem nenhuma ação adicional.
 
 ### Fase 2B — Suporte a domínios próprios
 

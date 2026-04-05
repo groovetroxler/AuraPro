@@ -144,13 +144,19 @@ Observacao:
 | saude-br | draft | 3 (placeholder) | ~500 | — |
 
 ## Proxima Sessao - Prioridades
-1. **Fase 2A:** sistema de geracao de OG images por site/pagina
-2. **Fase 2B:** suporte a dominios proprios por site
-3. **Novo site:** executar ciclo completo Rotina 1 → Rotina 2 para validar reprodutibilidade
-4. **saude-br:** decidir se desenvolve com conteudo editorial ou remove do registry
-5. Confirmar no Google AdSense (Sites) que `aurapro-consulting.com` esta apto para exibicao
-6. Quando AdSense aprovado: substituir slotIds semanticos por IDs reais, virar `NEXT_PUBLIC_ADS_TEST_MODE` para `false`
-7. CSS variables expandidas no layout (melhoria continua)
+1. **Fase 2B:** suporte a dominios proprios por site
+2. **Novo site:** executar ciclo completo Rotina 1 → Rotina 2 para validar reprodutibilidade
+3. **saude-br:** decidir se desenvolve com conteudo editorial ou remove do registry
+4. Confirmar no Google AdSense (Sites) que `aurapro-consulting.com` esta apto para exibicao
+5. Quando AdSense aprovado: substituir slotIds semanticos por IDs reais, virar `NEXT_PUBLIC_ADS_TEST_MODE` para `false`
+6. CSS variables expandidas no layout (melhoria continua)
+
+## Fase 2A — OG Images ✅
+- Sistema automatico implementado via `next/og` (Satori)
+- Gera PNG 1200x630 para todas as 40+ paginas no build
+- Zero configuracao por site — usa tema e metadata existentes
+- Design: barra lateral colorida + titulo + brand
+- Decisao #68 registrada
 
 ## Instrucoes para novas sessoes
 1. Ler este arquivo antes de iniciar alteracoes
