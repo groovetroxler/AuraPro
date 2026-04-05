@@ -180,18 +180,30 @@ Criar 2-4 artigos complementares (800-1500 palavras):
 
 Aplicar tema visual do site usando campos do `SiteTheme`:
 
-- `primaryColor` — cor principal
+- `primaryColor` — cor principal (usada também no favicon e OG image automaticamente)
 - `accentColor` — cor de destaque (links, botões, destaques)
-- `surfaceColor` — cor de fundo de cards/blocos
+- `surfaceColor` — cor de fundo de cards/blocos (usada como fundo da OG image)
 - `textColor` — cor principal do texto
 - `radius` — arredondamento de bordas
 - `fontFamilyHeading` — fonte dos títulos
 
 A estilização é local ao site. Não alterar globals.css nem componentes do core.
 
+**Favicon e OG image são automáticos.** O framework gera:
+- **Favicon (32x32):** quadrado com a inicial do `brandName` na `primaryColor`. Aparece na aba do navegador.
+- **Apple touch icon (180x180):** mesmo design, para quando o usuário salva na tela inicial do iPhone.
+- **OG image (1200x630):** card com barra lateral na `primaryColor`, título da página e `brandName`. Aparece quando alguém compartilha o link no WhatsApp, LinkedIn, Twitter.
+
+Não precisa configurar nada — tudo é derivado do `SiteTheme` e do `meta.title` de cada página. Basta definir `primaryColor` e `brandName` corretamente.
+
 ### Etapa 9 — Validação final
 
-Aplicar o checklist de qualidade (seção 9 deste documento) em todas as páginas antes de publicar.
+Aplicar o checklist de qualidade (seção 8 deste documento) em todas as páginas antes de publicar.
+
+Verificar também:
+- Favicon aparece na aba do navegador (acessar `/{routePath}/icon`)
+- OG image gera corretamente (acessar `/{routePath}/opengraph-image`)
+- Preview de compartilhamento funciona (testar no WhatsApp ou em opengraph.xyz)
 
 ---
 
